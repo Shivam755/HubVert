@@ -12,7 +12,7 @@ Tejas Pophale
 Shrutika Gholap
 Harshal Gondkar
 
-#This change is made by an anonymous user who didnt have invite to this repository
+# This change is made by an anonymous user who didnt have invite to this repository
 
 A place for user to relax, have fun and explore his interests. HubVert provides you with funny pics, jokes and quotes based on your mood at the moment. And all the feed will be based on your area of interests. We've made it so that connecting with oneself doesn't feel like a chore and you can be yourself without being judged. As it lets you be anonymous.
 
