@@ -3,12 +3,15 @@
 </template>
 
 <script>
-import Login from "./components/login.vue"; 
+import Login from "./components/login.vue";
+import Register from "./components/register.vue";
+
 export default {
   name: 'App',
   components:{
-    Login
-  }
+    Login,
+    Register
+      }
 }
 </script>
 
