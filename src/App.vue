@@ -1,5 +1,6 @@
 <template>
   <Login />
+  <Register />
 </template>
 
 <script>
