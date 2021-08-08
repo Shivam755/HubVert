@@ -123,15 +123,47 @@ class Diary{
         localStorage.setItem('Diary',JSON.stringify(this.diary)); 
     }
     addEntry(userId, date, entry){
-        this.diary.push({userId, date, entry});
+        this.diary.push({userId:userId, date:date, entry:entry});
         //Saving the changes
         localStorage.setItem('Diary',JSON.stringify(this.diary)); 
+    }
+    UpdateEntry(userId, date, entry){
+        for (let i = 0; i<this.diary.length; i++){
+            if (this.diary[i].userId === userId && this.diary[i].date === date){
+                this.diary[i].entry = entry;
+            }
+        }
+    }
+}
+
+//Interest table
+class Interest{
+    constructor(){
+        let temp = JSON.parse(localStorage.getItem("Interest"));
+        this.interest = temp ? temp: [];
+        //Saving the changes
+        localStorage.setItem('Interest',JSON.stringify(this.interest)); 
+    }
+    AddInterest(interestId, userId, topics){
+        this.interest.push({interestId:interestId, userId:userId, topics:topics});
+        //Saving the changes
+        localStorage.setItem('Interest',JSON.stringify(this.interest));
+    }
+    UpdateInterest(userId, topics){
+        for(let i in this.interest){
+            if (i.userId === userId){
+                i.topics = topics;
+            }
+        }
+        //Saving the changes
+        localStorage.setItem('Interest',JSON.stringify(this.interest));
     }
 }
 
 //Creating objects of the above table
 let Users = new User();
 let DailyMoods = new DailyMood();
+let Diarys = new Diary();
+let Interests = new Interest();
 
-
-export {Users,moodTypes,DailyMoods};
+export {Users,moodTypes,DailyMoods, Diarys, Interests};
