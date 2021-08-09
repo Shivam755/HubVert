@@ -1,7 +1,7 @@
 <template>
 <form method="post">
   <div class="imgcontainer">
-    <img src="C:\Users\jyoti\OneDrive\Documents\dog.jpeg" alt="Avatar" class="avatar">
+    <img src="../assets/login.png" alt="Avatar" class="avatar">
   </div>
 
   <div class="container">
@@ -12,9 +12,6 @@
     <input type="password" placeholder="Enter Password" name="psw" required>
 
     <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
   </div>
 
   <div class="container" style="background-color:#f1f1f1">

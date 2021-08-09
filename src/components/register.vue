@@ -12,7 +12,7 @@
     <br>
     
     <label for="dob"> <strong> Date of Birth: </strong></label>
-  	<input type="date" id="dob" name="dob" required>
+    <input type="date" id="dob" name="dob" required>
     
     <br>
     <br>
@@ -50,7 +50,7 @@
 
 
   <div class="container signin">
-    <p>Already have an account? <router-link to="/">Sign in </router-link>.</p>
+    <p>Already have an account? <router-link to="/">Login in </router-link>.</p>
   </div>
 </form>
 </template>
