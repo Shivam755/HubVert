@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import Login from '../components/login.vue';
-import Register from '../components/register.vue'
+import Register from '../components/register.vue';
 
 const routes = [
   {
@@ -20,6 +20,13 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../components/About.vue')
+  },
+  {
+    path: '/profile',
+    name:'Profile',
+    // components: Profile
+    component: () => import(/* webpackChunkName: "about" */ '../components/profile.vue')
+
   }
 ]
 

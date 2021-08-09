@@ -46,7 +46,7 @@ export default {
       for (let i = 0; i < Users.users.length; i++){
         if (Users.users[i].email === this.email ){
           if (Users.users[i].password.toString() === encPass.toString()){
-            sessionStorage.setItem("User",encPass);
+            sessionStorage.setItem("User",JSON.stringify(encPass));
             alert("Login Successfull!!");
             return;
             // TODO: add redirect link
