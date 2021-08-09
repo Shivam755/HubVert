@@ -3,7 +3,7 @@
 
 <form action="action_page.php" method="post">
   <div class="imgcontainer">
-    <img src="C:\Users\jyoti\OneDrive\Documents\dog.jpeg" alt="Avatar" class="avatar">
+    <img src="" alt="Avatar" class="avatar">
   </div>
 
   <div class="container">
