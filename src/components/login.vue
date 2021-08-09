@@ -21,7 +21,7 @@
 
   <div class="container" style="background-color:#f1f1f1">
     <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
+    <span class="psw">Don't have an account? <router-link to='/Sign-up'>Sign-up</router-link></span>
   </div>
 </form>
 
