@@ -35,7 +35,7 @@ class User{
         //Success
         return true;
     }
-    DeleteUser(id="",name="",email=""){
+    DeleteUser(id="",email=""){
         let success = false;
         if (id){
             for (let i = 0; i < this.users.length; i++){

@@ -17,7 +17,7 @@
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
-    <span >Don't have an account? <router-link to='/Sign-up'>Sign-up</router-link></span>
+    <span>Don't have an account? <router-link to='/Sign-up'>Sign-up</router-link></span>
   </div>
 </form>
 
