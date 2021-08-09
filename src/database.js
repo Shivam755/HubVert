@@ -1,6 +1,6 @@
 //Pre-requisite variables
 let id = 1;
-moodTypes = [
+let moodTypes = [
     {id: 1, mood:"Happy"},
     {id: 2, mood:"Sad"},
     {id: 3, mood:"Angry"},
