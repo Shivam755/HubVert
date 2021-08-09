@@ -1,9 +1,7 @@
 <template>
-    
-
-<form action="action_page.php" method="post">
+<form method="post">
   <div class="imgcontainer">
-    <img src="../assets/login.png" alt="Avatar" class="avatar">
+    <img src="C:\Users\jyoti\OneDrive\Documents\dog.jpeg" alt="Avatar" class="avatar">
   </div>
 
   <div class="container">
@@ -14,10 +12,14 @@
     <input type="password" placeholder="Enter Password" name="psw" required>
 
     <button type="submit">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
-    <span >Don't have an account? <router-link to='/Sign-up'>Sign-up</router-link></span>
+        <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
   </div>
 </form>
 
@@ -60,6 +62,12 @@ button:hover {
   opacity: 0.8;
 }
 
+/* Extra style for the cancel button (red) */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
 
 /* Center the avatar image inside this container */
 .imgcontainer {
@@ -76,6 +84,12 @@ img.avatar {
 /* Add padding to containers */
 .container {
   padding: 16px;
+}
+
+/* The "Forgot password" text */
+span.psw {
+  float: right;
+  padding-top: 16px;
 }
 
 /* Change styles for span and cancel button on extra small screens */
