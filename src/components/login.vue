@@ -6,12 +6,12 @@
 
   <div class="container">
     <label for="uname"><b>Email-id</b></label>
-    <input type="text" placeholder="Enter Email-id" name="uname" required>
+    <input type="text" placeholder="Enter Email-id" name="uname" v-model="email">
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" name="psw" v-model="pass">
 
-    <button type="submit">Login</button>
+    <button type="submit" @click.prevent="verify">Login</button>
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import { Users } from '../database';
+import SHA256 from 'crypto-js/sha256';
 export default {
   name: "Login",
   data: () =>{
@@ -32,7 +34,32 @@ export default {
   },
   methods:{
     verify:function(){
-      
+      if (this.email === ''){
+        alert("Please enter your email-id!!!")
+        return;
+      }
+      if(this.pass === ""){
+        alert("Please enter your password!!!")
+        return;
+      }
+      let encPass = SHA256(this.pass);
+      for (let i = 0; i < Users.users.length; i++){
+        if (Users.users[i].email === this.email ){
+          if (Users.users[i].password.toString() === encPass.toString()){
+            sessionStorage.setItem("User",encPass);
+            alert("Login Successfull!!");
+            return;
+            // TODO: add redirect link
+          }
+          else{
+            alert("Wrong Password!!");
+          }
+        }
+        else{
+          console.log('Panic');
+          alert("Email-id is not registered!!!");
+        }
+      }
     }
   }
 };

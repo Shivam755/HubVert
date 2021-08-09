@@ -76,6 +76,7 @@ export default {
     },
     methods:{
       submit : function(){
+        const mailformat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
         if (this.name === ''){
           alert("Please enter a name!!!")
           return;
@@ -91,19 +92,21 @@ export default {
         if (this.email === ''){
           alert("Please enter an email!!!")
           return;
+        }else if (! this.email.match(mailformat)){
+          alert("Invalid Email!!");
+          return;
         }
         if (this.pass === ''){
           alert("Please enter a password!!!")
           return;
         }
         if (this.rPass === ''){
-          alert("Please re-enter a password!!!")
+          alert("Please enter repeat password!!!")
           return;
         }
         
         if (this.pass === this.rPass){
-          console.log(this.name, this.dob, this.gender, this.email, SHA256(this.pass));
-          let res = Users.AddUser(this.name, this.dob, this.gender, this.email, SHA256(this.pass));
+          let res = Users.AddUser(this.name, this.dob, this.gender, this.email, SHA256(this.pass).toString());
           if (res) 
           {
             alert('Sign-up Successful!!!');

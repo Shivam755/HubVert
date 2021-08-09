@@ -1,5 +1,4 @@
 //Pre-requisite variables
-let id = 1;
 let moodTypes = [
     {id: 1, mood:"Happy"},
     {id: 2, mood:"Sad"},
@@ -10,21 +9,24 @@ let moodTypes = [
 //User table
 class User{
     constructor(){
-        let temp = JSON.parse(localStorage.getItem("Users"));
+        let temp = JSON.parse(localStorage.getItem("count"))
+        this.id = temp ? temp :1;
+        temp = JSON.parse(localStorage.getItem("Users"));
         this.users = temp ? temp: [];
         //Saving the changes
         localStorage.setItem('Users',JSON.stringify(this.users));
+        localStorage.setItem('count',JSON.stringify(this.id));
     }
     AddUser(name,dob, gender, email, password){
-        this.id = 'AnonymousUser'+"0"*(5-id.toString().length)+id;
-        id++;
+        this.userId = 'AnonymousUser'+"0".repeat(5-this.id.toString().length)+this.id;
         for (let i = 0; i < this.users.length; i++){
             if (this.users[i].email === email){
                 return false;
             }
         }
+        this.id++;
         this.users.push({
-            id:this.id,
+            id:this.userId,
             name:name,
             gender:gender,
             dob:dob,
@@ -33,6 +35,7 @@ class User{
         });
         //Saving the changes
         localStorage.setItem('Users',JSON.stringify(this.users));
+        localStorage.setItem('count',JSON.stringify(this.id));
         //Success
         return true;
     }
