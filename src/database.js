@@ -16,7 +16,8 @@ class User{
         localStorage.setItem('Users',JSON.stringify(this.users));
     }
     AddUser(name,dob, gender, email, password){
-        this.id = 'AnonymousUser'+"0"*(5-(""+id).length)+id;
+        this.id = 'AnonymousUser'+"0"*(5-id.toString().length)+id;
+        id++;
         for (let i = 0; i < this.users.length; i++){
             if (this.users[i].email === email){
                 return false;

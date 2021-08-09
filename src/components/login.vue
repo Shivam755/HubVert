@@ -5,8 +5,8 @@
   </div>
 
   <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <label for="uname"><b>Email-id</b></label>
+    <input type="text" placeholder="Enter Email-id" name="uname" required>
 
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required>
@@ -23,7 +23,18 @@
 
 <script>
 export default {
-  name: "Login"
+  name: "Login",
+  data: () =>{
+    return {
+      email:'',
+      pass:''
+    }
+  },
+  methods:{
+    verify:function(){
+      
+    }
+  }
 };
 </script>
 
