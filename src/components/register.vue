@@ -49,7 +49,7 @@
     <input type="submit" data-inline="true" value="Submit">
 
     <div class="container signin">
-      <p>Already have an account? <a href="#">Sign in </a>.</p>
+      <p>Already have an account? <router-link to="/">Log in</router-link>.</p>
     </div>
   </form>
 </template>
