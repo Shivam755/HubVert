@@ -1,11 +1,20 @@
 //Pre-requisite variables
-let moodTypes = [
+const moodTypes = [
     {id: 1, mood:"Happy"},
     {id: 2, mood:"Sad"},
     {id: 3, mood:"Angry"},
     {id: 4, mood:"Nervous"}
 ]
 
+let avatars = {'male':[],'female':[]};
+for (let i = 1; i<=10; i++){
+    avatars['male'].push("avatarM"+i+".png");
+    avatars['female'].push("avatarF"+i+".png");
+}
+
+// const interests = [
+    
+// ]
 //User table
 class User{
     constructor(){
@@ -24,6 +33,8 @@ class User{
                 return false;
             }
         }
+        this.avat = (gender == 'male'? 'avatarM' : 'avatarF') + (Math.floor(Math.random() * 10) + 1)+".png";
+        console.log(this.avat);
         this.id++;
         this.users.push({
             id:this.userId,
@@ -31,7 +42,8 @@ class User{
             gender:gender,
             dob:dob,
             email:email,
-            password:password
+            password:password,
+            avatar: this.avat
         });
         //Saving the changes
         localStorage.setItem('Users',JSON.stringify(this.users));
@@ -170,4 +182,4 @@ let DailyMoods = new DailyMood();
 let Diarys = new Diary();
 let Interests = new Interest();
 
-export {Users,moodTypes,DailyMoods, Diarys, Interests};
+export {Users,moodTypes,DailyMoods, Diarys, Interests, avatars};
