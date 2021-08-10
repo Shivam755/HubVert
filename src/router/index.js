@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 import Login from '../components/login.vue';
 import Register from '../components/register.vue';
 import Profile from '../components/profile.vue';
+import Diary from '../components/diary.vue';
 
 const routes = [
   {
@@ -19,6 +20,11 @@ const routes = [
     name:'profile',
     component: Profile
     
+  },
+  {
+    path: '/diary',
+    name:'diary',
+    component: Diary
   },
   {
     path: '/about',

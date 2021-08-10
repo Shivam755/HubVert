@@ -2,8 +2,8 @@
     <div v-if="id === null">
         <h1>403 Forbidden.<br>You should be logged in to access this page.<br>You can login <router-link to='/'>here</router-link></h1>
     </div>
-   <div class="card" v-else>
-        <img :src="avatar" alt="avatar" width="300" height="320">
+   <div v-else>
+        <img :src="avatar" id='profilePic' alt="avatar" width="300" height="320">
         <fieldset>
         <label for="userid"><b>User ID: {{userId}} </b></label>
         <br>
@@ -65,8 +65,10 @@ export default {
 }
 </script>
 
+
 <style>
-img{
-    border-radius: 50%;
-}
+  #profilePic
+  {
+  border-radius: 50%;
+  }
 </style>

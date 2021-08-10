@@ -5,18 +5,19 @@
 </div>
 <h2>xyz</h2>
 	<div class="card">
-  <img src="img_avatar.png" alt="Avatar" style="width:100%">
+  <img src="../assets/img_avatar.png" alt="Avatar" style="width:100%">
   <div class="container">
     <h4><b>Shivam Gupta</b></h4> 
     <p>CEO</p> 
     <p> Contact : www.shivam567@gmail.com </p>
+    <i class="fa fa-linkedin" style="font-size:40px;color:red"></i>
 
   </div>
 </div>
 
 <br>
 <div class="card">
-  <img src="img_avatar2.png" alt="Avatar" style="width:100%">
+  <img src="../assets/img_avatar2.png" alt="Avatar" style="width:100%">
   <div class="container">
     <h4><b>Jyoti Ghosh</b></h4> 
     <p>Founder</p> 
@@ -27,7 +28,7 @@
 <br>
 
 <div class="card">
-  <img src="img_avatar.png" alt="Avatar" style="width:100%">
+  <img src="../assets/img_avatar.png" alt="Avatar" style="width:100%">
   <div class="container">
     <h4><b>Tejas Pophale</b></h4> 
     <p>Co-Founder</p> 
@@ -38,7 +39,7 @@
 <br>
 
 <div class="card">
-  <img src="img_avatar2.png" alt="Avatar" style="width:100%">
+  <img src="../assets/img_avatar2.png" alt="Avatar" style="width:100%">
   <div class="container">
     <h4><b>Shrutika Gholap</b></h4> 
     <p>Manager</p> 
@@ -49,7 +50,7 @@
 <br> 
 
 <div class="card">
-  <img src="img_avatar.png" alt="Avatar" style="width:100%">
+  <img src="../assets/img_avatar.png" alt="Avatar" style="width:100%">
   <div class="container">
     <h4><b>Harshal Gondkar</b></h4> 
     <p>Employee/Clerk</p> 
