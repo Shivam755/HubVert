@@ -1,5 +1,9 @@
 # HubVert
 
+## Dependencies
+vue-router: `vue add route`
+crypto-js: `npm install crypto-js`
+
 # This change was made by Harshal
 
 Hubvert is a comforting and a relaxing hub for introverts where they can hang-out and chill.

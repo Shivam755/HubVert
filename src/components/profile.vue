@@ -3,7 +3,7 @@
         <h1>403 Forbidden.<br>You should be logged in to access this page.<br>You can login <router-link to='/'>here</router-link></h1>
     </div>
    <div class="card" v-else>
-        <img src="login.png" alt="logo" width="100" height="200">
+        <img :src="avatar" alt="avatar" width="300" height="320">
         <fieldset>
         <label for="userid"><b>User ID: {{userId}} </b></label>
         <br>
@@ -30,6 +30,7 @@ import {Users} from "../database"
 export default {
     data: ()=> {
         return{
+            avatar:'',
             name:'',
             gender:'',
             dob:'',
@@ -39,6 +40,11 @@ export default {
             id:''
         }
     },
+    // methods:{
+    //     getImgUrl:(avatar)=> {
+    //         return require('../assets/'+avatar);
+    //     }
+    // },
     mounted: function () {
         this.id= JSON.parse(sessionStorage.getItem("User"));
         if (this.id){
@@ -49,16 +55,18 @@ export default {
                     this.gender=Users.users[i].gender;
                     this.dob=Users.users[i].dob;
                     this.email=Users.users[i].email;
+                    this.avatar=require("../assets/"+Users.users[i].avatar);
                     //this.interest=Users.users[i].interest;
                 }
             }
-        }else{
-            return 
         }
+        return;
     }
 }
 </script>
 
 <style>
-
+img{
+    border-radius: 50%;
+}
 </style>
