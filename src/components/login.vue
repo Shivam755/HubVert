@@ -42,11 +42,11 @@ export default {
         alert("Please enter your password!!!")
         return;
       }
-      let encPass = SHA256(this.pass);
+      let encPass = SHA256(this.pass).toString();
       for (let i = 0; i < Users.users.length; i++){
         if (Users.users[i].email === this.email ){
-          if (Users.users[i].password.toString() === encPass.toString()){
-            sessionStorage.setItem("User",JSON.stringify(encPass));
+          if (Users.users[i].password === encPass){
+            sessionStorage.setItem("User",JSON.stringify(encPass.toString()));
             alert("Login Successfull!!");
             return;
             // TODO: add redirect link
@@ -55,11 +55,9 @@ export default {
             alert("Wrong Password!!");
           }
         }
-        else{
-          console.log('Panic');
-          alert("Email-id is not registered!!!");
-        }
       }
+      console.log('Panic');
+      alert("Email-id is not registered!!!");
     }
   }
 };
