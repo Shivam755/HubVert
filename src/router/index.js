@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 import Login from '../components/login.vue';
 import Register from '../components/register.vue';
 import Profile from '../components/profile.vue';
+import ChangePassword from '../components/changePassword.vue';
 import Diary from '../components/diary.vue';
 import ChangePic from '../components/changepic.vue';
 
@@ -24,6 +25,10 @@ const routes = [
     
   },
   {
+    path: '/changePassword',
+    name:'changePassword',
+    component: ChangePassword
+  },{
     path: '/diary',
     name:'diary',
     component: Diary
