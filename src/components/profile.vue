@@ -1,9 +1,9 @@
 <template>
     <div v-if="id === null">
-        <h1>403 Forbidden.<br>You should be logged in to access this page.<br>You can login <router-link to='/'>here</router-link></h1>
+        <Forbidden />
     </div>
-   <div class="card" v-else>
-        <img :src="avatar" alt="avatar" width="300" height="320">
+   <div v-else>
+        <img :src="avatar" id='profilePic' alt="avatar" width="300" height="320">
         <fieldset>
         <label for="userid"><b>User ID: {{userId}} </b></label>
         <br>
@@ -21,12 +21,13 @@
         </fieldset>
         <br>
         <br>
-        <button type="submit" @click.prevent="verify">Change Password</button>
+        <router-link to='/changePassword'><button>Change Password</button></router-link>
     </div>
 </template>
 
 <script>
-import {Users} from "../database"
+import {Users} from "../database";
+import Forbidden from './forbidden.vue';
 export default {
     data: ()=> {
         return{
@@ -40,11 +41,9 @@ export default {
             id:''
         }
     },
-    // methods:{
-    //     getImgUrl:(avatar)=> {
-    //         return require('../assets/'+avatar);
-    //     }
-    // },
+    components:{
+        Forbidden
+    },
     mounted: function () {
         this.id= JSON.parse(sessionStorage.getItem("User"));
         if (this.id){
@@ -66,7 +65,7 @@ export default {
 </script>
 
 <style>
-img{
+#profilePic{
     border-radius: 50%;
 }
 </style>

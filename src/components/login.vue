@@ -53,6 +53,7 @@ export default {
           }
           else{
             alert("Wrong Password!!");
+            return;
           }
         }
       }

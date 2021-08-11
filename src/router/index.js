@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 import Login from '../components/login.vue';
 import Register from '../components/register.vue';
 import Profile from '../components/profile.vue';
+import ChangePassword from '../components/changePassword.vue';
 
 const routes = [
   {
@@ -18,6 +19,12 @@ const routes = [
     path: '/profile',
     name:'profile',
     component: Profile
+    
+  },
+  {
+    path: '/changePassword',
+    name:'changePassword',
+    component: ChangePassword
     
   },
   {
