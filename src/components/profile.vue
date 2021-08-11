@@ -66,14 +66,7 @@ export default {
 
 
 <style>
-<<<<<<< HEAD
 #profilePic{
     border-radius: 50%;
 }
-=======
-  #profilePic
-  {
-  border-radius: 50%;
-  }
->>>>>>> 9b85291fbb4aca5b1dd420373a8ace97deb0a805
 </style>
