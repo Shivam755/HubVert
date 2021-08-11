@@ -75,11 +75,11 @@ class User{
         } : success;
     }
 
-    UpdatePassword(user, pass){
+    UpdatePassword(userId, pass){
         let success = false;
-        for (let cur in this.users){
-            if (cur === user){
-                cur.password = pass;
+        for (let cur = 0; cur< this.users.length; cur++){
+            if (this.users[cur].id === userId){
+                this.users[cur].password = pass;
                 success = true;
             }
         }
