@@ -50,7 +50,7 @@ export default {
   box-sizing: border-box;
 }
 
-html {
+/* html {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
@@ -64,7 +64,7 @@ body {
   margin: 0 auto;
   padding: 0;
   max-width: 900px;
-}
+} */
 
 /* Global Typography */
 

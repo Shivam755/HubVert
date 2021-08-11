@@ -3,6 +3,8 @@ import Login from '../components/login.vue';
 import Register from '../components/register.vue';
 import Profile from '../components/profile.vue';
 import Diary from '../components/diary.vue';
+import ChangePic from '../components/changepic.vue';
+
 
 const routes = [
   {
@@ -25,6 +27,11 @@ const routes = [
     path: '/diary',
     name:'diary',
     component: Diary
+  },
+  {
+    path: '/changepic',
+    name:'changepic',
+    component: ChangePic
   },
   {
     path: '/about',

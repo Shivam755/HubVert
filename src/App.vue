@@ -5,6 +5,8 @@
     <router-link to="/about">About</router-link> |
     <router-link to="/profile">Profile</router-link> |
     <router-link to="/diary">Diary</router-link> |
+        <router-link to="/changepic">Change your Profile</router-link> 
+
 
 
 
