@@ -4,11 +4,11 @@
     <img src="../assets/login.png" alt="Avatar" class="avatar">
   </div>
 
-  <div class="container">
-    <label for="uname"><b>Email-id</b></label>
-    <input type="text" placeholder="Enter Email-id" name="uname" v-model="email">
+  <div class="input-container">
+    <i class="fa fa-envelope icon" style= "font-size:25px;"></i>
+    <input class="container" type="text" placeholder="Enter Email-id" name="uname" v-model="email">
 
-    <label for="psw"><b>Password</b></label>
+    <i class="fa fa-key icon" style= "font-size:25px;"></i>
     <input type="password" placeholder="Enter Password" name="psw" v-model="pass">
 
     <button type="submit" @click.prevent="verify">Login</button>
@@ -95,12 +95,8 @@ button:hover {
   opacity: 0.8;
 }
 
-/* Extra style for the cancel button (red) */
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
+
+
 
 /* Center the avatar image inside this container */
 .imgcontainer {
@@ -116,6 +112,10 @@ img.avatar {
 
 /* Add padding to containers */
 .container {
+  padding: 16px;
+}
+
+.input-container{
   padding: 16px;
 }
 

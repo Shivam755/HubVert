@@ -3,7 +3,9 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/sign-up">Sign-up</router-link> |
     <router-link to="/about">About</router-link> |
-    <router-link to="/profile">Profile</router-link>
+    <router-link to="/profile">Profile</router-link> |
+    <router-link to="/diary">Diary</router-link> |
+
 
 
   </div>

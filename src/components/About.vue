@@ -10,6 +10,7 @@
     <h4><b>Shivam Gupta</b></h4> 
     <p>CEO</p> 
     <p> Contact : www.shivam567@gmail.com </p>
+    <i class="fa fa-linkedin" style="font-size:40px;color:red"></i>
 
   </div>
 </div>
