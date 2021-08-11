@@ -1,21 +1,29 @@
 <template>
 <form method="post">
-  <div class="imgcontainer">
-    <img src="../assets/login.png" alt="Avatar" class="avatar">
-  </div>
 
   <div class="input-container">
-    <i class="fa fa-envelope icon" style= "font-size:25px;"></i>
-    <input class="container" type="text" placeholder="Enter Email-id" name="uname" v-model="email">
-
-    <i class="fa fa-key icon" style= "font-size:25px;"></i>
+    <!-- <center style="align-self:center ; background-color: #80e9c0" > -->
+    <img src="../assets/login.png" alt="Avatar" style="width: 40%; align-self:center" >
+    <!-- </center> -->
+    
+    <!-- <i  style= "font-size:25px; align:center"></i> -->
+    <!-- <input type="text" placeholder="Enter Email-id" name="uname" v-model="email"> -->
+    <div class='iconinput' >
+    <i class="fa fa-envelope " style= "font-size:25px"></i>
+    <input type="text" placeholder="Enter Email-id" name="uname" v-model="email">
+    </div>
+    <div class='iconinput' >
+    <i class="fa fa-key icon" style= "font-size:25px; "></i>
     <input type="password" placeholder="Enter Password" name="psw" v-model="pass">
+    </div>
 
-    <button type="submit" @click.prevent="verify">Login</button>
-  </div>
+    <button class="button1" type="submit" @click.prevent="verify"> Login </button>
+  
 
-  <div class="container" style="background-color:#f1f1f1">
+  <!-- <div style="background-color:#f1f1f1; text-align: center font-family: arial" > -->
     <span>Don't have an account? <router-link to='/Sign-up'>Sign-up</router-link></span>
+    
+  <!-- </div> -->
   </div>
 </form>
 
@@ -33,6 +41,9 @@ export default {
     }
   },
   methods:{
+    // highlight:()=>{
+    //   let div = document.getElementsByClassName('')
+    // },
     verify:function(){
       if (this.email === ''){
         alert("Please enter your email-id!!!")
@@ -63,60 +74,108 @@ export default {
 };
 </script>
 
-<style>
-form {
-  border: 3px solid #f1f1f1;
+<style scoped>
+body{
+  margin:0;
+  padding:0;
+
+}
+/* form {
+  border: 3px solid #fefeff;
+  /* float:right; */
+  /* align-content: left} */
+
+
+.input-container{
+  font-size:20px;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background: #80e9c0; */
+  width: 100%
+}
+
+
+.iconinput{
+  font-family: 'Space Mono', monospace;
+  color: #dfe1e5;
+  width: 60%;
+  align-self: center;
+  padding: 0.3rem 0.3rem ;
+  margin: 0.5rem 0.5rem;
+  /* display: inline-block; */
+  border: 0.1rem solid #dfe1e5 ;
+  /* border-color:#e95bb2 ; */
+  border-radius: 0.3rem;
+  outline: none;
+  background-color: white;
+  /* box-sizing: border-box; */
+}
+
+.iconinput:focus{
+  border:  0.3rem solid #e95bb2;
+  color: lightcoral;
+
 }
 
 /* Full-width inputs */
 input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+  border:none;
+  outline:none;
+  padding-left:1rem;
+  font-size: 1rem;
+  width: 60%;
+}
+
+input :active
+{
+  box-shadow:1rem 1rem #888888;
 }
 
 /* Set a style for all buttons */
-button {
-  background-color: #04AA6D;
+.button1{
+  font-family: baskerville old face ; 
+  font-size: 100%;
+  background-color: #f3a736;
   color: white;
-  padding: 14px 20px;
+  padding: 0.5rem 0.5rem;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  height: 50%;
+  width: 50%;
 }
 
 /* Add a hover effect for buttons */
-button:hover {
-  opacity: 0.8;
+.button1:hover {
+  opacity: 0.9;
 }
 
+.button1:active {
+  border: 3px solid #888888;
+}
 
 
 
 /* Center the avatar image inside this container */
-.imgcontainer {
+/* .imgcontainer {
   text-align: center;
-  margin: 24px 0 12px 0;
-}
+} */
 
 /* Avatar image */
-img.avatar {
-  width: 40%;
-  border-radius: 50%;
-}
+/* img.avatar { */
+  /* width: 50%; */
+  /* border-radius: 5%; */
+  /* padding:20%; */
+  /* background: #ff0000 }*/
 
 /* Add padding to containers */
-.container {
+/* .container {
   padding: 16px;
-}
+} */
 
-.input-container{
-  padding: 16px;
-}
+
 
 /* The "Forgot password" text */
 span.psw {
