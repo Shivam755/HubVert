@@ -65,8 +65,9 @@ export default {
 </script>
 
 
-<style>
-#profilePic{
-    border-radius: 50%;
-}
+<style scoped>
+  #profilePic
+  {
+  border-radius: 50%;
+  }
 </style>

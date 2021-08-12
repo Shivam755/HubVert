@@ -1,32 +1,31 @@
 <template>
+  <div v-if="id === null">
+      <Forbidden />
+  </div>
+   <div v-else>
    <header><h1 class="title">My Personal Journal</h1></header>
-
     <!-- Journal Entry Section -->
-    <section class="section journal-section">
-      <div class="container">
-        <div class="container-row container-row-journal">
-          <div class="container-item container-item-journal">
-            <form id="entryForm" action="">
-              <label for="entry-title" class="journal-label">Entry Title</label>
-              <input
-                type="text"
-                name="entry-title"
-                id="entry-title"
-                class="entry-text-title"
-                placeholder="Name of entry ✏️"
-              />
-              <label for="entry" class="journal-label">Today's Entry</label>
-              <textarea
-                name="daily-entry"
-                id="entry"
-                class="entry-text-box"
-                placeholder="What's on your mind today? 💭"
-              ></textarea>
-              <button class="btn-main entry-submit-btn" type="submit">Submit</button>
-            </form>
-          </div>
-        </div>
-      </div>
+    <section class="section journal-section container container-row container-row-journal container-item container-item-journal">
+      <form id="entryForm" action="">
+        <label for="entry-title" class="journal-label">Entry Title</label>
+        <input
+          type="text"
+          name="entry-title"
+          id="entry-title"
+          class="entry-text-title"
+          placeholder="Name of entry ✏️"
+          v-model="title"
+        />
+        <label for="entry" class="journal-label">Today's Entry</label>
+        <textarea
+          name="daily-entry"
+          id="entry"
+          class="entry-text-box"
+          placeholder="What's on your mind today? 💭"
+          v-model="today"
+        ></textarea>
+        <button class="btn-main entry-submit-btn" type="submit">Submit</button>
+      </form>
     </section>
 
     <!-- Journal Entry Results -->
@@ -35,15 +34,48 @@
         <div class="container-row entryResultRow"></div>
       </div>
     </section>
-
+  </div>
 </template>
 
 <script>
+import {Users, Diaries} from "../database";
+import Forbidden from './forbidden.vue';
 export default {
+  data:()=>{
+    return {
+      id:'',
+      journalEntries:'',
+      userId: '',
+      today: '',
+      title: ''
+    }
+  },
+  components:{
+      Forbidden
+  },
+  mounted: function () {
+    let date = new Date();
+    this.id= JSON.parse(sessionStorage.getItem("User"));
+    if (this.id){
+        for(let i=0; i<Users.users.length; i++) {
+            if (Users.users[i].password === this.id.toString()) {
+                this.journalEntries = Diaries.getEntries(Users.users[i]);
+                this.userId = Users.users[i].id;
+            }
+        }
+    }
+    for (let i = 0; i < this.journalEntries.length; i++){
+      if(this.journalEntries[i].date < date.today()){
+        this.title = this.journalEntries[i].title;
+        this.today = this.journalEntries[i].entry;
+      }
+    }
+    return;
+  }
 }
 </script>
 
-<style>
+<style scoped>
 *,
 *::before,
 *::after {

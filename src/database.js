@@ -68,11 +68,10 @@ class User{
                 }
             }
         }
-        return success ? ()=>{
-            //Saving the changes
+        if (success){
             localStorage.setItem('Users',JSON.stringify(this.users));
-            return success;
-        } : success;
+        }
+        return success;
     }
 
     UpdatePassword(userId, pass){
@@ -83,11 +82,10 @@ class User{
                 success = true;
             }
         }
-        return success ? ()=>{
-            //Saving the changes
+        if (success){
             localStorage.setItem('Users',JSON.stringify(this.users));
-            return success;
-        } : success;
+        }
+        return success;
     }
 
     UpdateName(user, name){
@@ -138,8 +136,17 @@ class Diary{
         //Saving the changes
         localStorage.setItem('Diary',JSON.stringify(this.diary)); 
     }
-    addEntry(userId, date, entry){
-        this.diary.push({userId:userId, date:date, entry:entry});
+    getEntries(userId){
+        let entries = [];
+        for (let i = 0; i < this.diary.length; i++){
+            if (this.diary[i].userId === userId){
+                entries.push(this.diary[i]);
+            }
+        }
+        return entries;
+    }
+    addEntry(userId, date, title, entry){
+        this.diary.push({userId:userId, date:date, title:title, entry:entry});
         //Saving the changes
         localStorage.setItem('Diary',JSON.stringify(this.diary)); 
     }
@@ -179,7 +186,7 @@ class Interest{
 //Creating objects of the above table
 let Users = new User();
 let DailyMoods = new DailyMood();
-let Diarys = new Diary();
+let Diaries = new Diary();
 let Interests = new Interest();
 
-export {Users,moodTypes,DailyMoods, Diarys, Interests, avatars};
+export {Users,moodTypes,DailyMoods, Diaries, Interests, avatars};
