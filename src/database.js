@@ -88,19 +88,31 @@ class User{
         return success;
     }
 
-    UpdateName(user, name){
+    UpdateName(userId, name){
         let success = false;
-        for (let cur in this.users){
-            if (cur === user){
-                cur.name = name;
+        for (let cur = 0; cur< this.users.length; cur++){
+            if (this.users[cur].id === userId){
+                this.users[cur].name = name;
                 success = true;
             }
         }
-        return success ? ()=>{
-            //Saving the changes
+        if (success){
             localStorage.setItem('Users',JSON.stringify(this.users));
-            return success;
-        } : success;
+        }
+        return success;
+    }
+    UpdateAvatar(userId, avatar){
+        let success = false;
+        for (let cur = 0; cur< this.users.length; cur++){
+            if (this.users[cur].id === userId){
+                this.users[cur].avatar = avatar;
+                success = true;
+            }
+        }
+        if (success){
+            localStorage.setItem('Users',JSON.stringify(this.users));
+        }
+        return success;
     }
 }
 

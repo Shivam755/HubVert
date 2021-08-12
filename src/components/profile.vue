@@ -4,6 +4,7 @@
     </div>
    <div v-else>
         <img :src="avatar" id='profilePic' alt="avatar" width="300" height="320">
+        <router-link to="/changeProfilePic"><button>✏️</button></router-link>
         <fieldset>
         <label for="userid"><b>User ID: {{userId}} </b></label>
         <br>
@@ -65,7 +66,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
   #profilePic
   {
   border-radius: 50%;

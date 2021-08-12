@@ -5,6 +5,7 @@ import Profile from '../components/profile.vue';
 import ChangePassword from '../components/changePassword.vue';
 import Diary from '../components/diary.vue';
 import Feed from '../components/Feed.vue';
+import ChangePic from '../components/changeProfilePic.vue';
 
 const routes = [
   {
@@ -31,7 +32,13 @@ const routes = [
     path: '/changePassword',
     name:'changePassword',
     component: ChangePassword
-  },{
+  },
+  {
+    path: '/changeProfilePic',
+    name: 'changePic',
+    component: ChangePic
+  },
+  {
     path: '/diary',
     name:'diary',
     component: Diary
