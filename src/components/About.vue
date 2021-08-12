@@ -53,7 +53,7 @@
   <img src="../assets/img_avatar.png" alt="Avatar" style="width:100%">
   <div class="container">
     <h4><b>Harshal Gondkar</b></h4> 
-    <p>Employee/Clerk</p> 
+    <p>Partner</p> 
     <p> Contact : harshal26092002@gmail.com  </p>
   </div>
 </div>

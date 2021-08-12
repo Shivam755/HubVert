@@ -1,6 +1,6 @@
 <template>
-     <h1>Register Page</h1>
- <p>Please fill this form in order to create an account.</p><br>
+    <h1>Register Page</h1>
+    <p>Please fill this form in order to create an account.</p><br>
 <br>
     <form>
     <fieldset>
@@ -25,8 +25,8 @@
         <input type="radio" name="gender" id="female" value="female" v-model="gender">
       </fieldset>
       
-     <br> 
-     <br>
+    <br> 
+    <br>
       
     <label for="email"><b>Email ID: </b></label>
     <input type="text" placeholder="Enter Email" name="email" id="email" required v-model="email">
