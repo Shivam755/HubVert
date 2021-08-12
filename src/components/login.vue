@@ -10,7 +10,7 @@
     <!-- <input type="text" placeholder="Enter Email-id" name="uname" v-model="email"> -->
     <div class='iconinput' >
     <i class="fa fa-envelope " style= "font-size:25px"></i>
-    <input type="text" placeholder="Enter Email-id" name="uname" v-model="email">
+    <input v-on:focusin="highlight()" type="text" placeholder="Enter Email-id" name="uname" v-model="email">
     </div>
     <div class='iconinput' >
     <i class="fa fa-key icon" style= "font-size:25px; "></i>
@@ -37,12 +37,14 @@ export default {
   data: () =>{
     return {
       email:'',
-      pass:''
+      pass:'',
+      emailId:'',
+      passId:''
     }
   },
   methods:{
     // highlight:()=>{
-    //   let div = document.getElementsByClassName('')
+    //   console.log(e)
     // },
     verify:function(){
       if (this.email === ''){

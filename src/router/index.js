@@ -4,6 +4,7 @@ import Register from '../components/register.vue';
 import Profile from '../components/profile.vue';
 import ChangePassword from '../components/changePassword.vue';
 import Diary from '../components/diary.vue';
+import Feed from '../components/Feed.vue';
 
 const routes = [
   {
@@ -15,6 +16,10 @@ const routes = [
     path: '/sign-up',
     name: 'Sign-up',
     component: Register
+  },{
+    path: '/feed',
+    name: 'feed',
+    component: Feed
   },
   {
     path: '/profile',
