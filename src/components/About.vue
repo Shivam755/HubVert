@@ -1,4 +1,5 @@
 <template>
+  <Nav/>
   <div class="about-section">
   <h1>About Us Page</h1>
   <p>Some text about who we are and what we do.</p>
@@ -53,11 +54,21 @@
   <img src="../assets/img_avatar.png" alt="Avatar" style="width:100%">
   <div class="container">
     <h4><b>Harshal Gondkar</b></h4> 
-    <p>Employee/Clerk</p> 
+    <p>Partner</p> 
     <p> Contact : harshal26092002@gmail.com  </p>
   </div>
 </div>
 </template>
+
+<script>
+import Nav from "./nav.vue";
+export default {
+  name:"About",
+  components:{
+    Nav
+  }
+}
+</script>
 
 <style scoped >
 .card {

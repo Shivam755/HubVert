@@ -88,19 +88,31 @@ class User{
         return success;
     }
 
-    UpdateName(user, name){
+    UpdateName(userId, name){
         let success = false;
-        for (let cur in this.users){
-            if (cur === user){
-                cur.name = name;
+        for (let cur = 0; cur< this.users.length; cur++){
+            if (this.users[cur].id === userId){
+                this.users[cur].name = name;
                 success = true;
             }
         }
-        return success ? ()=>{
-            //Saving the changes
+        if (success){
             localStorage.setItem('Users',JSON.stringify(this.users));
-            return success;
-        } : success;
+        }
+        return success;
+    }
+    UpdateAvatar(userId, avatar){
+        let success = false;
+        for (let cur = 0; cur< this.users.length; cur++){
+            if (this.users[cur].id === userId){
+                this.users[cur].avatar = avatar;
+                success = true;
+            }
+        }
+        if (success){
+            localStorage.setItem('Users',JSON.stringify(this.users));
+        }
+        return success;
     }
 }
 
@@ -146,13 +158,23 @@ class Diary{
         return entries;
     }
     addEntry(userId, date, title, entry){
-        this.diary.push({userId:userId, date:date, title:title, entry:entry});
+        let existing = false;
+        for (let i=0; i < this.diary.length; i++){
+            if (this.diary[i].userId === userId && this.diary[i].date === date && this.diary[i].title === title){
+                existing = true;
+            }
+        }
+        if (existing){
+            this.UpdateEntry(userId, date, title, entry);
+        }else{
+            this.diary.push({userId:userId, date:date, title:title, entry:entry});
+        }
         //Saving the changes
         localStorage.setItem('Diary',JSON.stringify(this.diary)); 
     }
-    UpdateEntry(userId, date, entry){
+    UpdateEntry(userId, date,title, entry){
         for (let i = 0; i<this.diary.length; i++){
-            if (this.diary[i].userId === userId && this.diary[i].date === date){
+            if (this.diary[i].userId === userId && this.diary[i].date === date && this.diary[i].title === title){
                 this.diary[i].entry = entry;
             }
         }

@@ -1,30 +1,18 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/sign-up">Sign-up</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/profile">Profile</router-link> |
-    <router-link to="/diary">Diary</router-link> |
-
-  <Nav/>
   <router-view/>
   <center>
-  <H5 style=" bottom-padding: 3rem;">This website developed by Quality Debuggers<SUP>&copy;</SUP>
-    . All rights reserved. </H5></center>
+  <h5 style=" bottom-padding: 3rem;">This website developed by Quality Debuggers<sup>&copy;</sup>
+    . All rights reserved. </h5></center>
 </template>
 
 <script>
-import Nav from "./components/nav.vue";
 export default{
-  name:'App',
-  components:{
-    Nav
-  }
+  name:'App'
 }
 
 </script>
 
-<style scoped>
+<style>
 /* #app {
   //font-family: Avenir, Helvetica, Arial, sans-serif;
   //-webkit-font-smoothing: antialiased;

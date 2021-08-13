@@ -3,7 +3,9 @@
         <Forbidden />
     </div>
    <div v-else>
+       <Nav/>
         <img :src="avatar" id='profilePic' alt="avatar" width="300" height="320">
+        <router-link to="/changeProfilePic"><button>✏️</button></router-link>
         <fieldset>
         <label for="userid"><b>User ID: {{userId}} </b></label>
         <br>
@@ -22,12 +24,18 @@
         <br>
         <br>
         <router-link to='/changePassword'><button>Change Password</button></router-link>
+        <button @click.prevent = "logout()">Log-out</button>
     </div>
 </template>
 
 <script>
+import SHA256 from 'crypto-js/sha256';
+import router from '../router/index';
+
 import {Users} from "../database";
+import Nav from "./nav.vue";
 import Forbidden from './forbidden.vue';
+
 export default {
     data: ()=> {
         return{
@@ -42,13 +50,20 @@ export default {
         }
     },
     components:{
-        Forbidden
+        Forbidden,
+        Nav
+    },
+    methods:{
+        logout:function(){
+            sessionStorage.clear();
+            router.push('/');
+        }
     },
     mounted: function () {
         this.id= JSON.parse(sessionStorage.getItem("User"));
         if (this.id){
             for(let i=0; i<Users.users.length; i++) {
-                if (Users.users[i].password === this.id.toString()) {
+                if (SHA256(Users.users[i].email).toString() === this.id.toString()) {
                     this.userId=Users.users[i].id
                     this.name= Users.users[i].name;
                     this.gender=Users.users[i].gender;
@@ -65,7 +80,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
   #profilePic
   {
   border-radius: 50%;
