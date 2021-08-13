@@ -1,23 +1,18 @@
 <template>
-  <Nav/>
   <router-view/>
   <center>
-  <h5 style=" bottom-padding: 3rem;">This website developed by Quality Debuggers<SUP>&copy;</SUP>
+  <h5 style=" bottom-padding: 3rem;">This website developed by Quality Debuggers<sup>&copy;</sup>
     . All rights reserved. </h5></center>
 </template>
 
 <script>
-import Nav from "./components/nav.vue";
 export default{
-  name:'App',
-  components:{
-    Nav
-  }
+  name:'App'
 }
 
 </script>
 
-<style scoped>
+<style>
 /* #app {
   //font-family: Avenir, Helvetica, Arial, sans-serif;
   //-webkit-font-smoothing: antialiased;

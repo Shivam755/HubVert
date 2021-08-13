@@ -16,6 +16,22 @@
       <i class="fa fa-user" style= "font-size:25px"></i>
       <input type="text" placeholder="Enter Your Name" name="name" id="name" required v-model="name" style="border:none">
     </div>
+  <Nav />
+    <h1>Register Page</h1>
+    <p>Please fill this form in order to create an account.</p><br>
+<br>
+    <form>
+    <fieldset>
+    
+    <label for="name"><strong>Name: </strong></label>
+    <input type="text" placeholder="Enter Your Name" name="name" id="name" required v-model="name">
+    
+    <br>
+    <br>
+    
+    <label for="dob"> <strong> Date of Birth: </strong></label>
+    <input type="date" id="dob" name="dob" required v-model="dob">
+    
     <br>
     <div class='inputicon1'>
       <i class="fa fa-birthday-cake" style= "font-size:25px" ></i>
@@ -83,6 +99,7 @@
 
 
 <script>
+import Nav from "./nav.vue";
 import { Users } from '../database';
 import SHA256 from 'crypto-js/sha256';
 import router from '../router/index';
@@ -99,6 +116,9 @@ export default {
         rPass : ''
       }
     },
+  components:{
+    Nav
+  },
     methods:{
       submit : function(){
         const mailformat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;

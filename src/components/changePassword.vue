@@ -1,23 +1,31 @@
 <template>
-    <h1>Change Password</h1>
-    <form action="">
-        <label for="old"></label>
-        <input type="password" name="old" id="old" placeholder="Current Password" v-model="old">
+    <div v-if="id === null">
+        <Forbidden />
+    </div>
+    <div v-else>
+        <Nav/>
+        <h1>Change Password</h1>
+        <form action="">
+            <label for="old"></label>
+            <input type="password" name="old" id="old" placeholder="Current Password" v-model="old">
 
-        <label for="new"></label>
-        <input type="password" name="new" id="new" placeholder="New Password" v-model="newPass">
+            <label for="new"></label>
+            <input type="password" name="new" id="new" placeholder="New Password" v-model="newPass">
 
-        <label for="repeat"></label>
-        <input type="password" name="repeat" id="repeat" placeholder="Repeat New Password" v-model="repeat">
-        
-        <input @click="changePassword()" type="button" value="Confirm">
-    </form>
+            <label for="repeat"></label>
+            <input type="password" name="repeat" id="repeat" placeholder="Repeat New Password" v-model="repeat">
+            
+            <input @click="changePassword()" type="button" value="Confirm">
+        </form>
+    </div>
 </template>
 
 <script>
-import { Users } from '../database';
 import SHA256 from 'crypto-js/sha256';
 import router from '../router/index';
+
+import Nav from "./nav.vue";
+import { Users } from '../database';
 export default {
     name:'ChangePassword',
     data:()=>{
@@ -25,11 +33,16 @@ export default {
             old: '',
             newPass: '',
             repeat: '',
-            pass: ''
+            pass: '',
+            email: ''
         }
     },
+  components:{
+    Nav
+  },
     mounted:function(){
-        this.pass = JSON.parse(sessionStorage.getItem("User"));
+        this.email = JSON.parse(sessionStorage.getItem("User"));
+        this.pass = JSON.parse(sessionStorage.getItem("Password"));
     }
     ,
     methods:{
@@ -47,10 +60,10 @@ export default {
             if (SHA256(this.old).toString() === this.pass.toString()){
                 if (this.newPass === this.repeat){
                     for(let i=0; i<Users.users.length; i++) {
-                        if (Users.users[i].password === this.pass.toString()) {
+                        if (SHA256(Users.users[i].email).toString() === this.email.toString()) {
                             if (Users.UpdatePassword(Users.users[i].id,SHA256(this.newPass).toString())){
                                 alert("Password changed successfully!");
-                                sessionStorage.setItem('User',JSON.stringify(SHA256(this.newPass).toString()));
+                                sessionStorage.setItem('Password',JSON.stringify(SHA256(this.newPass).toString()));
                                 router.push('/profile')
                             }else{
                                 alert("Couldn't find your account!!");

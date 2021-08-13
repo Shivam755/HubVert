@@ -1,4 +1,5 @@
 <template>
+  <Nav/>
 <form method="post">
 
   <div class="img-container">
@@ -30,8 +31,11 @@
 </template>
 
 <script>
+import router from '../router/index';
 import { Users } from '../database';
 import SHA256 from 'crypto-js/sha256';
+import Nav from "./nav.vue";
+
 export default {
   name: "Login",
   data: () =>{
@@ -40,9 +44,12 @@ export default {
       pass:''
     }
   },
+  components:{
+    Nav
+  },
   methods:{
     // highlight:()=>{
-    //   let div = document.getElementsByClassName('')
+    //   console.log(e)
     // },
     verify:function(){
       if (this.email === ''){
@@ -57,8 +64,10 @@ export default {
       for (let i = 0; i < Users.users.length; i++){
         if (Users.users[i].email === this.email ){
           if (Users.users[i].password === encPass){
-            sessionStorage.setItem("User",JSON.stringify(encPass.toString()));
+            sessionStorage.setItem("User",JSON.stringify(SHA256(this.email).toString()))
+            sessionStorage.setItem("Password",JSON.stringify(encPass.toString()));
             alert("Login Successfull!!");
+            router.push("/feed");
             return;
             // TODO: add redirect link
           }
@@ -68,7 +77,6 @@ export default {
           }
         }
       }
-      console.log('Panic');
       alert("Email-id is not registered!!!");
     }
   }
