@@ -133,7 +133,7 @@ body {
   margin: 0 auto;
   padding: 0;
   max-width: 900px;
-} */
+}
 
 /* Global Typography */
 

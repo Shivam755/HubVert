@@ -1,6 +1,6 @@
 <template>
   
- 
+  <Nav />
   <div class='heading1'>
   <!-- <div class="frost"> -->
     <p>Register</p>
@@ -16,23 +16,10 @@
       <i class="fa fa-user" style= "font-size:25px"></i>
       <input type="text" placeholder="Enter Your Name" name="name" id="name" required v-model="name" style="border:none">
     </div>
-  <Nav />
-    <h1>Register Page</h1>
-    <p>Please fill this form in order to create an account.</p><br>
-<br>
-    <form>
-    <fieldset>
-    
-    <label for="name"><strong>Name: </strong></label>
-    <input type="text" placeholder="Enter Your Name" name="name" id="name" required v-model="name">
     
     <br>
     <br>
     
-    <label for="dob"> <strong> Date of Birth: </strong></label>
-    <input type="date" id="dob" name="dob" required v-model="dob">
-    
-    <br>
     <div class='inputicon1'>
       <i class="fa fa-birthday-cake" style= "font-size:25px" ></i>
       <!-- <label for="dob"> <strong> Date of Birth: </strong></label> -->
@@ -87,7 +74,6 @@
     
     <input class='button1' type="submit" data-inline="true" value="Submit" @click.prevent="submit">
     
-
   <!-- <div class="container signin"> -->
     <p>Already have an account? <router-link to="/">Login in </router-link>.</p>
   <!-- </div> -->
@@ -180,9 +166,6 @@ export default {
   text-shadow:#ffffff;
   font-size: 200%;
   /* color:#; */
-  align-self: center center center center center;
-  align-content: center center center center center;
-  align-items:center center center center center;
   padding-left:5rem;
   margin:none
 }
@@ -206,9 +189,6 @@ export default {
   font-family: 'times new roman';
   background: #faca70;
   /* align-content: center; */
-  align-self: center center center center center;
-  align-content: center center center center center;
-  align-items:center center center center center;
   padding: 0.3rem 3rem ;
   /* margin: 5rem 5rem; */
   margin:0

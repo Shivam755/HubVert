@@ -217,18 +217,13 @@ body{
   padding:0
 }
 
-input[type=password]{
+input[type=password],
+input[type="text"]{
   border:none;
   outline:none;
   padding-left: 1rem;
   font-size: 1rem;
   width: 60%;
-}
-
-input[type="text"] {
-  font-size: 14px;
-  color: rgb(90, 90, 90);
-  background-color: rgba(255, 255, 255, 0.5);
 }
 input :active
 {
