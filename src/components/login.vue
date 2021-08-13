@@ -1,7 +1,7 @@
 <template>
 <form method="post">
 
-  <div class="input-container">
+  <div class="img-container">
     <!-- <center style="align-self:center ; background-color: #80e9c0" > -->
     <img src="../assets/login.png" alt="Avatar" style="width: 40%; align-self:center" >
     <!-- </center> -->
@@ -87,7 +87,7 @@ body{
   /* align-content: left} */
 
 
-.input-container{
+.img-container{
   font-size:20px;
   padding: 2rem 1rem;
   display: flex;
@@ -100,39 +100,27 @@ body{
 
 .iconinput{
   font-family: 'Space Mono', monospace;
-  color: #dfe1e5;
+  /* color: #dfe1e5; */
   width: 60%;
   align-self: center;
   padding: 0.3rem 0.3rem ;
   margin: 0.5rem 0.5rem;
-  /* display: inline-block; */
-  border: 0.1rem solid #dfe1e5 ;
-  /* border-color:#e95bb2 ; */
+  color: lightcoral;
+  /* border: 0.1rem solid #dfe1e5 ; */
+  border:  0.3rem solid #e95bb2;
   border-radius: 0.3rem;
   outline: none;
   background-color: white;
   /* box-sizing: border-box; */
 }
 
-.iconinput:focus{
+/* .iconinput:focus{
   border:  0.3rem solid #e95bb2;
   color: lightcoral;
 
-}
+} */
 
 /* Full-width inputs */
-input[type=text], input[type=password] {
-  border:none;
-  outline:none;
-  padding-left:1rem;
-  font-size: 1rem;
-  width: 60%;
-}
-
-input :active
-{
-  box-shadow:1rem 1rem #888888;
-}
 
 /* Set a style for all buttons */
 .button1{
@@ -148,6 +136,23 @@ input :active
   width: 50%;
 }
 
+
+.frost {
+  margin-top: 35px;
+  padding: 50px 15px;
+  background: linear-gradient(
+    114deg,
+    rgba(255, 255, 255, 0.48) 1.41%,
+    rgba(255, 255, 255, 0.34) 99.96%
+  );
+  backdrop-filter: blur(8px);
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  max-width: 100%;
+  max-height: 500px;
+}
 /* Add a hover effect for buttons */
 .button1:hover {
   opacity: 0.9;
@@ -193,6 +198,33 @@ span.psw {
   .cancelbtn {
     width: 100%;
   }
+}
+
+</style>
+
+<style>
+
+body{
+  margin:0;
+  padding:0
+}
+
+input[type=password]{
+  border:none;
+  outline:none;
+  padding-left: 1rem;
+  font-size: 1rem;
+  width: 60%;
+}
+
+input[type="text"] {
+  font-size: 14px;
+  color: rgb(90, 90, 90);
+  background-color: rgba(255, 255, 255, 0.5);
+}
+input :active
+{
+  box-shadow:1rem 1rem #888888;
 }
 
 </style>

@@ -2,8 +2,8 @@
   <Nav/>
   <router-view/>
   <center>
-  <H5 style=" bottom-padding: 3rem;">This website developed by Quality Debuggers<SUP>&copy;</SUP>
-    . All rights reserved. </H5></center>
+  <h5 style=" bottom-padding: 3rem;">This website developed by Quality Debuggers<SUP>&copy;</SUP>
+    . All rights reserved. </h5></center>
 </template>
 
 <script>
