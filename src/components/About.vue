@@ -1,4 +1,5 @@
 <template>
+  <Nav/>
   <div class="about-section">
   <h1>About Us Page</h1>
   <p>Some text about who we are and what we do.</p>
@@ -58,6 +59,16 @@
   </div>
 </div>
 </template>
+
+<script>
+import Nav from "./nav.vue";
+export default {
+  name:"About",
+  components:{
+    Nav
+  }
+}
+</script>
 
 <style scoped >
 .card {

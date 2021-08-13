@@ -1,4 +1,5 @@
 <template>
+    <Nav/>
     <h1><b><font color="orange">MOOD</font></b></h1>
     <img class="mood" src="https://th.bing.com/th/id/OIP.bjEc692svnnjSPoWamxjeAHaHa?w=180&h=180&c=7&o=5&dpr=1.25&pid=1.7" alt="team member" width="100" height="100">
     <input type="radio" id="angry" name="mood" value="ANGRY"><label for="SAD">SAD</label>&emsp;
@@ -44,6 +45,7 @@
 
 
 <script>
+import Nav from "./nav.vue";
 import $ from 'jquery'
 const key="AIzaSyCGGV6g7Uh_aFD9C-nC9o7S8bj5Kzj6g0M";
 var video='';
@@ -53,6 +55,9 @@ export default ({
         return{
             word:'',
         }
+    },
+    components:{
+        Nav
     },
     methods:{
         Search: function(){
