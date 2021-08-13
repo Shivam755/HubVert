@@ -1,9 +1,10 @@
 //Pre-requisite variables
 const moodTypes = [
-    {id: 1, mood:"Happy"},
-    {id: 2, mood:"Sad"},
-    {id: 3, mood:"Angry"},
-    {id: 4, mood:"Nervous"}
+    {id: 1, mood:"Happy",emoji:"😁"},
+    {id: 2, mood:"Sad", emoji:"😔"},
+    {id: 3, mood:"Angry", emoji:"😡"},
+    {id: 4, mood:"Bored", emoji:"🥱"},
+    {id: 5,mood:"Party", emoji:"🥳"}
 ]
 
 let avatars = {'male':[],'female':[]};
@@ -125,7 +126,16 @@ class DailyMood{
         localStorage.setItem('DailyMood',JSON.stringify(this.dailyMood)); 
     }
     addMood(userId, date, moodId){
-        this.dailyMood.push({userId, date, moodId});
+        let updated = false;
+        for(let i=0; i < this.dailyMood.length; i++){
+            if (this.dailyMood[i].userId === userId && this.dailyMood[i].date === date){
+                this.dailyMood[i].moodId = moodId;
+                updated = true;
+            }
+        }
+        if (! updated){
+            this.dailyMood.push({userId: userId, date: date,moodId: moodId});
+        }
         //Saving the changes
         localStorage.setItem('DailyMood',JSON.stringify(this.dailyMood)); 
     }
