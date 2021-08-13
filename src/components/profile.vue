@@ -3,6 +3,7 @@
         <Forbidden />
     </div>
    <div v-else>
+       <Nav/>
         <img :src="avatar" id='profilePic' alt="avatar" width="300" height="320">
         <router-link to="/changeProfilePic"><button>✏️</button></router-link>
         <fieldset>
@@ -29,9 +30,11 @@
 
 <script>
 import SHA256 from 'crypto-js/sha256';
-import {Users} from "../database";
-import Forbidden from './forbidden.vue';
 import router from '../router/index';
+
+import {Users} from "../database";
+import Nav from "./nav.vue";
+import Forbidden from './forbidden.vue';
 
 export default {
     data: ()=> {
@@ -47,7 +50,8 @@ export default {
         }
     },
     components:{
-        Forbidden
+        Forbidden,
+        Nav
     },
     methods:{
         logout:function(){

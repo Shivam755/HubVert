@@ -1,4 +1,5 @@
 <template>
+  <Nav/>
 <form method="post">
 
   <div class="input-container">
@@ -30,17 +31,21 @@
 </template>
 
 <script>
+import router from '../router/index';
 import { Users } from '../database';
 import SHA256 from 'crypto-js/sha256';
+import Nav from "./nav.vue";
+
 export default {
   name: "Login",
   data: () =>{
     return {
       email:'',
       pass:''
-      // emailId:'',
-      // passId:''
     }
+  },
+  components:{
+    Nav
   },
   methods:{
     // highlight:()=>{
@@ -62,6 +67,7 @@ export default {
             sessionStorage.setItem("User",JSON.stringify(SHA256(this.email).toString()))
             sessionStorage.setItem("Password",JSON.stringify(encPass.toString()));
             alert("Login Successfull!!");
+            router.push("/feed");
             return;
             // TODO: add redirect link
           }

@@ -3,6 +3,7 @@
       <Forbidden />
   </div>
    <div v-else>
+     <Nav />
    <header><h1 class="title">My Personal Journal</h1></header>
     <!-- Journal Entry Section -->
     <section class="section journal-section container container-row container-row-journal container-item container-item-journal">
@@ -44,6 +45,8 @@
 <script>
 import SHA256 from 'crypto-js/sha256';
 import {Users, Diaries} from "../database";
+import router from '../router/index';
+import Nav from "./nav.vue";
 import Forbidden from './forbidden.vue';
 export default {
   data:()=>{
@@ -53,7 +56,7 @@ export default {
       userId: '',
       todayEntry: '',
       title: '',
-      disabled:''
+      disabled:false
     }
   },
   methods:{
@@ -61,6 +64,7 @@ export default {
       let date = new Date();
       if (this.title.trim() === ""){
         alert("PLEASE ENTER A TITLE!!");
+        router.push("/diary");
         return;
       }
       if(this.todayEntry.trim === ""){
@@ -72,13 +76,14 @@ export default {
     },
     loadPrevious:function(entry){
       let date = new Date();
-      this.disabled = entry.date === date.getDate()?false:true;
+      this.disabled = entry.date === date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear()?false:true;
       this.todayEntry = entry.entry;
       this.title = entry.title;
     }
   },
   components:{
-      Forbidden
+      Forbidden,
+      Nav
   },
   mounted: function () {
     let date = new Date();
@@ -110,6 +115,10 @@ export default {
   box-sizing: border-box;
 }
 
+section{
+  display: inline;
+}
+
 html {
   margin: 0;
   padding: 0;
@@ -127,6 +136,11 @@ body {
 }
 
 /* Global Typography */
+
+li:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 h1 {
   font-size: 3rem;

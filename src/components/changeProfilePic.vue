@@ -1,4 +1,9 @@
 <template>
+    <div v-if="id === null">
+        <Forbidden />
+    </div>
+    <div v-else>
+    <Nav/>
     <h2>Current Profile Pic: </h2>
     <img :src="avatar" alt="Current Picture" id='profilePic' width="300" height="320"/>
     <div id='avatar-list'>
@@ -6,13 +11,16 @@
         <img v-for="ava in listAvatars" :class="selected===ava.id ? 'marked': ''" :key=ava.id :src="ava.pic" :alt="ava.id" id="profilePic" width="300" height="320" @click="selectImage(ava.id)" />
     </div>
     <button @click="UpdateImage()">Confirm avatar</button>
-
+    </div>
 </template>
 
 <script>
-import SHA256 from 'crypto-js/sha256';
-import {avatars, Users} from '../database';
 import router from '../router/index';
+import SHA256 from 'crypto-js/sha256';
+
+import Forbidden from './forbidden.vue';
+import Nav from "./nav.vue";
+import {avatars, Users} from '../database';
 export default {
     name:"ChangePic",
     data:()=>{
@@ -24,6 +32,10 @@ export default {
             userId:''
         }
     },
+  components:{
+    Nav,
+    Forbidden
+  },
     methods:{
         selectImage:function(id){
             this.selected = id;

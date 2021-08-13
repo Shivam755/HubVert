@@ -1,4 +1,5 @@
 <template>
+  <Nav />
     <h1>Register Page</h1>
     <p>Please fill this form in order to create an account.</p><br>
 <br>
@@ -58,6 +59,7 @@
 
 
 <script>
+import Nav from "./nav.vue";
 import { Users } from '../database';
 import SHA256 from 'crypto-js/sha256';
 import router from '../router/index';
@@ -74,6 +76,9 @@ export default {
         rPass : ''
       }
     },
+  components:{
+    Nav
+  },
     methods:{
       submit : function(){
         const mailformat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
