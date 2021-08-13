@@ -17,9 +17,15 @@
     <label for="SING">SING</label>
     <h1><b><font color="orange">FEED</font></b></h1>
     <input type="text" name="word" v-model="word">&emsp;
-    <button type="submit" @click.prevent="videoSearch()">Search</button>
+    <button type="submit" @click.prevent="Search()">Search</button><br>
+    <div>
+        <a href="" @click.prevent="quoteSearch()">Quotes</a> | 
+        <a href="" @click.prevent="photoSearch()">Images</a> | 
+        <a href="" @click.prevent="videoSearch()">Videos</a>
+    </div>
+    
     <hr>
-    <div class="container"></div>
+    <div class="container" v-html="photoSearch()"></div>
 </template>
 <style scoped>
     img{
@@ -42,15 +48,15 @@
 <script>
 import Nav from "./nav.vue";
 import { moodTypes,DailyMoods,Users } from '../database';
-import SHA256 from 'crypto-js';
-import $ from 'jquery'
-    const key="AIzaSyCGGV6g7Uh_aFD9C-nC9o7S8bj5Kzj6g0M";
-    // var video='';
+import SHA256 from 'crypto-js/sha256';
+import $ from 'jquery';
+const key="AIzaSyCGGV6g7Uh_aFD9C-nC9o7S8bj5Kzj6g0M";
+var video='';
     // let i;
 export default {
     data:()=> {
         return{
-            word:'',
+            word:'happy',
             moods: moodTypes,
             userId: '',
             currentMood:""
@@ -60,27 +66,48 @@ export default {
         Nav
     },
     methods:{
-        // searchthis: function () {
-        //     console.log(this.word);
-        //     if(this.word.trim()!==''){
-        //         fetch("https://quotable.io/quotes?limit=100")
-        //             .then(response => response.json())
-        //             .then(data => {
-        //                 console.log(data)
-        //             }
-        //         )
-        //     }
-        // },
+        Search: function(){
+
+        },
+        quoteSearch: function () {
+            console.log(this.word);
+            if(this.word.trim()!==''){
+                fetch("https://quotable.io/quotes?limit=100")
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data)
+                    }
+                )
+            }
+        },
         videoSearch: function(){
             $.get("https://www.googleapis.com/youtube/v3/search?key="+key+"&type=video&part=snippet&maxResults=10&q="+this.word,function(data){
                 console.log(data);
                 data.items.forEach(item => {
-                    let video = `
+                    video = `
                     <iframe width="420" height="315" src="http://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
                     `
                     $(".container").append(video)
                 });
             });
+        },
+        photoSearch: function(){
+            fetch("https://api.pexels.com/v1/search?query="+this.word,{
+        headers: {
+            Authorization: "563492ad6f917000010000011da5f68fc8c545dc89d3186b2631afc8"
+        }
+        })
+        .then(resp => {
+            return resp.json()
+        })
+        .then(data => {
+            var images = data.photos;
+            data.photos.forEach(image =>{
+                images = `<img src=${image.src.tiny} />`
+                $(".container").append(images)
+                })
+                console.log(data);
+            })
         },
         selectMood:function(mood){
             let date = new Date();
@@ -114,4 +141,5 @@ export default {
         return;
     }
 }
+
 </script>

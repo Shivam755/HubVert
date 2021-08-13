@@ -72,7 +72,8 @@ export default {
         return;
       }
       Diaries.addEntry(this.userId,date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear(),this.title, this.todayEntry);
-      alert("Entry added")
+      alert("Entry added");
+      router.go();
     },
     loadPrevious:function(entry){
       let date = new Date();
