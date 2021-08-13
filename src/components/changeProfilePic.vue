@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import SHA256 from 'crypto-js/sha256';
 import {avatars, Users} from '../database';
 import router from '../router/index';
 export default {
@@ -48,15 +49,13 @@ export default {
         let gender ;
         if (this.id){
             for(let i=0; i<Users.users.length; i++) {
-                if (Users.users[i].password === this.id.toString()) {
+                if (SHA256(Users.users[i].email).toString() === this.id.toString()) {
                     this.avatar=require("../assets/"+Users.users[i].avatar);
                     this.userId = Users.users[i].id;
                     gender = Users.users[i].gender;
                     for (let j = 0; j < avatars[gender].length; j++){
                         this.listAvatars.push({id:avatars[gender][j],pic:require("../assets/"+avatars[gender][j])});
                     }
-                    console.log(this.listAvatars)
-                    //this.interest=Users.users[i].interest;
                 }
             }
         }

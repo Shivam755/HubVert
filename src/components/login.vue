@@ -37,9 +37,9 @@ export default {
   data: () =>{
     return {
       email:'',
-      pass:'',
-      emailId:'',
-      passId:''
+      pass:''
+      // emailId:'',
+      // passId:''
     }
   },
   methods:{
@@ -59,7 +59,8 @@ export default {
       for (let i = 0; i < Users.users.length; i++){
         if (Users.users[i].email === this.email ){
           if (Users.users[i].password === encPass){
-            sessionStorage.setItem("User",JSON.stringify(encPass.toString()));
+            sessionStorage.setItem("User",JSON.stringify(SHA256(this.email).toString()))
+            sessionStorage.setItem("Password",JSON.stringify(encPass.toString()));
             alert("Login Successfull!!");
             return;
             // TODO: add redirect link
@@ -70,7 +71,6 @@ export default {
           }
         }
       }
-      console.log('Panic');
       alert("Email-id is not registered!!!");
     }
   }

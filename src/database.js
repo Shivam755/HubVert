@@ -158,13 +158,23 @@ class Diary{
         return entries;
     }
     addEntry(userId, date, title, entry){
-        this.diary.push({userId:userId, date:date, title:title, entry:entry});
+        let existing = false;
+        for (let i=0; i < this.diary.length; i++){
+            if (this.diary[i].userId === userId && this.diary[i].date === date && this.diary[i].title === title){
+                existing = true;
+            }
+        }
+        if (existing){
+            this.UpdateEntry(userId, date, title, entry);
+        }else{
+            this.diary.push({userId:userId, date:date, title:title, entry:entry});
+        }
         //Saving the changes
         localStorage.setItem('Diary',JSON.stringify(this.diary)); 
     }
-    UpdateEntry(userId, date, entry){
+    UpdateEntry(userId, date,title, entry){
         for (let i = 0; i<this.diary.length; i++){
-            if (this.diary[i].userId === userId && this.diary[i].date === date){
+            if (this.diary[i].userId === userId && this.diary[i].date === date && this.diary[i].title === title){
                 this.diary[i].entry = entry;
             }
         }

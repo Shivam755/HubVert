@@ -25,11 +25,13 @@ export default {
             old: '',
             newPass: '',
             repeat: '',
-            pass: ''
+            pass: '',
+            email: ''
         }
     },
     mounted:function(){
-        this.pass = JSON.parse(sessionStorage.getItem("User"));
+        this.email = JSON.parse(sessionStorage.getItem("User"));
+        this.pass = JSON.parse(sessionStorage.getItem("Password"));
     }
     ,
     methods:{
@@ -47,10 +49,10 @@ export default {
             if (SHA256(this.old).toString() === this.pass.toString()){
                 if (this.newPass === this.repeat){
                     for(let i=0; i<Users.users.length; i++) {
-                        if (Users.users[i].password === this.pass.toString()) {
+                        if (SHA256(Users.users[i].email).toString() === this.email.toString()) {
                             if (Users.UpdatePassword(Users.users[i].id,SHA256(this.newPass).toString())){
                                 alert("Password changed successfully!");
-                                sessionStorage.setItem('User',JSON.stringify(SHA256(this.newPass).toString()));
+                                sessionStorage.setItem('Password',JSON.stringify(SHA256(this.newPass).toString()));
                                 router.push('/profile')
                             }else{
                                 alert("Couldn't find your account!!");

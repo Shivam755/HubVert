@@ -15,6 +15,7 @@
           class="entry-text-title"
           placeholder="Name of entry ✏️"
           v-model="title"
+          :disabled="disabled"
         />
         <label for="entry" class="journal-label">Today's Entry</label>
         <textarea
@@ -22,22 +23,26 @@
           id="entry"
           class="entry-text-box"
           placeholder="What's on your mind today? 💭"
-          v-model="today"
+          v-model="todayEntry"
+          :disabled="disabled"
         ></textarea>
-        <button class="btn-main entry-submit-btn" type="submit">Submit</button>
+        <router-link to='/diary' v-if="disabled"><button class="btn-main entry-submit-btn" type="submit" >Current entry</button></router-link>
+        <button class="btn-main entry-submit-btn" type="submit" @click.prevent="submit()" :disabled="disabled" v-else>Submit</button>
+        
       </form>
     </section>
 
     <!-- Journal Entry Results -->
-    <section class="section sectionEntryResults" id="entryResultsSection">
-      <div class="container">
-        <div class="container-row entryResultRow"></div>
-      </div>
+    <section class="section sectionEntryResults container container-row entryResultRow" id="entryResultsSection">
+      <ul>
+        <li v-for="entry in journalEntries" @click="loadPrevious(entry)" :key="entry.title">{{entry.title}}({{entry.date}})</li>
+      </ul>
     </section>
   </div>
 </template>
 
 <script>
+import SHA256 from 'crypto-js/sha256';
 import {Users, Diaries} from "../database";
 import Forbidden from './forbidden.vue';
 export default {
@@ -46,8 +51,30 @@ export default {
       id:'',
       journalEntries:'',
       userId: '',
-      today: '',
-      title: ''
+      todayEntry: '',
+      title: '',
+      disabled:''
+    }
+  },
+  methods:{
+    submit:function(){
+      let date = new Date();
+      if (this.title.trim() === ""){
+        alert("PLEASE ENTER A TITLE!!");
+        return;
+      }
+      if(this.todayEntry.trim === ""){
+        alert("No content to add in diary!!!");
+        return;
+      }
+      Diaries.addEntry(this.userId,date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear(),this.title, this.todayEntry);
+      alert("Entry added")
+    },
+    loadPrevious:function(entry){
+      let date = new Date();
+      this.disabled = entry.date === date.getDate()?false:true;
+      this.todayEntry = entry.entry;
+      this.title = entry.title;
     }
   },
   components:{
@@ -58,16 +85,17 @@ export default {
     this.id= JSON.parse(sessionStorage.getItem("User"));
     if (this.id){
         for(let i=0; i<Users.users.length; i++) {
-            if (Users.users[i].password === this.id.toString()) {
-                this.journalEntries = Diaries.getEntries(Users.users[i]);
-                this.userId = Users.users[i].id;
+            if (SHA256(Users.users[i].email).toString() === this.id.toString()) {
+              this.journalEntries = Diaries.getEntries(Users.users[i].id);
+              this.userId = Users.users[i].id;
             }
         }
     }
+    let today = date.getDate() +"/" +date.getMonth()+"/"+date.getFullYear();
     for (let i = 0; i < this.journalEntries.length; i++){
-      if(this.journalEntries[i].date < date.today()){
+      if(this.journalEntries[i].date === today){
         this.title = this.journalEntries[i].title;
-        this.today = this.journalEntries[i].entry;
+        this.todayEntry = this.journalEntries[i].entry;
       }
     }
     return;

@@ -23,12 +23,16 @@
         <br>
         <br>
         <router-link to='/changePassword'><button>Change Password</button></router-link>
+        <button @click.prevent = "logout()">Log-out</button>
     </div>
 </template>
 
 <script>
+import SHA256 from 'crypto-js/sha256';
 import {Users} from "../database";
 import Forbidden from './forbidden.vue';
+import router from '../router/index';
+
 export default {
     data: ()=> {
         return{
@@ -45,11 +49,17 @@ export default {
     components:{
         Forbidden
     },
+    methods:{
+        logout:function(){
+            sessionStorage.clear();
+            router.push('/');
+        }
+    },
     mounted: function () {
         this.id= JSON.parse(sessionStorage.getItem("User"));
         if (this.id){
             for(let i=0; i<Users.users.length; i++) {
-                if (Users.users[i].password === this.id.toString()) {
+                if (SHA256(Users.users[i].email).toString() === this.id.toString()) {
                     this.userId=Users.users[i].id
                     this.name= Users.users[i].name;
                     this.gender=Users.users[i].gender;
