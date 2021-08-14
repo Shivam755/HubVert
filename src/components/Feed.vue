@@ -1,9 +1,9 @@
 <template>
-  <Nav/>
-  <div>
-    <h1><b><font color="orange">MOOD</font></b></h1>
-    <span v-for="mood in moods" :class="mood === currentMood? 'marked':''" :key=mood.id @click="selectMood(mood)">{{mood.emoji}}</span>
-  </div>
+    <Nav/>
+    <div>
+        <h1><b><font color="orange">MOOD</font></b></h1>
+        <span v-for="mood in moods" :class="mood === currentMood? 'marked':''" :key=mood.id @click="selectMood(mood)">{{mood.emoji}}</span>
+    </div>
 
     <h1><b><font color="orange">INTERESTS</font></b></h1>
     <img src="" alt="music profile image" width="100" height="100">
