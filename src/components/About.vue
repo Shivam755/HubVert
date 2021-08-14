@@ -1,63 +1,133 @@
 <template>
   <Nav/>
-  <div class="about-section">
-  <h1>About Us Page</h1>
-  <p>Some text about who we are and what we do.</p>
-</div>
-<h2>xyz</h2>
-	<div class="card">
-  <img src="../assets/img_avatar.png" alt="Avatar" style="width:100%">
-  <div class="container">
-    <h4><b>Shivam Gupta</b></h4> 
-    <p>CEO</p> 
-    <p> Contact : www.shivam567@gmail.com </p>
-    <i class="fa fa-linkedin" style="font-size:40px;color:red"></i>
-
+  <div class="heading1 about-section">
+    <h1>About Us</h1>
   </div>
-</div>
+    
+  
+<div class="background1">
+    <h5>We are Quality Debuggers.</h5>
+    <h2>Meet the squad:</h2>
 
-<br>
-<div class="card">
-  <img src="../assets/img_avatar2.png" alt="Avatar" style="width:100%">
-  <div class="container">
-    <h4><b>Jyoti Ghosh</b></h4> 
-    <p>Founder</p> 
-    <p> Contact : jyotighosh101@gmail.com </p>
+	<div class="container">
+    <!-- <div class="shadow"> -->
+    <div class="imagecont">
+      <div class="circle">
+        <img src="../assets/img_avatar.png" alt="Avatar" >
+      </div>
+      <center>Shivam Gupta</center>
+    </div>
+    <div class="carddet ">
+      <div class='quote'>
+        I like PC.
+      </div>
+      <div class='link'>
+        <i class="fa fa-linkedin" style="font-size:40px;color:red"></i>
+        <i class="fa fa-google" style="font-size:40px;color:red"></i>
+        <i class="fa fa-facebook" style="font-size:40px;color:red"></i>
+        <i class="fa fa-instagram" style="font-size:40px;color:red"></i>
+        <i class="fa fa-github" style="font-size:40px;color:red"></i>
+        <i class="fa fa-twitter" style="font-size:40px;color:red"></i>
+      </div>
+    </div>
   </div>
-</div>
 
-<br>
-
-<div class="card">
-  <img src="../assets/img_avatar.png" alt="Avatar" style="width:100%">
   <div class="container">
-    <h4><b>Tejas Pophale</b></h4> 
-    <p>Co-Founder</p> 
-    <p> Contact : tejaspophale01@gmail.com </p>
+    <!-- <div class="shadow"> -->
+    <div class="carddet ">
+      <div class='quote'>
+        The best is yet to come!
+
+      </div>
+      
+      <div class='link'>
+        <i class="fa fa-linkedin" style="font-size:40px;color:red"></i>
+        <i class="fa fa-google" style="font-size:40px;color:red"></i>
+        <i class="fa fa-facebook" style="font-size:40px;color:red"></i>
+        <i class="fa fa-instagram" style="font-size:40px;color:red"></i>
+        <i class="fa fa-github" style="font-size:40px;color:red"></i>
+        <i class="fa fa-twitter" style="font-size:40px;color:red"></i>
+      </div>
+    </div>
+    <div class="imagecont">
+      <div class="circle">
+        <img src="../assets/img_avatar2.png" alt="Avatar" >
+      </div>
+      <center>Jyoti Ghosh</center>
+    </div>
   </div>
-</div>
 
-<br>
+	<div class="container">
+    <!-- <div class="shadow"> -->
+    <div class="imagecont">
+      <div class="circle">
+        <img src="../assets/img_avatar.png" alt="Avatar">
+      </div>
+      <center>Tejas Pophale</center>
+    </div>
+    <div class="carddet ">
+      <div class='quote'>
+        I am iron man
+      </div>
+      <div class='link'>
+        <i class="fa fa-linkedin" style="font-size:40px;color:red"></i>
+        <i class="fa fa-google" style="font-size:40px;color:red"></i>
+        <i class="fa fa-facebook" style="font-size:40px;color:red"></i>
+        <i class="fa fa-instagram" style="font-size:40px;color:red"></i>
+        <i class="fa fa-github" style="font-size:40px;color:red"></i>
+        <i class="fa fa-twitter" style="font-size:40px;color:red"></i>
+      </div>
+    </div>
+  </div>
 
-<div class="card">
-  <img src="../assets/img_avatar2.png" alt="Avatar" style="width:100%">
   <div class="container">
-    <h4><b>Shrutika Gholap</b></h4> 
-    <p>Manager</p> 
-    <p> Contact : shrutika2002@gmail.com </p>
+    <!-- <div class="shadow"> -->
+    <div class="carddet ">
+      <div class='quote'>
+        I like to code.
+      </div>
+      
+      <div class='link'>
+        <i class="fa fa-linkedin" style="font-size:40px;color:red"></i>
+        <i class="fa fa-google" style="font-size:40px;color:red"></i>
+        <i class="fa fa-facebook" style="font-size:40px;color:red"></i>
+        <i class="fa fa-instagram" style="font-size:40px;color:red"></i>
+        <i class="fa fa-github" style="font-size:40px;color:red"></i>
+        <i class="fa fa-twitter" style="font-size:40px;color:red"></i>
+      </div>
+    </div>
+    <div class="imagecont">
+      <div class="circle">
+        <img src="../assets/img_avatar2.png" alt="Avatar" >
+      </div>
+      <center>Shrutika Gholap</center>
+    </div>
   </div>
-</div>
 
-<br> 
-
-<div class="card">
-  <img src="../assets/img_avatar.png" alt="Avatar" style="width:100%">
-  <div class="container">
-    <h4><b>Harshal Gondkar</b></h4> 
-    <p>Partner</p> 
-    <p> Contact : harshal26092002@gmail.com  </p>
+	<div class="container">
+    <!-- <div class="shadow"> -->
+    <div class="imagecont">
+      <div class="circle">
+        <img src="../assets/img_avatar.png" alt="Avatar">
+      </div>
+      <center>Harshal Gondkar</center>
+    </div>
+    <div class="carddet ">
+      <div class='quote'>
+        I love anime.
+      </div>
+      <div class='link'>
+        <i class="fa fa-linkedin" style="font-size:40px;color:red"></i>
+        <i class="fa fa-google" style="font-size:40px;color:red"></i>
+        <i class="fa fa-facebook" style="font-size:40px;color:red"></i>
+        <i class="fa fa-instagram" style="font-size:40px;color:red"></i>
+        <i class="fa fa-github" style="font-size:40px;color:red"></i>
+        <i class="fa fa-twitter" style="font-size:40px;color:red"></i>
+      </div>
+    </div>
   </div>
-</div>
+  </div>
+
 </template>
 
 <script>
@@ -71,23 +141,115 @@ export default {
 </script>
 
 <style scoped >
-.card {
-  display: inline-block;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  width: 40%;
-  border-radius: 5px;
+
+.background1{
+  background:linear-gradient(to right, rgb(198, 255, 221), 
+  rgb(251, 215, 134), rgb(247, 121, 125));
+}
+
+.heading1{
+  /* background: #f1efb9; */
+  font-family: 'Lobster', cursive;
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  text-shadow:#ffffff;
+  font-size: 40px;
+  margin:none;
+  padding-top:3rem;
+  
+}
+
+/* #fbfae1 */
+
+.container {
+  display:flex;
+  flex-direction:row;
+  background: inherit;
+  align-items:center;
+  justify-content:center;
+  padding:0.5rem;
+}
+
+.imgcont{
+  flex:30vw;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  align-content:center;
+  padding: 0.7rem;
+}
+
+.circle{
+  margin:0;
+  border-radius:50%;
+  width:25vw;
+  height:auto;
+  padding:5px;
+  background-color:white;
+  justify-content:center;
+  align-items:center;
+}
+
+img {
+  border-radius: 50% ;
+  width:25vw;
+  height:auto;
+}
+.carddet {
+  flex:70vw;
+  display: flex;
+  flex-direction:column;
+  justify-content:center;
+  align-content: center;
+  font-size:1rem;
+  background:inherit;
+  padding: 0.5rem;
+
+  /* background:#f4fa9c; */
+}
+
+.quote{
+  display:flex;
+  justify-content:center;
+}
+
+.link{
+  display: flex;
+  justify-content:center;
+  align-content: center;
+  font-size:1rem;
+  background:inherit;
+}
+i{
+  padding:0.3rem;
 }
 
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-img {
-  border-radius: 5px 5px 0 0;
-}
+/* .shadow .box{
+  position: relative;
+  display:flex;
+  content: '';
+  /* position:absolute; */
+  /* bottom: -50px;
+  left: 5%; */
 
-.container {
-  padding: 2px 16px;
+  /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
+  /* box-shadow: rgba(0,0,0,0.3);
+  z-index: -1;
+  filter: blur(10px) */
+
+  /* transition: 0.3s; }*/
+
+
+
+@media screen and (max-width: 650px) {
+
+  img {
+    width: 100%;
+  }
 }
 </style>

@@ -1,18 +1,38 @@
 <template>
   <router-view/>
   <center>
-  <h5 style=" bottom-padding: 3rem;">This website developed by Quality Debuggers<sup>&copy;</sup>
-    . All rights reserved. </h5></center>
+  <h5 style=" bottom-padding: 3rem;">
+    This website is developed and managed by Quality Debuggers. 
+    All rights reserved. 
+    <br>
+    &copy; 2020-21 Quality Debuggers
+  </h5>
+  </center>
 </template>
 
 <script>
 export default{
-  name:'App'
+  name:'App',
+  methods:{
+    scrollLoad:function(){
+      var menu1 = document.getElementById("menu");
+      var sticky = menu1.offsetTop;
+      if (window.pageYOffset >= sticky){
+        menu1.classList.add("sticky")
+      }
+      else {
+        menu1.classList.remove("sticky");
+      }
+    }
+  },
+  created:function(){
+    window.onscroll=this.scrollLoad;
+  }
 }
 
 </script>
 
-<style>
+<style scoped>
 /* #app {
   //font-family: Avenir, Helvetica, Arial, sans-serif;
   //-webkit-font-smoothing: antialiased;
