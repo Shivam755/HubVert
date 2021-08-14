@@ -25,7 +25,7 @@
     </div>
     
     <hr>
-    <div class="container" v-html="photoSearch()"></div>
+    <div id="container" v-html="photoSearch()"></div>
 </template>
 <style scoped>
     img{
@@ -83,11 +83,13 @@ export default {
         videoSearch: function(){
             $.get("https://www.googleapis.com/youtube/v3/search?key="+key+"&type=video&part=snippet&maxResults=10&q="+this.word,function(data){
                 console.log(data);
+                $("#container").empty();
+
                 data.items.forEach(item => {
                     video = `
                     <iframe width="420" height="315" src="http://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
                     `
-                    $(".container").append(video)
+                    $("#container").append(video);
                 });
             });
         },
@@ -102,9 +104,10 @@ export default {
         })
         .then(data => {
             var images = data.photos;
+            $("#container").empty();
             data.photos.forEach(image =>{
                 images = `<img src=${image.src.tiny} />`
-                $(".container").append(images)
+                $("#container").append(images)
                 })
                 console.log(data);
             })

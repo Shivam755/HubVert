@@ -87,7 +87,7 @@ export default {
       Nav
   },
   mounted: function () {
-    let date = new Date();
+    // let date = new Date();
     this.id= JSON.parse(sessionStorage.getItem("User"));
     if (this.id){
         for(let i=0; i<Users.users.length; i++) {
@@ -97,13 +97,13 @@ export default {
             }
         }
     }
-    let today = date.getDate() +"/" +date.getMonth()+"/"+date.getFullYear();
-    for (let i = 0; i < this.journalEntries.length; i++){
-      if(this.journalEntries[i].date === today){
-        this.title = this.journalEntries[i].title;
-        this.todayEntry = this.journalEntries[i].entry;
-      }
-    }
+    // let today = date.getDate() +"/" +date.getMonth()+"/"+date.getFullYear();
+    // for (let i = 0; i < this.journalEntries.length; i++){
+    //   if(this.journalEntries[i].date === today){
+    //     this.title = this.journalEntries[i].title;
+    //     this.todayEntry = this.journalEntries[i].entry;
+    //   }
+    // }
     return;
   }
 }
