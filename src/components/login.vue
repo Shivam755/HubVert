@@ -32,9 +32,11 @@
 
 <script>
 import router from '../router/index';
-import { Users } from '../database';
 import SHA256 from 'crypto-js/sha256';
+import Swal from 'sweetalert2';
+
 import Nav from "./nav.vue";
+import { Users } from '../database';
 
 export default {
   name: "Login",
@@ -53,11 +55,22 @@ export default {
     // },
     verify:function(){
       if (this.email === ''){
-        alert("Please enter your email-id!!!")
+        Swal.fire({
+          icon: 'warning',
+          title: 'Oops...',
+          text: 'Please enter your email-id!!!',
+          button: "Okay"
+        })
+        // alert("Please enter your email-id!!!")
         return;
       }
       if(this.pass === ""){
-        alert("Please enter your password!!!")
+        Swal.fire({
+          icon: 'warning',
+          title: 'Oops...',
+          text: 'Please enter your password!!!',
+          button: "Okay"
+        });
         return;
       }
       let encPass = SHA256(this.pass).toString();
@@ -66,18 +79,32 @@ export default {
           if (Users.users[i].password === encPass){
             sessionStorage.setItem("User",JSON.stringify(SHA256(this.email).toString()))
             sessionStorage.setItem("Password",JSON.stringify(encPass.toString()));
-            alert("Login Successfull!!");
+            Swal.fire({
+              title:'Good job!',
+              text:'Login Successful',
+              icon:'success'
+            }).then(() => {
             router.push("/feed");
+            })
             return;
-            // TODO: add redirect link
           }
           else{
-            alert("Wrong Password!!");
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Wrong Password!!!',
+              button: "Okay"
+            });
             return;
           }
         }
       }
-      alert("Email-id is not registered!!!");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Email Id is not registered!!!',
+        button: "Okay"
+      });
     }
   }
 };

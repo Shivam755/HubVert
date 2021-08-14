@@ -30,6 +30,7 @@
 
 <script>
 import SHA256 from 'crypto-js/sha256';
+import Swal from 'sweetalert2';
 import router from '../router/index';
 
 import {Users} from "../database";
@@ -55,8 +56,24 @@ export default {
     },
     methods:{
         logout:function(){
-            sessionStorage.clear();
-            router.push('/');
+            Swal.fire({
+            title: 'Do you really want to log out?',
+            icon:'question',
+            showDenyButton: true,
+            confirmButtonText: `Yes`,
+            denyButtonText: `No`,
+            }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('Thanks for visiting.See you soon!','','success').then(()=>{
+                        sessionStorage.clear();
+                        router.push('/');
+                    });
+                    
+                } else if (result.isDenied) {
+                    Swal.fire("We're glad you decided to stay!", "", "info")
+                }
+            })
         }
     },
     mounted: function () {

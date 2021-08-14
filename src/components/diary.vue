@@ -43,9 +43,11 @@
 </template>
 
 <script>
-import SHA256 from 'crypto-js/sha256';
-import {Users, Diaries} from "../database";
 import router from '../router/index';
+import Swal from 'sweetalert2';
+import SHA256 from 'crypto-js/sha256';
+
+import {Users, Diaries} from "../database";
 import Nav from "./nav.vue";
 import Forbidden from './forbidden.vue';
 export default {
@@ -63,17 +65,29 @@ export default {
     submit:function(){
       let date = new Date();
       if (this.title.trim() === ""){
-        alert("PLEASE ENTER A TITLE!!");
-        router.push("/diary");
+        Swal.fire({
+          icon:"warning",
+          title:"Oops..",
+          text:"PLEASE ENTER A TITLE!!"
+        });
         return;
       }
       if(this.todayEntry.trim === ""){
-        alert("No content to add in diary!!!");
+        Swal.fire({
+          icon:"warning",
+          title:"Oops..",
+          text:"No content to add in diary!!!"
+        });
         return;
       }
       Diaries.addEntry(this.userId,date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear(),this.title, this.todayEntry);
-      alert("Entry added");
-      router.go();
+      Swal.fire({
+        icon:"success",
+        title:"Great Job!",
+        text:"Entry added"
+      }).then(()=>{
+        router.go();
+      });
     },
     loadPrevious:function(entry){
       let date = new Date();

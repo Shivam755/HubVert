@@ -87,8 +87,10 @@
 <script>
 import Nav from "./nav.vue";
 import { Users } from '../database';
+
 import SHA256 from 'crypto-js/sha256';
 import router from '../router/index';
+import Swal from 'sweetalert2';  
 
 export default {
     name: "Register",
@@ -109,30 +111,60 @@ export default {
       submit : function(){
         const mailformat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
         if (this.name === ''){
-          alert("Please enter a name!!!")
+          Swal.fire({
+            icon:'warning',
+            title:'Oops...',
+            text:"Please enter a name!!!"
+          });
           return;
         }
         if (this.dob === ''){
-          alert("Please select a date of birth!!!")
+          Swal.fire({
+            icon:'warning',
+            title:'Oops...',
+            text:"Please select a date of birth!!!"
+          });
           return;
         }
         if (this.gender === ''){
-          alert("Please select a gender!!!")
+          Swal.fire({
+            icon:'warning',
+            title:'Oops...',
+            text:"Please select a gender!!!"
+          });
           return;
         }
         if (this.email === ''){
-          alert("Please enter an email!!!")
+          Swal.fire({
+            icon:'warning',
+            title:'Oops...',
+            text:"Please enter an email!!!"
+          });
           return;
         }else if (! this.email.match(mailformat)){
-          alert("Invalid Email!!");
+     
+          Swal.fire({
+            icon:'error',
+            title:'Oops...',
+            text:"Invalid Email!!"
+          });
+          //  alert("Invalid Email!!");
           return;
         }
         if (this.pass === ''){
-          alert("Please enter a password!!!")
+          Swal.fire({
+            icon:'warning',
+            title:'Oops...',
+            text:"Please enter a password!!!"
+          });
           return;
         }
         if (this.rPass === ''){
-          alert("Please enter repeat password!!!")
+          Swal.fire({
+            icon:'warning',
+            title:'Oops...',
+            text:"Please enter repeat password!!!"
+          });
           return;
         }
         
@@ -140,15 +172,28 @@ export default {
           let res = Users.AddUser(this.name, this.dob, this.gender, this.email, SHA256(this.pass).toString());
           if (res) 
           {
-            alert('Sign-up Successful!!!');
+            Swal.fire({
+              icon:'success',
+              title:'Great Job',
+              text:"Sign-up Successful!!!",
+            }).then(()=>{
             router.push('/');
+            });
           }else{
-            alert('Email id already used by other account!!')
+            Swal.fire({
+              icon:'error',
+              title:'Oops...',
+              text:"Email id already used by other account!!",
+            });
           }
           
         }else{
-          alert("Passwords don't match!!")
-          return
+          Swal.fire({
+            icon:'error',
+            title:'Oops...',
+            text:"Passwords don't match!!"
+          });
+          return;
         }
         
       }

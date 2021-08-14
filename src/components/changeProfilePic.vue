@@ -17,6 +17,7 @@
 <script>
 import router from '../router/index';
 import SHA256 from 'crypto-js/sha256';
+import Swal from 'sweetalert2';
 
 import Forbidden from './forbidden.vue';
 import Nav from "./nav.vue";
@@ -42,14 +43,27 @@ export default {
         },
         UpdateImage:function(){
             if (this.selected === ""){
-                alert("No Pic selected!!");
+                Swal.fire({
+                    icon:"warning",
+                    title:"Oops...",
+                    text:"No Pic selected!!"
+                })
                 return;
             }
             if(Users.UpdateAvatar(this.userId, this.selected)){
-                alert("Avatar successfully changed!!");
-                router.push('/profile');
+                Swal.fire({
+                    icon:"success",
+                    title:"Great Job!",
+                    text:"Avatar successfully changed!!"
+                }).then(()=>{
+                    router.push('/profile');
+                })
             }else{
-                alert("Couldn't find your account!!");
+                Swal.fire({
+                    icon:"error",
+                    title:"Oops...",
+                    text:"Couldn't find your account!!"
+                })
                 return;
             }
         }
