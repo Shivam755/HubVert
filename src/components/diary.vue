@@ -27,7 +27,7 @@
           v-model="todayEntry"
           :disabled="disabled"
         ></textarea>
-        <router-link to='/diary' v-if="disabled"><button class="btn-main entry-submit-btn" type="submit" >Current entry</button></router-link>
+        <button class="btn-main entry-submit-btn" type="submit" @click.prevent="loadCurrent()" v-if="disabled">Current entry</button>
         <button class="btn-main entry-submit-btn" type="submit" @click.prevent="submit()" :disabled="disabled" v-else>Submit</button>
         
       </form>
@@ -94,6 +94,9 @@ export default {
       this.disabled = entry.date === date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear()?false:true;
       this.todayEntry = entry.entry;
       this.title = entry.title;
+    },
+    loadCurrent:function(){
+      router.go()
     }
   },
   components:{

@@ -47,7 +47,9 @@
 
 <script>
 import Nav from "./nav.vue";
-import { moodTypes,DailyMoods,Users } from '../database';
+import { moodTypes,DailyMoods,Users,interests } from '../database';
+
+import Swal from 'sweetalert2';
 import SHA256 from 'crypto-js/sha256';
 import $ from 'jquery';
 const key="AIzaSyCGGV6g7Uh_aFD9C-nC9o7S8bj5Kzj6g0M";
@@ -59,7 +61,8 @@ export default {
             word:'happy',
             moods: moodTypes,
             userId: '',
-            currentMood:""
+            currentMood:"",
+            userInterest:[]
         }
     },
     components:{
@@ -95,19 +98,19 @@ export default {
         },
         photoSearch: function(){
             fetch("https://api.pexels.com/v1/search?query="+this.word,{
-        headers: {
-            Authorization: "563492ad6f917000010000011da5f68fc8c545dc89d3186b2631afc8"
-        }
-        })
-        .then(resp => {
-            return resp.json()
-        })
-        .then(data => {
-            var images = data.photos;
-            $("#container").empty();
-            data.photos.forEach(image =>{
-                images = `<img src=${image.src.tiny} />`
-                $("#container").append(images)
+            headers: {
+                Authorization: "563492ad6f917000010000011da5f68fc8c545dc89d3186b2631afc8"
+            }
+            })
+            .then(resp => {
+                return resp.json()
+            })
+            .then(data => {
+                var images = data.photos;
+                $("#container").empty();
+                data.photos.forEach(image =>{
+                    images = `<img src=${image.src.tiny} />`
+                    $("#container").append(images)
                 })
                 console.log(data);
             })
@@ -118,7 +121,47 @@ export default {
             DailyMoods.addMood(this.userId,today,mood.id);
             this.currentMood = mood;
             console.log(mood.mood);
-        }   
+        },
+        // addInterest:function(interest){
+        //     this.userInterest.push(interest);
+        //     console.log(interest);
+        // },
+        askInterest:function(){
+            let interestHtml = `<form name="InterestForm">`;
+            for (let i = 0; i < interests.length; i++){
+                interestHtml += `<input type="checkbox" name="interest" id=${interests[i].topic} /> <label for=${interests[i].topic}>${interests[i].topic}</label> `
+            }
+            interestHtml += `</form>`
+            Swal.fire({
+                icon: 'info',
+                title: 'Please select some of the interests',
+                html: interestHtml,
+                confirmButtonText: 'Done'
+            }).then(()=>{
+                for(let i=0; i<document.InterestForm.length;i++){
+                    if (document.InterestForm.elements[i].type == 'checkbox' && document.InterestForm.elements[i].checked){
+                        for(let j=0; j<interests.length; j++){
+                            
+                            if(interests[j].topic === document.InterestForm.elements[i].id){
+                                this.userInterest.push(interests[j]);
+                                break;
+                            }
+                        }
+                    }
+                }
+                if(Users.UpdateInterest(this.userId, this.userInterest)){
+                    Swal.fire({
+                        icon:"success",
+                        title:"Interests added successfully!!"
+                    });
+                }else{
+                    Swal.fire({
+                        icon:"error",
+                        title:"Couldn't find your account!!"
+                    })
+                }
+            })
+        }
     },
     mounted: function () {
         this.id= JSON.parse(sessionStorage.getItem("User"));
@@ -128,7 +171,7 @@ export default {
             for(let i=0; i<Users.users.length; i++) {
                 if (SHA256(Users.users[i].email).toString() === this.id.toString()) {
                     this.userId=Users.users[i].id;
-                    //this.interest=Users.users[i].interest;
+                    this.userInterest=Users.users[i].interest;
                 }
             }
             for(let i = 0; i < DailyMoods.dailyMood.length; i++){
@@ -139,6 +182,9 @@ export default {
                         }
                     }
                 }
+            }
+            if(this.userInterest.length===0){
+                this.askInterest();
             }
         }
         return;
