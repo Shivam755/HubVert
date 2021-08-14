@@ -23,6 +23,7 @@
 <script>
 import SHA256 from 'crypto-js/sha256';
 import router from '../router/index';
+import Swal from 'sweetalert2';
 
 import Nav from "./nav.vue";
 import { Users } from '../database';
@@ -48,13 +49,25 @@ export default {
     methods:{
         changePassword:function(){
             if (!this.old){
-                alert("Please enter a current password");
+                Swal.fire({
+                    icon:"warning",
+                    title:"Oops...",
+                    text:"Please enter a current password"
+                });
                 return;
             }else if (!this.newPass){
-                alert("Please enter a new password");
+                Swal.fire({
+                    icon:"warning",
+                    title:"Oops...",
+                    text:"Please enter a new password"
+                });
                 return;
             }else if(!this.repeat){
-                alert("Please enter repeat new password");
+                Swal.fire({
+                    icon:"warning",
+                    title:"Oops...",
+                    text:"Please enter repeat new password"
+                });
                 return;
             }
             if (SHA256(this.old).toString() === this.pass.toString()){
@@ -62,21 +75,39 @@ export default {
                     for(let i=0; i<Users.users.length; i++) {
                         if (SHA256(Users.users[i].email).toString() === this.email.toString()) {
                             if (Users.UpdatePassword(Users.users[i].id,SHA256(this.newPass).toString())){
-                                alert("Password changed successfully!");
-                                sessionStorage.setItem('Password',JSON.stringify(SHA256(this.newPass).toString()));
-                                router.push('/profile')
+                                Swal.fire({
+                                    icon:"success",
+                                    title:"Great Job",
+                                    text:"Password changed successfully!"
+                                }).then(()=>{
+                                    sessionStorage.setItem('Password',JSON.stringify(SHA256(this.newPass).toString()));
+                                    router.push('/profile')
+                                });
+                                
                             }else{
-                                alert("Couldn't find your account!!");
+                                Swal.fire({
+                                    icon:"error",
+                                    title:"Oops...",
+                                    text:"Couldn't find your account!!"
+                                });
                                 return;
                             }
             
                         }
                     }
                 }else{
-                    alert("New and repeat password does not match.");
+                    Swal.fire({
+                        icon:"error",
+                        title:"Oops...",
+                        text:"New and repeat password does not match."
+                    });
                 }
             }else{
-                alert("Current password is wrong");
+                Swal.fire({
+                    icon:"error",
+                    title:"Oops...",
+                    text:"Current password is wrong"
+                });
                 return;
             }
             

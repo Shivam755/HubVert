@@ -1,15 +1,9 @@
 <template>
-  <Nav/>
-    <h1><b><font color="orange">MOOD</font></b></h1>
-    <img src="https://th.bing.com/th/id/OIP.bjEc692svnnjSPoWamxjeAHaHa?w=180&h=180&c=7&o=5&dpr=1.25&pid=1.7" alt="team member" width="100" height="100">
-    <input type="radio" id="angry" name="mood" value="ANGRY"><label for="SAD">SAD</label>&emsp;
-    <img src="https://th.bing.com/th/id/OIP.k4e2qw39PCpvMZdV3C6iVAHaKz?w=126&h=184&c=7&o=5&dpr=1.25&pid=1.7" alt="team member" width="100" height="100">
-    <input type="radio" id="happy" name="mood" value="HAPPY"><label for="ANGRY">ANGRY</label>&emsp;
-    <img src="https://th.bing.com/th/id/OIP.iADgkyH2pg4yb2Jg5zSNugHaHa?w=204&h=204&c=7&o=5&dpr=1.25&pid=1.7" alt="team member" width="100" height="100"/>
-    <input type="radio" id="tired" name="mood" value="TIRED"><label for="HAPPY">HAPPY</label>&emsp;
-    <img src="https://th.bing.com/th/id/OIP.bCbUtGyUdw4KFnH18zVz1QHaHa?w=198&h=198&c=7&o=5&dpr=1.25&pid=1.7" alt="team member" width="100" height="100">
-    <input type="radio" id="sad" name="mood" value="SAD"><label for="TIRED">TIRED</label>&emsp;
-    <!-- <form action=""> -->
+    <Nav/>
+    <div>
+        <h1><b><font color="orange">MOOD</font></b></h1>
+        <span v-for="mood in moods" :class="mood === currentMood? 'marked':''" :key=mood.id @click="selectMood(mood)">{{mood.emoji}}</span>
+    </div>
 
     <h1><b><font color="orange">INTERESTS</font></b></h1>
     <img src="" alt="music profile image" width="100" height="100">
@@ -23,74 +17,178 @@
     <label for="SING">SING</label>
     <h1><b><font color="orange">FEED</font></b></h1>
     <input type="text" name="word" v-model="word">&emsp;
-    <button type="submit" @click.prevent="videoSearch()">Search</button>
+    <button type="submit" @click.prevent="Search()">Search</button><br>
+    <div>
+        <a href="" @click.prevent="quoteSearch()">Quotes</a> | 
+        <a href="" @click.prevent="photoSearch()">Images</a> | 
+        <a href="" @click.prevent="videoSearch()">Videos</a>
+    </div>
+    
     <hr>
-    <div class="container"></div>
+    <div id="container" v-html="photoSearch()"></div>
 </template>
-<style>
+<style scoped>
     img{
         border-radius: 50%;
     }
     h1{
         text-shadow:2px 2px 5px red;
     }
+    span{
+        border-radius: 50%;
+    }
+    span:hover{
+        cursor: pointer;
+    }
+    .marked{
+        border: 3px solid #0f0;
+    }
 </style>
-
-
-// // var word="sad";
-//         fetch("https://quotable.io/quotes?limit=100")
-//             .then(response => response.json())
-//             .then(data => {
-//                 console.log(data)
-//                 data.results.forEach(result => {
-//                     document.writeln(`<b><i>`+result.content+`</i></b>`+" -"+`<b><br>`+result.author+`</b><br>`);
-//                 });
-//             })
-// export default ({
-//     data:()=>{
-//         return{
-//             search:''
-//         }
-//     },
-//     methods
-// })
 
 <script>
 import Nav from "./nav.vue";
-import $ from 'jquery'
-    const key="AIzaSyCGGV6g7Uh_aFD9C-nC9o7S8bj5Kzj6g0M";
-    // var video='';
+import { moodTypes,DailyMoods,Users,interests } from '../database';
+
+import Swal from 'sweetalert2';
+import SHA256 from 'crypto-js/sha256';
+import $ from 'jquery';
+const key="AIzaSyCGGV6g7Uh_aFD9C-nC9o7S8bj5Kzj6g0M";
+var video='';
     // let i;
-export default ({
+export default {
     data:()=> {
         return{
-            word:'',
+            word:'happy',
+            moods: moodTypes,
+            userId: '',
+            currentMood:"",
+            userInterest:[]
         }
     },
-  components:{
-    Nav
-  },
+    components:{
+        Nav
+    },
     methods:{
-        // searchthis: function () {
-        //     console.log(this.word);
-        //     if(this.word.trim()!==''){
-        //         fetch("https://quotable.io/quotes?limit=100")
-        //             .then(response => response.json())
-        //             .then(data => {
-        //                 console.log(data)
-        //             }
-        //         )
-        //     }
-        // },
+        Search: function(){
+
+        },
+        quoteSearch: function () {
+            console.log(this.word);
+            if(this.word.trim()!==''){
+                fetch("https://quotable.io/quotes?limit=100")
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data)
+                    }
+                )
+            }
+        },
         videoSearch: function(){
             $.get("https://www.googleapis.com/youtube/v3/search?key="+key+"&type=video&part=snippet&maxResults=10&q="+this.word,function(data){
                 console.log(data);
-            data.items.forEach(item => {
-                let video = `
-                <iframe width="420" height="315" src="http://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
-                `
-                $(".container").append(video)
-        });
-    });
-}}})
+                $("#container").empty();
+
+                data.items.forEach(item => {
+                    video = `
+                    <iframe width="420" height="315" src="http://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
+                    `
+                    $("#container").append(video);
+                });
+            });
+        },
+        photoSearch: function(){
+            fetch("https://api.pexels.com/v1/search?query="+this.word,{
+            headers: {
+                Authorization: "563492ad6f917000010000011da5f68fc8c545dc89d3186b2631afc8"
+            }
+            })
+            .then(resp => {
+                return resp.json()
+            })
+            .then(data => {
+                var images = data.photos;
+                $("#container").empty();
+                data.photos.forEach(image =>{
+                    images = `<img src=${image.src.tiny} />`
+                    $("#container").append(images)
+                })
+                console.log(data);
+            })
+        },
+        selectMood:function(mood){
+            let date = new Date();
+            let today = date.getDate()+"/"+date.getMonth()+"/"+ date.getFullYear();
+            DailyMoods.addMood(this.userId,today,mood.id);
+            this.currentMood = mood;
+            console.log(mood.mood);
+        },
+        // addInterest:function(interest){
+        //     this.userInterest.push(interest);
+        //     console.log(interest);
+        // },
+        askInterest:function(){
+            let interestHtml = `<form name="InterestForm">`;
+            for (let i = 0; i < interests.length; i++){
+                interestHtml += `<input type="checkbox" name="interest" id=${interests[i].topic} /> <label for=${interests[i].topic}>${interests[i].topic}</label> `
+            }
+            interestHtml += `</form>`
+            Swal.fire({
+                icon: 'info',
+                title: 'Please select some of the interests',
+                html: interestHtml,
+                confirmButtonText: 'Done'
+            }).then(()=>{
+                for(let i=0; i<document.InterestForm.length;i++){
+                    if (document.InterestForm.elements[i].type == 'checkbox' && document.InterestForm.elements[i].checked){
+                        for(let j=0; j<interests.length; j++){
+                            
+                            if(interests[j].topic === document.InterestForm.elements[i].id){
+                                this.userInterest.push(interests[j]);
+                                break;
+                            }
+                        }
+                    }
+                }
+                if(Users.UpdateInterest(this.userId, this.userInterest)){
+                    Swal.fire({
+                        icon:"success",
+                        title:"Interests added successfully!!"
+                    });
+                }else{
+                    Swal.fire({
+                        icon:"error",
+                        title:"Couldn't find your account!!"
+                    })
+                }
+            })
+        }
+    },
+    mounted: function () {
+        this.id= JSON.parse(sessionStorage.getItem("User"));
+        let date = new Date();
+        let today = date.getDate()+"/"+date.getMonth()+"/"+ date.getFullYear();
+        if (this.id){
+            for(let i=0; i<Users.users.length; i++) {
+                if (SHA256(Users.users[i].email).toString() === this.id.toString()) {
+                    this.userId=Users.users[i].id;
+                    this.userInterest=Users.users[i].interest;
+                }
+            }
+            for(let i = 0; i < DailyMoods.dailyMood.length; i++){
+                if(DailyMoods.dailyMood[i].userId === this.userId && DailyMoods.dailyMood[i].date === today){
+                    for (let j = 0; j < moodTypes.length; j++){
+                        if(moodTypes[j].id === DailyMoods.dailyMood[i].moodId){
+                            this.currentMood = moodTypes[j];
+                        }
+                    }
+                }
+            }
+            if(this.userInterest.length===0){
+                this.askInterest();
+            }
+        }
+        return;
+    }
+}
+
 </script>

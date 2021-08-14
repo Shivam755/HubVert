@@ -1,9 +1,10 @@
 //Pre-requisite variables
 const moodTypes = [
-    {id: 1, mood:"Happy"},
-    {id: 2, mood:"Sad"},
-    {id: 3, mood:"Angry"},
-    {id: 4, mood:"Nervous"}
+    {id: 1, mood:"Happy",emoji:"😁"},
+    {id: 2, mood:"Sad", emoji:"😔"},
+    {id: 3, mood:"Angry", emoji:"😡"},
+    {id: 4, mood:"Bored", emoji:"🥱"},
+    {id: 5,mood:"Party", emoji:"🥳"}
 ]
 
 let avatars = {'male':[],'female':[]};
@@ -12,9 +13,18 @@ for (let i = 1; i<=10; i++){
     avatars['female'].push("avatarF"+i+".png");
 }
 
-// const interests = [
-    
-// ]
+const interests = [
+    {id: 1, topic: "Reading"},
+    {id: 2, topic: "Gardening"},
+    {id: 3, topic: "Sports"},
+    {id: 4, topic: "Photography"},
+    {id: 5, topic: "Dancing"},
+    {id: 6, topic: "Travelling"},
+    {id: 7, topic: "Gaming"},
+    {id: 8, topic: "Cooking"},
+    {id: 9, topic: "Blogging"},
+    {id: 10, topic: "Music"}
+]
 //User table
 class User{
     constructor(){
@@ -22,6 +32,18 @@ class User{
         this.id = temp ? temp :1;
         temp = JSON.parse(localStorage.getItem("Users"));
         this.users = temp ? temp: [];
+        // for (let i = 0; i<this.users.length; i++){
+        //     this.users[i] = {
+        //         id:this.users[i].id,
+        //         name:this.users[i].name,
+        //         gender:this.users[i].gender,
+        //         dob:this.users[i].dob,
+        //         email:this.users[i].email,
+        //         password:this.users[i].password,
+        //         avatar:this.users[i].avatar,
+        //         interest:[]
+        //     }
+        // }
         //Saving the changes
         localStorage.setItem('Users',JSON.stringify(this.users));
         localStorage.setItem('count',JSON.stringify(this.id));
@@ -34,7 +56,6 @@ class User{
             }
         }
         this.avat = (gender == 'male'? 'avatarM' : 'avatarF') + (Math.floor(Math.random() * 10) + 1)+".png";
-        console.log(this.avat);
         this.id++;
         this.users.push({
             id:this.userId,
@@ -43,7 +64,8 @@ class User{
             dob:dob,
             email:email,
             password:password,
-            avatar: this.avat
+            avatar: this.avat,
+            interest:[]
         });
         //Saving the changes
         localStorage.setItem('Users',JSON.stringify(this.users));
@@ -114,6 +136,19 @@ class User{
         }
         return success;
     }
+    UpdateInterest(userId, topics){
+        let success = false;
+        for (let cur = 0; cur< this.users.length; cur++){
+            if (this.users[cur].id === userId){
+                this.users[cur].interest = topics;
+                success = true;
+            }
+        }
+        if (success){
+            localStorage.setItem('Users',JSON.stringify(this.users));
+        }
+        return success;
+    }
 }
 
 //dailyMood table
@@ -125,7 +160,16 @@ class DailyMood{
         localStorage.setItem('DailyMood',JSON.stringify(this.dailyMood)); 
     }
     addMood(userId, date, moodId){
-        this.dailyMood.push({userId, date, moodId});
+        let updated = false;
+        for(let i=0; i < this.dailyMood.length; i++){
+            if (this.dailyMood[i].userId === userId && this.dailyMood[i].date === date){
+                this.dailyMood[i].moodId = moodId;
+                updated = true;
+            }
+        }
+        if (! updated){
+            this.dailyMood.push({userId: userId, date: date,moodId: moodId});
+        }
         //Saving the changes
         localStorage.setItem('DailyMood',JSON.stringify(this.dailyMood)); 
     }
@@ -182,33 +226,33 @@ class Diary{
 }
 
 //Interest table
-class Interest{
-    constructor(){
-        let temp = JSON.parse(localStorage.getItem("Interest"));
-        this.interest = temp ? temp: [];
-        //Saving the changes
-        localStorage.setItem('Interest',JSON.stringify(this.interest)); 
-    }
-    AddInterest(interestId, userId, topics){
-        this.interest.push({interestId:interestId, userId:userId, topics:topics});
-        //Saving the changes
-        localStorage.setItem('Interest',JSON.stringify(this.interest));
-    }
-    UpdateInterest(userId, topics){
-        for(let i in this.interest){
-            if (i.userId === userId){
-                i.topics = topics;
-            }
-        }
-        //Saving the changes
-        localStorage.setItem('Interest',JSON.stringify(this.interest));
-    }
-}
+// class Interest{
+//     constructor(){
+//         let temp = JSON.parse(localStorage.getItem("Interest"));
+//         this.interest = temp ? temp: [];
+//         //Saving the changes
+//         localStorage.setItem('Interest',JSON.stringify(this.interest)); 
+//     }
+//     AddInterest(interestId, userId, topics){
+//         this.interest.push({interestId:interestId, userId:userId, topics:topics});
+//         //Saving the changes
+//         localStorage.setItem('Interest',JSON.stringify(this.interest));
+//     }
+//     UpdateInterest(userId, topics){
+//         for(let i in this.interest){
+//             if (i.userId === userId){
+//                 i.topics = topics;
+//             }
+//         }
+//         //Saving the changes
+//         localStorage.setItem('Interest',JSON.stringify(this.interest));
+//     }
+// }
 
 //Creating objects of the above table
 let Users = new User();
 let DailyMoods = new DailyMood();
 let Diaries = new Diary();
-let Interests = new Interest();
+// let Interests = new Interest();
 
-export {Users,moodTypes,DailyMoods, Diaries, Interests, avatars};
+export {Users,moodTypes,DailyMoods, Diaries, interests, avatars};

@@ -1,8 +1,11 @@
 # HubVert
 
 ## Dependencies
+
 vue-router: `vue add route`
 crypto-js: `npm install crypto-js`
+j-query: `npm install --save jquery`
+sweetalert2: `npm install sweetalert2`
 
 # This change was made by Harshal
 

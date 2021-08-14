@@ -27,7 +27,7 @@
           v-model="todayEntry"
           :disabled="disabled"
         ></textarea>
-        <router-link to='/diary' v-if="disabled"><button class="btn-main entry-submit-btn" type="submit" >Current entry</button></router-link>
+        <button class="btn-main entry-submit-btn" type="submit" @click.prevent="loadCurrent()" v-if="disabled">Current entry</button>
         <button class="btn-main entry-submit-btn" type="submit" @click.prevent="submit()" :disabled="disabled" v-else>Submit</button>
         
       </form>
@@ -43,9 +43,11 @@
 </template>
 
 <script>
-import SHA256 from 'crypto-js/sha256';
-import {Users, Diaries} from "../database";
 import router from '../router/index';
+import Swal from 'sweetalert2';
+import SHA256 from 'crypto-js/sha256';
+
+import {Users, Diaries} from "../database";
 import Nav from "./nav.vue";
 import Forbidden from './forbidden.vue';
 export default {
@@ -63,22 +65,38 @@ export default {
     submit:function(){
       let date = new Date();
       if (this.title.trim() === ""){
-        alert("PLEASE ENTER A TITLE!!");
-        router.push("/diary");
+        Swal.fire({
+          icon:"warning",
+          title:"Oops..",
+          text:"PLEASE ENTER A TITLE!!"
+        });
         return;
       }
       if(this.todayEntry.trim === ""){
-        alert("No content to add in diary!!!");
+        Swal.fire({
+          icon:"warning",
+          title:"Oops..",
+          text:"No content to add in diary!!!"
+        });
         return;
       }
       Diaries.addEntry(this.userId,date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear(),this.title, this.todayEntry);
-      alert("Entry added")
+      Swal.fire({
+        icon:"success",
+        title:"Great Job!",
+        text:"Entry added"
+      }).then(()=>{
+        router.go();
+      });
     },
     loadPrevious:function(entry){
       let date = new Date();
       this.disabled = entry.date === date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear()?false:true;
       this.todayEntry = entry.entry;
       this.title = entry.title;
+    },
+    loadCurrent:function(){
+      router.go()
     }
   },
   components:{
@@ -86,7 +104,7 @@ export default {
       Nav
   },
   mounted: function () {
-    let date = new Date();
+    // let date = new Date();
     this.id= JSON.parse(sessionStorage.getItem("User"));
     if (this.id){
         for(let i=0; i<Users.users.length; i++) {
@@ -96,13 +114,13 @@ export default {
             }
         }
     }
-    let today = date.getDate() +"/" +date.getMonth()+"/"+date.getFullYear();
-    for (let i = 0; i < this.journalEntries.length; i++){
-      if(this.journalEntries[i].date === today){
-        this.title = this.journalEntries[i].title;
-        this.todayEntry = this.journalEntries[i].entry;
-      }
-    }
+    // let today = date.getDate() +"/" +date.getMonth()+"/"+date.getFullYear();
+    // for (let i = 0; i < this.journalEntries.length; i++){
+    //   if(this.journalEntries[i].date === today){
+    //     this.title = this.journalEntries[i].title;
+    //     this.todayEntry = this.journalEntries[i].entry;
+    //   }
+    // }
     return;
   }
 }
