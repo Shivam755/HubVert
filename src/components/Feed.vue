@@ -110,8 +110,8 @@ export default {
         },
         videoSearch: function(){
             try{
-            $.get("https://www.googleapis.com/youtube/v3/search?key="+YTkey+"&type=video&part=snippet&maxResults=10&q="+this.word,function(data){
-                // console.log(data);
+            $.get("https://www.googleapis.com/youtube/v3/search?key="+YTkey+"&type=video&part=snippet&maxResults=50&q="+this.word,function(data){
+                console.log(data);
                 $("#container").empty();
 
                 data.items.forEach(item => {
@@ -128,12 +128,13 @@ export default {
             }
         },
         photoSearch: function(){
-            const getPhotos = function(type,word){
+            const getPhotos = function(type,word="",category=""){
                 if (type !== 'images'){
                     return;
                 }
-                $.get("https://pixabay.com/api/?key="+PXkey+"&q="+word+"&image_type=photo",function(data){
-                    // console.log(data);
+                // console.log(word, category);
+                $.get("https://pixabay.com/api/?key="+PXkey+"&q="+word+"&image_type=photo&category="+category+"&per_page=200",function(data){
+                    console.log(data);
                     $("#container").empty();
                     if(data.total != 0){
                         data.hits.forEach(hit => {
@@ -156,7 +157,7 @@ export default {
                 else{
                     let ind = Math.floor((Math.random() * 100));
                     let key = ind % this.userInterest.length;
-                    getPhotos(this.type,this.userInterest[key].topic);
+                    getPhotos(this.type,this.currentMood.search,this.userInterest[key].topic);
                 }
             }catch{
                 let error = `<h1>Oops... there's some problem with the api.Please Try again.</h1>`

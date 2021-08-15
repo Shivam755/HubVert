@@ -1,10 +1,10 @@
 //Pre-requisite variables
 const moodTypes = [
-    {id: 1, mood:"Happy",emoji:"😁"},
-    {id: 2, mood:"Sad", emoji:"😔"},
-    {id: 3, mood:"Angry", emoji:"😡"},
-    {id: 4, mood:"Bored", emoji:"🥱"},
-    {id: 5,mood:"Party", emoji:"🥳"}
+    {id: 1, mood:"Happy",emoji:"😁", search:"peaceful"},
+    {id: 2, mood:"Sad", emoji:"😔",search:"motivation"},
+    {id: 3, mood:"Angry", emoji:"😡",search:"cute"},
+    {id: 4, mood:"Bored", emoji:"🥱",search:"funny"},
+    {id: 5,mood:"Party", emoji:"🥳",search:"celebration"}
 ]
 
 let avatars = {'male':[],'female':[]};
