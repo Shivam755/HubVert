@@ -52,8 +52,10 @@ import { moodTypes,DailyMoods,Users,interests } from '../database';
 import Swal from 'sweetalert2';
 import SHA256 from 'crypto-js/sha256';
 import $ from 'jquery';
-const key="AIzaSyCGGV6g7Uh_aFD9C-nC9o7S8bj5Kzj6g0M";
+const YTkey="AIzaSyCGGV6g7Uh_aFD9C-nC9o7S8bj5Kzj6g0M";
+const PXkey="22933344-7a49660678780afe61e61b1d4";
 var video='';
+var photo='';
     // let i;
 export default {
     data:()=> {
@@ -84,7 +86,7 @@ export default {
             }
         },
         videoSearch: function(){
-            $.get("https://www.googleapis.com/youtube/v3/search?key="+key+"&type=video&part=snippet&maxResults=10&q="+this.word,function(data){
+            $.get("https://www.googleapis.com/youtube/v3/search?key="+YTkey+"&type=video&part=snippet&maxResults=10&q="+this.word,function(data){
                 console.log(data);
                 $("#container").empty();
 
@@ -97,23 +99,17 @@ export default {
             });
         },
         photoSearch: function(){
-            fetch("https://api.pexels.com/v1/search?query="+this.word,{
-            headers: {
-                Authorization: "563492ad6f917000010000011da5f68fc8c545dc89d3186b2631afc8"
-            }
-            })
-            .then(resp => {
-                return resp.json()
-            })
-            .then(data => {
-                var images = data.photos;
-                $("#container").empty();
-                data.photos.forEach(image =>{
-                    images = `<img src=${image.src.tiny} />`
-                    $("#container").append(images)
-                })
+            $.get("https://pixabay.com/api/?key="+PXkey+"&q="+this.word+"&image_type=photo",function(data){
                 console.log(data);
-            })
+                $("#container").empty();
+
+                    data.hits.forEach(hit => {
+                photo = `
+                <img width="420" height="315" src=${hit.webformatURL} frameborder="1" ></img>
+                `
+                $("#container").append(photo)
+            });
+            });
         },
         selectMood:function(mood){
             let date = new Date();
