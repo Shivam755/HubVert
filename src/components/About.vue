@@ -22,12 +22,31 @@
         I like PC.
       </div>
       <div class='link'>
-        <i class="fa fa-linkedin" style="font-size:40px;color:red"></i>
-        <i class="fa fa-google" style="font-size:40px;color:red"></i>
-        <i class="fa fa-facebook" style="font-size:40px;color:red"></i>
-        <i class="fa fa-instagram" style="font-size:40px;color:red"></i>
-        <i class="fa fa-github" style="font-size:40px;color:red"></i>
-        <i class="fa fa-twitter" style="font-size:40px;color:red"></i>
+
+        <a href="mailto:www.shivam567@gmail.com?subject=HubVERT Review" target="_blank">
+        <i class="fa fa-envelope" style="font-size:5vw;color:#ea4335"></i>
+        </a>
+
+        <a href="https://www.instagram.com/superslayer_4/" target="_blank">
+        <i class="fa fa-instagram" style="font-size:5vw;color:#e1306c"></i>
+        </a>        
+
+        <a href="https://github.com/Shivam755" target="_blank">
+        <i class="fa fa-github" style="font-size:5vw;color:#333"></i>
+        </a>
+
+        <a href="https://www.linkedin.com/in/shivam-gupta-6900701b1" target="_blank">
+        <i class="fa fa-linkedin" style="font-size:5vw;color:#0077b5"></i>
+        </a>
+
+        <a href="https://twitter.com/ShivamG54944430?s=09" target="_blank">
+        <i class="fa fa-twitter" style="font-size:5vw;color:#1da1f2"></i>
+        </a>
+
+        <a href="https://www.facebook.com/profile.php?id=100008432947295" target="_blank">
+        <i class="fa fa-facebook" style="font-size:5vw;color:#1877f2"></i>
+        </a>
+
       </div>
     </div>
   </div>
@@ -41,12 +60,29 @@
       </div>
       
       <div class='link'>
-        <i class="fa fa-linkedin" style="font-size:40px;color:red"></i>
-        <i class="fa fa-google" style="font-size:40px;color:red"></i>
-        <i class="fa fa-facebook" style="font-size:40px;color:red"></i>
-        <i class="fa fa-instagram" style="font-size:40px;color:red"></i>
-        <i class="fa fa-github" style="font-size:40px;color:red"></i>
-        <i class="fa fa-twitter" style="font-size:40px;color:red"></i>
+        <a href="mailto:www.shivam567@gmail.com?subject=HubVERTReview" target="_blank">
+        <i class="fa fa-envelope" style="font-size:5vw;color:#ea4335"></i>
+        </a>
+
+        <a href="https://www.instagram.com/quron_xz/" target="_blank">
+        <i class="fa fa-instagram" style="font-size:5vw;color:#e1306c"></i>
+        </a>        
+
+        <a href="https://github.com/QuronXZ" target="_blank">
+        <i class="fa fa-github" style="font-size:5vw;color:#333"></i>
+        </a>
+
+        <a href="https://www.linkedin.com/in/tejas-pophale-07979b214" target="_blank">
+        <i class="fa fa-linkedin" style="font-size:5vw;color:#0077b5"></i>
+        </a>
+
+        <a href="https://twitter.com/QuronX" target="_blank">
+        <i class="fa fa-twitter" style="font-size:5vw;color:#1da1f2"></i>
+        </a>
+
+        <a href="https://www.facebook.com/people/Tejas-Pophale/100005213808557/" target="_blank">
+        <i class="fa fa-facebook" style="font-size:5vw;color:#1877f2"></i>
+        </a>
       </div>
     </div>
     <div class="imagecont">
@@ -70,12 +106,29 @@
         I am iron man
       </div>
       <div class='link'>
-        <i class="fa fa-linkedin" style="font-size:40px;color:red"></i>
-        <i class="fa fa-google" style="font-size:40px;color:red"></i>
-        <i class="fa fa-facebook" style="font-size:40px;color:red"></i>
-        <i class="fa fa-instagram" style="font-size:40px;color:red"></i>
-        <i class="fa fa-github" style="font-size:40px;color:red"></i>
-        <i class="fa fa-twitter" style="font-size:40px;color:red"></i>
+        <a href="mailto:tejaspophale01@gmail.com?subject=HubVERTReview" target="_blank">
+        <i class="fa fa-envelope" style="font-size:5vw;color:#ea4335"></i>
+        </a>
+
+        <a href="https://www.instagram.com/quron_xz/" target="_blank">
+        <i class="fa fa-instagram" style="font-size:5vw;color:#e1306c"></i>
+        </a>        
+
+        <a href="https://github.com/QuronXZ" target="_blank">
+        <i class="fa fa-github" style="font-size:5vw;color:#333"></i>
+        </a>
+
+        <a href="https://www.linkedin.com/in/tejas-pophale-07979b214" target="_blank">
+        <i class="fa fa-linkedin" style="font-size:5vw;color:#0077b5"></i>
+        </a>
+
+        <a href="https://twitter.com/QuronX" target="_blank">
+        <i class="fa fa-twitter" style="font-size:5vw;color:#1da1f2"></i>
+        </a>
+
+        <a href="https://www.facebook.com/people/Tejas-Pophale/100005213808557/" target="_blank">
+        <i class="fa fa-facebook" style="font-size:5vw;color:#1877f2"></i>
+        </a>
       </div>
     </div>
   </div>
@@ -88,12 +141,29 @@
       </div>
       
       <div class='link'>
-        <i class="fa fa-linkedin" style="font-size:40px;color:red"></i>
-        <i class="fa fa-google" style="font-size:40px;color:red"></i>
-        <i class="fa fa-facebook" style="font-size:40px;color:red"></i>
-        <i class="fa fa-instagram" style="font-size:40px;color:red"></i>
-        <i class="fa fa-github" style="font-size:40px;color:red"></i>
-        <i class="fa fa-twitter" style="font-size:40px;color:red"></i>
+        <a href="mailto:www.shivam567@gmail.com?subject=HubVERTReview" target="_blank">
+        <i class="fa fa-envelope" style="font-size:5vw;color:#ea4335"></i>
+        </a>
+
+        <a href="https://www.instagram.com/quron_xz/" target="_blank">
+        <i class="fa fa-instagram" style="font-size:5vw;color:#e1306c"></i>
+        </a>        
+
+        <a href="https://github.com/QuronXZ" target="_blank">
+        <i class="fa fa-github" style="font-size:5vw;color:#333"></i>
+        </a>
+
+        <a href="https://www.linkedin.com/in/tejas-pophale-07979b214" target="_blank">
+        <i class="fa fa-linkedin" style="font-size:5vw;color:#0077b5"></i>
+        </a>
+
+        <a href="https://twitter.com/QuronX" target="_blank">
+        <i class="fa fa-twitter" style="font-size:5vw;color:#1da1f2"></i>
+        </a>
+
+        <a href="https://www.facebook.com/people/Tejas-Pophale/100005213808557/" target="_blank">
+        <i class="fa fa-facebook" style="font-size:5vw;color:#1877f2"></i>
+        </a>
       </div>
     </div>
     <div class="imagecont">
@@ -222,7 +292,8 @@ img {
   background:inherit;
 }
 i{
-  padding:0.3rem;
+  /* padding:0.5rem; */
+  border: 1rem;
 }
 
 .card:hover {
