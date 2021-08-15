@@ -5,24 +5,19 @@
         <span v-for="mood in moods" :class="mood === currentMood? 'marked':''" :key=mood.id @click="selectMood(mood)">{{mood.emoji}}</span>
     </div>
 
-    <h1><b><font color="orange">INTERESTS</font></b></h1>
-    <img src="" alt="music profile image" width="100" height="100">
-    <img src="" alt="art profile image" width="100" height="100">
-    <img src="" alt="dance profile image" width="100" height="100">
-    <img src="" alt="sing profile image" width="100" height="100"><br>
-    <input type="radio" id="music" name="interest" value="MUSIC">
-    <label for="MUSIC">MUSIC</label><input type="radio" id="art" name="interest" value="ART">
-    <label for="ART">ART</label><input type="radio" id="dance" name="interest" value="DANCE">
-    <label for="DANCE">DANCE</label><input type="radio" id="singing" name="interest" value="SING">
-    <label for="SING">SING</label>
     <h1><b><font color="orange">FEED</font></b></h1>
     <input type="text" name="word" v-model="word">&emsp;
+    <select name="Type" id="type" v-model="type">
+        <option value="quotes">Quotes</option>
+        <option value="images">Images</option>
+        <option value="videos">Videos</option>
+    </select>
     <button type="submit" @click.prevent="Search()">Search</button><br>
-    <div>
+    <!-- <div>
         <a href="" @click.prevent="quoteSearch()">Quotes</a> | 
         <a href="" @click.prevent="photoSearch()">Images</a> | 
         <a href="" @click.prevent="videoSearch()">Videos</a>
-    </div>
+    </div> -->
     
     <hr>
     <div id="container" v-html="photoSearch()"></div>
@@ -60,7 +55,8 @@ var photo='';
 export default {
     data:()=> {
         return{
-            word:'happy',
+            word:'',
+            type:'images',
             moods: moodTypes,
             userId: '',
             currentMood:"",
@@ -72,22 +68,50 @@ export default {
     },
     methods:{
         Search: function(){
-
+            console.log(this.type)
+            if (this.type === 'quotes'){
+                this.quoteSearch();
+            }else if (this.type === 'images'){
+                this.photoSearch();
+            }else {
+                this.videoSearch();
+            }
         },
         quoteSearch: function () {
-            console.log(this.word);
-            if(this.word.trim()!==''){
-                fetch("https://quotable.io/quotes?limit=100")
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data)
-                    }
-                )
+            // console.log(this.word);
+            try{
+                $("#container").empty();
+                if(this.word.trim()!==''){
+                    fetch("https://quotable.io/quotes?limit=100")
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data)
+                            // console.log(data);
+                            $("#container").empty();
+
+                            data.results.forEach(item => {
+                                let quote = `
+                                <div>
+                                <p>${item.content}</p>
+                                <sub>${item.author}</sub>
+                                </dv>
+                                `
+                                $("#container").append(quote);
+                            });
+                        }
+                    )
+                }
+            }
+            catch{
+                let error = `<h1>Oops... there's some problem with the api.Please Try again.</h1>`
+                $("#container").append(error);
+
             }
         },
         videoSearch: function(){
+            try{
             $.get("https://www.googleapis.com/youtube/v3/search?key="+YTkey+"&type=video&part=snippet&maxResults=10&q="+this.word,function(data){
-                console.log(data);
+                // console.log(data);
                 $("#container").empty();
 
                 data.items.forEach(item => {
@@ -96,20 +120,49 @@ export default {
                     `
                     $("#container").append(video);
                 });
-            });
+            });}
+            catch{
+                let error = `<h1>Oops... there's some problem with the api.Please Try again.</h1>`
+                $("#container").append(error);
+
+            }
         },
         photoSearch: function(){
-            $.get("https://pixabay.com/api/?key="+PXkey+"&q="+this.word+"&image_type=photo",function(data){
-                console.log(data);
-                $("#container").empty();
+            const getPhotos = function(type,word){
+                if (type !== 'images'){
+                    return;
+                }
+                $.get("https://pixabay.com/api/?key="+PXkey+"&q="+word+"&image_type=photo",function(data){
+                    // console.log(data);
+                    $("#container").empty();
+                    if(data.total != 0){
+                        data.hits.forEach(hit => {
+                        photo = `
+                        <img width="420" height="315" src=${hit.webformatURL} frameborder="1" ></img>
+                        `
+                        $("#container").append(photo)
+                        });
+                    }else{
+                        let notFound = `<h1>We searched high and low but we couldn't find any thing related to your search</h1>`
+                        $("#container").append(notFound);
+                    }
+                    
+                });
+            }
+            try{
+                if(this.word.trim()!==''){
+                    getPhotos(this.type,this.word)
+                }
+                else{
+                    let ind = Math.floor((Math.random() * 100));
+                    let key = ind % this.userInterest.length;
+                    getPhotos(this.type,this.userInterest[key].topic);
+                }
+            }catch{
+                let error = `<h1>Oops... there's some problem with the api.Please Try again.</h1>`
+                $("#container").append(error);
 
-                    data.hits.forEach(hit => {
-                photo = `
-                <img width="420" height="315" src=${hit.webformatURL} frameborder="1" ></img>
-                `
-                $("#container").append(photo)
-            });
-            });
+            }
         },
         selectMood:function(mood){
             let date = new Date();
@@ -118,10 +171,6 @@ export default {
             this.currentMood = mood;
             console.log(mood.mood);
         },
-        // addInterest:function(interest){
-        //     this.userInterest.push(interest);
-        //     console.log(interest);
-        // },
         askInterest:function(){
             let interestHtml = `<form name="InterestForm">`;
             for (let i = 0; i < interests.length; i++){
@@ -159,17 +208,20 @@ export default {
             })
         }
     },
-    mounted: function () {
+    beforeMount: function () {
         this.id= JSON.parse(sessionStorage.getItem("User"));
         let date = new Date();
         let today = date.getDate()+"/"+date.getMonth()+"/"+ date.getFullYear();
         if (this.id){
             for(let i=0; i<Users.users.length; i++) {
+
                 if (SHA256(Users.users[i].email).toString() === this.id.toString()) {
                     this.userId=Users.users[i].id;
                     this.userInterest=Users.users[i].interest;
+                    // console.log(Users.users[i].interest);
                 }
             }
+            // console.log(this.userInterest);
             for(let i = 0; i < DailyMoods.dailyMood.length; i++){
                 if(DailyMoods.dailyMood[i].userId === this.userId && DailyMoods.dailyMood[i].date === today){
                     for (let j = 0; j < moodTypes.length; j++){
