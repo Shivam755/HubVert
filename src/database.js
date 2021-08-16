@@ -1,4 +1,13 @@
 //Pre-requisite variables
+
+// const moodTypes = [
+//     {id: 1, mood:"Happy",emoji:"😁", search:"peaceful"},
+//     {id: 2, mood:"Sad", emoji:"😔",search:"motivation"},
+//     {id: 3, mood:"Angry", emoji:"😡",search:"cute"},
+//     {id: 4, mood:"Bored", emoji:"🥱",search:"funny"},
+//     {id: 5,mood:"Party", emoji:"🥳",search:"celebration"}
+// ]
+
 const moodTypes = [
     {id: 1, mood:"Happy",emoji:"😁", search:"peaceful"},
     {id: 2, mood:"Sad", emoji:"😔",search:"motivation"},
@@ -6,6 +15,7 @@ const moodTypes = [
     {id: 4, mood:"Bored", emoji:"🥱",search:"funny"},
     {id: 5,mood:"Party", emoji:"🥳",search:"celebration"}
 ]
+
 
 let avatars = {'male':[],'female':[]};
 for (let i = 1; i<=10; i++){
@@ -256,3 +266,5 @@ let Diaries = new Diary();
 // let Interests = new Interest();
 
 export {Users,moodTypes,DailyMoods, Diaries, interests, avatars};
+
+

@@ -87,7 +87,8 @@ export default {
                         break;
                     }
                 }
-                interestHtml += `<input type="checkbox" name="interest" id=${interests[i].topic} ${checked?"checked":""}  /> <label for=${interests[i].topic}>${interests[i].topic}</label> `;
+                interestHtml += `<input type="checkbox" name="interest" id=${interests[i].topic} ${checked?"checked":""}  /> 
+                <label for=${interests[i].topic}>${interests[i].topic}</label> `;
             }
             interestHtml += `</form>`
             this.userInterests = [];

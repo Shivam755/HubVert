@@ -231,7 +231,7 @@ export default {
 }
 </script>
 
-<style scoped >
+<style  >
 
 body{
   padding:0;
@@ -264,6 +264,7 @@ template{
   font-size: 40px;
   margin:none;
   padding-top:2rem;
+  background:#ff4433;
   
 }
 
