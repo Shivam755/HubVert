@@ -3,7 +3,7 @@
       <Forbidden />
   </div>
    <div v-else>
-     <Nav />
+     <Nav :avatar="avatar" />
    <header><h1 class="title">My Personal Journal</h1></header>
     <!-- Journal Entry Section -->
     <section class="section journal-section container container-row container-row-journal container-item container-item-journal">
@@ -56,6 +56,7 @@ export default {
       id:'',
       journalEntries:'',
       userId: '',
+      avatar:'',
       todayEntry: '',
       title: '',
       disabled:false
@@ -110,17 +111,11 @@ export default {
         for(let i=0; i<Users.users.length; i++) {
             if (SHA256(Users.users[i].email).toString() === this.id.toString()) {
               this.journalEntries = Diaries.getEntries(Users.users[i].id);
+              this.avatar=require("../assets/"+Users.users[i].avatar);
               this.userId = Users.users[i].id;
             }
         }
     }
-    // let today = date.getDate() +"/" +date.getMonth()+"/"+date.getFullYear();
-    // for (let i = 0; i < this.journalEntries.length; i++){
-    //   if(this.journalEntries[i].date === today){
-    //     this.title = this.journalEntries[i].title;
-    //     this.todayEntry = this.journalEntries[i].entry;
-    //   }
-    // }
     return;
   }
 }

@@ -3,7 +3,7 @@
         <Forbidden />
     </div>
    <div v-else>
-       <Nav/>
+       <Nav :avatar="avatar"/>
         <img :src="avatar" id='profilePic' alt="avatar" width="300" height="320">
         <router-link to="/changeProfilePic"><button>✏️</button></router-link>
         <fieldset>

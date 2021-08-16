@@ -1,9 +1,5 @@
 <template>
-  <Nav/>
-  <div class="heading1 about-section">
-    <h1>About Us</h1>
-  </div>
-    
+  <Nav :avatar="id ?avatar:''"/>
   
 <div class="background1">
     <center>
@@ -22,10 +18,10 @@
     </div>
     <div class="carddet ">
       <div class='quote'>
-        <p style="font-family:'Concert One',cursive; margin: 0rem;">"I like to read."</p>
-        </div>
-        <p style="margin:0.7;">This guy can make statues out of code and walk through
-           the dark dungeons to find the right module.</p>
+        "I like to read."
+      </div>
+      <p style="margin:0.7;">This guy can make statues out of code and walk through
+          the dark dungeons to find the right module.</p>
       
       <div class='link'>
 
@@ -61,8 +57,8 @@
     <!-- <div class="shadow"> -->
     <div class="carddet ">
       <div class='quote'>
-        <p style="font-family:'Concert One',cursive; margin: 0rem;">
-          "The best is yet to come."</p>
+        
+          "The best is yet to come."
         </div>
         <p style="margin:0.7;">This guy can make statues out of code and walk through
            the dark dungeons to find the right module.</p>
@@ -114,8 +110,8 @@
     </div>
     <div class="carddet ">
       <div class='quote'>
-       <p style="font-family:'Concert One',cursive; margin: 0rem;">
-          "I am Iron man."</p>
+       
+          "I am Iron man."
         </div>
         <p style="margin:0.7;">This guy can make statues out of code and walk through
          the dark dungeons to find the right module.</p>
@@ -152,8 +148,8 @@
     <!-- <div class="shadow"> -->
     <div class="carddet ">
       <div class='quote'>
-        <p style="font-family:'Concert One',cursive; margin: 0rem;">
-          "I like to code."</p>
+        
+          "I like to code."
         </div>
         <p style="margin:0.7;">This guy can make statues out of code and walk through
            the dark dungeons to find the right module.</p>
@@ -202,8 +198,8 @@
     </div>
     <div class="carddet ">
       <div class='quote'>
-        <p style="font-family:'Concert One',cursive; margin: 0rem;">
-          "I love One piece"</p>
+        
+          "I love One piece"
         </div>
         <p style="margin:0.7;">This guy can make statues out of code and walk through
            the dark dungeons to find the right module.</p>
@@ -222,11 +218,32 @@
 </template>
 
 <script>
+import SHA256 from 'crypto-js/sha256';
+
+import {Users} from "../database";
 import Nav from "./nav.vue";
 export default {
   name:"About",
+  data:()=>{
+    return{
+      avatar:'',
+      id:''
+    }
+  },
   components:{
     Nav
+  },
+  mounted: function () {
+    // let date = new Date();
+    this.id= JSON.parse(sessionStorage.getItem("User"));
+    if (this.id){
+        for(let i=0; i<Users.users.length; i++) {
+            if (SHA256(Users.users[i].email).toString() === this.id.toString()) {
+              this.avatar=require("../assets/"+Users.users[i].avatar);
+            }
+        }
+    }
+    return;
   }
 }
 </script>
@@ -267,8 +284,6 @@ template{
   background:#ff4433;
   
 }
-
-/* #fbfae1 */
 
 .container {
   display:flex;
@@ -312,7 +327,6 @@ img {
   flex-direction:column;
   justify-content:center;
   align-content: center;
-  font-size:1rem;
   /* background:inherit; */
   padding: 1rem;
 
@@ -324,7 +338,7 @@ img {
   justify-content:center;
   font-family: "Concert One" , cursive;
   /* padding:0.5rem; */
-  
+  font-size:3vw;
 }
 
 .link{
@@ -358,7 +372,7 @@ img {
 
 p{
   font-family: 'Merriweather', serif;
-  font-size: 3vw;
+  font-size: 2vw;
   
 }
 
