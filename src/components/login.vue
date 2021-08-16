@@ -1,14 +1,8 @@
 <template>
   <Nav/>
-<form method="post">
 
   <div class="img-container">
-    <!-- <center style="align-self:center ; background-color: #80e9c0" > -->
     <img src="../assets/login.png" alt="Avatar" style="width: 40%; align-self:center" >
-    <!-- </center> -->
-    
-    <!-- <i  style= "font-size:25px; align:center"></i> -->
-    <!-- <input type="text" placeholder="Enter Email-id" name="uname" v-model="email"> -->
     <div class='iconinput' >
     <i class="fa fa-envelope " style= "font-size:25px"></i>
     <input type="text" placeholder="Enter Email-id" name="uname" v-model="email">
@@ -19,14 +13,9 @@
     </div>
 
     <button class="button1" type="submit" @click.prevent="verify"> Login </button>
-  
 
-  <!-- <div style="background-color:#f1f1f1; text-align: center font-family: arial" > -->
     <span>Don't have an account? <router-link to='/Sign-up'>Sign-up</router-link></span>
-    
-  <!-- </div> -->
   </div>
-</form>
 
 </template>
 
@@ -50,9 +39,6 @@ export default {
     Nav
   },
   methods:{
-    // highlight:()=>{
-    //   console.log(e)
-    // },
     verify:function(){
       if (this.email === ''){
         Swal.fire({
@@ -116,11 +102,6 @@ body{
   padding:0;
 
 }
-/* form {
-  border: 3px solid #fefeff;
-  /* float:right; */
-  /* align-content: left} */
-
 
 .img-container{
   font-size:20px;

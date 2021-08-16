@@ -7,7 +7,7 @@
 
     <h1><b><font color="orange">FEED</font></b></h1>
     <input type="text" name="word" v-model="word">&emsp;
-    <select name="Type" id="type" v-model="type">
+    <select name="Type" id="type" v-model="type" @change="Search()">
         <option value="quotes">Quotes</option>
         <option value="images">Images</option>
         <option value="videos">Videos</option>

@@ -1,114 +1,118 @@
 <template>
+  <div id="top">
+    <div id="webName">
+      <h1>Hubvert</h1>
+      <div class="avatar" v-if="email != null"><router-link to="/profile"><img :src="avatar" alt=""></router-link></div>
+    </div>
     <div id="menu">
-    <div class="list1">
-    <!-- <ul> -->
       <div v-if="email == null">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/sign-up">Register</router-link> |
-        <router-link to="/about">About us</router-link>
+        <router-link to="/"><div class='nav-item'>Login</div></router-link>
+        <router-link to="/sign-up"><div class='nav-item'>Register</div></router-link>
+        <router-link to="/about"><div class='nav-item'>About us</div></router-link>
       </div>
       <div v-else>
-        <router-link to="/profile">Profile</router-link> |
-        <router-link to="/diary">Diary</router-link> |
-        <router-link to="/feed">Feed</router-link> |
-        <router-link to="/about">About us</router-link>
+        <router-link to="/feed"><div class='nav-item'>Feed</div></router-link>
+        <router-link to="/diary"><div class='nav-item'>Diary</div></router-link>
+        <router-link to="/profile"><div class='nav-item'>Profile</div></router-link>
+        <router-link to="/about"><div class='nav-item'>About us</div></router-link>
       </div>
-        <!-- <router-link to="/about">About us</router-link>  -->
-      
-
-      <!-- <div v-if="email == null">
-        <li><router-link to="/">Home</router-link> |</li>
-        <li><router-link to="/sign-up">Sign-up</router-link> |</li>
-      </div>
-      <div v-else>
-        <li><router-link to="/profile">Profile</router-link> |</li>
-        <li><router-link to="/diary">Diary</router-link> |</li>
-        <li><router-link to="/feed">Feed</router-link> |</li>
-      </div>
-      <li><router-link to="/about">About</router-link> |</li> -->
-    <!-- </ul> -->
     </div>
   </div>
 </template>
 
 <script>
+import SHA256 from 'crypto-js/sha256';
+
+import {Users} from '../database';
 export default {
   name:'Nav',
   data:()=>{
     return {
-      email:''
+      email:'',
+      avatar:'',
     }
   },
   created:function(){
     this.email = JSON.parse(sessionStorage.getItem("User"));
-    // console.log(this.email);
-    // window.onscroll=this.scrollLoad;
+    if (this.id){
+      for(let i=0; i<Users.users.length; i++) {
+        console.log(i);
+        if (SHA256(Users.users[i].email).toString() === this.id.toString()) {
+          this.avatar=require("../assets/"+Users.users[i].avatar);
+          console.log(this.avatar);
+        }
+      }
+    }
+  },
+  updated:function(){
+    this.email = JSON.parse(sessionStorage.getItem("User"));
+    if (this.id){
+      for(let i=0; i<Users.users.length; i++) {
+        console.log(i);
+        if (SHA256(Users.users[i].email).toString() === this.id.toString()) {
+          this.avatar=require("../assets/"+Users.users[i].avatar);
+          console.log(this.avatar);
+        }
+      }
+    }
   }
-  // window.onscroll = function() {myfunction()};
-
-
 }
-
-
-
 </script>
 
 
 <style scoped>
-/* #app {
-  //font-family: Avenir, Helvetica, Arial, sans-serif;
-  //-webkit-font-smoothing: antialiased;
-  //-moz-osx-font-smoothing: grayscale;
-  //text-align: center;
-  //color: #2c3e50;
-} */
-
-#menu {
+#top{
   overflow:visible;
-  padding: 10px;
+  padding: 0;
   background: #28d0d6;
   display: flex;
-  justify-content: center;
-
-  /* float:left;
-  align-content: left; */
+  flex-direction: column;
+  justify-content: space-around;
 }
-#nav a {
+
+#webName{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#webName h1{
+  font-size: 50px;
+  padding: 0px 20px;
+  display: inline-block;
+}
+
+#menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: inherit;
+  width:100vw;
+}
+#menu a {
   font-weight: bold;
+  font-family: 'Nunito';
+  font-size: 20px;
   color: #2c3e50;
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-
-ul{
-  list-style-type: none;
-  /* float: left; */
+.nav-item{
+  padding: 10px 10px 10px 10px;
   display: inline-block;
-  color:black;
-  text-align: center;
-  padding:0;
-  
+  text-decoration: none;
 }
-.content {
-  padding: 16px
+.nav-item:hover{
+  background: #55eff5;
+  text-decoration: underline;
 }
-.list1{
-
-  /* display: inline-block; */
-  /* list-style-type: none; */
-} 
+a{
+  padding:10px;
+}
+a.router-link-exact-active{
+  background: #55eff5;
+}
 .sticky{
   position:fixed;
-  top: 0;
-  width: 100%
-  }
-.sticky + .content{
-  padding-top:60px;
+  margin: 0;
+  padding: 0;
 }
-
-
-
-
 </style>
