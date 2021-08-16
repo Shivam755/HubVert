@@ -1,5 +1,5 @@
 <template>
-    <Nav/>
+    <Nav :avatar="avatar"/>
     <div>
         <h1><b><font color="orange">MOOD</font></b></h1>
         <span v-for="mood in moods" :class="mood === currentMood? 'marked':''" :key=mood.id @click="selectMood(mood)">{{mood.emoji}}</span>
@@ -57,6 +57,7 @@ export default {
         return{
             word:'',
             type:'images',
+            avatar:'',
             moods: moodTypes,
             userId: '',
             currentMood:"",
@@ -218,6 +219,7 @@ export default {
 
                 if (SHA256(Users.users[i].email).toString() === this.id.toString()) {
                     this.userId=Users.users[i].id;
+                    this.avatar=require("../assets/"+Users.users[i].avatar);
                     this.userInterest=Users.users[i].interest;
                     // console.log(Users.users[i].interest);
                 }

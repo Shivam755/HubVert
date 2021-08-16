@@ -1,10 +1,6 @@
 <template>
-  <Nav/>
-  <!-- <div class="heading1 about-section">
-    <h1>About Us</h1>
-  </div>
-    
-   -->
+  <Nav :avatar="id ?avatar:''"/>
+  
 <div class="background1">
     <center>
     <p style="font-family:'Fredoka One',cursive; font-size:3vw">We are Quality Debuggers. 
@@ -222,11 +218,32 @@
 </template>
 
 <script>
+import SHA256 from 'crypto-js/sha256';
+
+import {Users} from "../database";
 import Nav from "./nav.vue";
 export default {
   name:"About",
+  data:()=>{
+    return{
+      avatar:'',
+      id:''
+    }
+  },
   components:{
     Nav
+  },
+  mounted: function () {
+    // let date = new Date();
+    this.id= JSON.parse(sessionStorage.getItem("User"));
+    if (this.id){
+        for(let i=0; i<Users.users.length; i++) {
+            if (SHA256(Users.users[i].email).toString() === this.id.toString()) {
+              this.avatar=require("../assets/"+Users.users[i].avatar);
+            }
+        }
+    }
+    return;
   }
 }
 </script>
@@ -266,8 +283,6 @@ template{
   padding-top:2rem;
   
 }
-
-/* #fbfae1 */
 
 .container {
   display:flex;

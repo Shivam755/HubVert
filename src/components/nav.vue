@@ -2,7 +2,7 @@
   <div id="top">
     <div id="webName">
       <h1>Hubvert</h1>
-      <div class="avatar" v-if="email != null"><router-link to="/profile"><img :src="avatar" alt=""></router-link></div>
+      <div class="avatar" v-if="email != null"><router-link to="/profile" style="background: #28d0d6;"><img :src="avatar" alt="avatar" ></router-link></div>
     </div>
     <div id="menu">
       <div v-if="email == null">
@@ -21,41 +21,34 @@
 </template>
 
 <script>
-import SHA256 from 'crypto-js/sha256';
+// import SHA256 from 'crypto-js/sha256';
 
-import {Users} from '../database';
+// import {Users} from '../database';
 export default {
   name:'Nav',
+  props:{
+    avatar:Object
+  },
   data:()=>{
     return {
-      email:'',
-      avatar:'',
+      email:''
     }
   },
   created:function(){
     this.email = JSON.parse(sessionStorage.getItem("User"));
-    if (this.id){
-      for(let i=0; i<Users.users.length; i++) {
-        console.log(i);
-        if (SHA256(Users.users[i].email).toString() === this.id.toString()) {
-          this.avatar=require("../assets/"+Users.users[i].avatar);
-          console.log(this.avatar);
-        }
-      }
-    }
-  },
-  updated:function(){
-    this.email = JSON.parse(sessionStorage.getItem("User"));
-    if (this.id){
-      for(let i=0; i<Users.users.length; i++) {
-        console.log(i);
-        if (SHA256(Users.users[i].email).toString() === this.id.toString()) {
-          this.avatar=require("../assets/"+Users.users[i].avatar);
-          console.log(this.avatar);
-        }
-      }
-    }
   }
+  // updated:function(){
+  //   this.email = JSON.parse(sessionStorage.getItem("User"));
+  //   if (this.id){
+  //     for(let i=0; i<Users.users.length; i++) {
+  //       console.log(i);
+  //       if (SHA256(Users.users[i].email).toString() === this.id.toString()) {
+  //         this.avatar=require("../assets/"+Users.users[i].avatar);
+  //         console.log(this.avatar);
+  //       }
+  //     }
+  //   }
+  // }
 }
 </script>
 
@@ -114,5 +107,10 @@ a.router-link-exact-active{
   position:fixed;
   margin: 0;
   padding: 0;
+}
+
+img{
+  width:5vw;
+  border-radius: 50%;
 }
 </style>
