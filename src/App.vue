@@ -1,13 +1,15 @@
 <template>
   <router-view/>
-  <center>
-  <h5 style=" bottom-padding: 3rem;">
+   
+  <p class="credits">
+    <center>
     This website is developed and managed by Quality Debuggers. 
     All rights reserved. 
     <br>
     &copy; 2020-21 Quality Debuggers
-  </h5>
-  </center>
+    </center>
+  </p>
+  
 </template>
 
 <script>
@@ -42,10 +44,21 @@ export default{
 } */
 
 #menu {
+  
   padding: 10px;
   background: #28d0d6;
   /* float:left;
   align-content: left; */
+}
+
+
+credits{
+  display:flex;
+  justify-content:center;
+  flex-direction:column;
+  align-self:flex-end;
+  /* padding: 3rem; */
+  
 }
 
 ul{
