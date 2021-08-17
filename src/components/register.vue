@@ -1,25 +1,25 @@
 <template>
   
   <Nav />
-  <div class='heading1'>
+  <!-- <div class='heading1'> -->
   <!-- <div class='titlebox'> -->
-    <p class='titlebox'>
+    <!-- <p class='titlebox'>
     Register
+    </p>
     <br>
-    Please fill your details to create an account.</p>
+    <p style="font-size:1rem">Please fill your details to create an account.</p> -->
   <!-- </div> -->
-  </div>
+  <!-- </div> -->
   <div class='form1'>
     <!-- <div class='frost'> -->
   
-    <fieldset  style="border:none">
+    <fieldset >
     <div class='inputicon1' >
       <!-- <label for="name"><strong>Name: </strong></label> -->
       <i class="fa fa-user" style= "font-size:25px"></i>
       <input type="text" placeholder="Enter Your Name" name="name" id="name" required v-model="name" style="border:none">
     </div>
     
-    <br>
     <br>
     
     <div class='inputicon1'>
@@ -71,7 +71,7 @@
     <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required v-model="rPass">
     </div>
     
-    </fieldset>
+  </fieldset>
     <br>
   </div>
   <div class="buttonholder">
@@ -91,7 +91,7 @@
 
 
 
-<script>
+<script scoped>
 import Nav from "./nav.vue";
 import { Users } from '../database';
 
@@ -222,7 +222,7 @@ export default {
  
   /* flex-direction: ; */
   text-shadow:#ffffff;
-  font-size: 40px;
+  font-size: 5rem;
   /* color:#; */
   /* padding-left:5rem; */
   margin:none
@@ -231,6 +231,7 @@ export default {
 .titlebox{
   /* flex:1; */
   /* display: flex; */
+  /* margin: 0.5rem 2rem; */
   margin: auto;
   /* width:40%; */
   align-items:center;
@@ -261,9 +262,15 @@ export default {
   background:  #f4fa9c;
   /* background: #faca70; */
   /* align-content: center; */
-  /* padding: 0.3rem 3rem ; */
+  padding: 3rem 0rem ;
   /* margin: 5rem 5rem; */
+  width:100%;
   margin:auto
+}
+
+fieldset{
+  width:60%;
+  border:none;
 }
 
 .inputicon1{

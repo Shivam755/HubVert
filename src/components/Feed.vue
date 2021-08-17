@@ -282,8 +282,7 @@ export default {
 
 
 img{
-    border-radius: 1vw;
-
+    border-radius: 10rem;
 }
 /* h1{
     text-shadow:2px 2px 5px red;
@@ -387,7 +386,7 @@ span.marked{
     /* background-color: transparent; */
     background-color: #98d6e2;
     transition: transform 250ms ease-in-out;
-    font-size: 2rem;
+    font-size: 1.5rem;
     line-height: 18px;
         
     color: #575756;
@@ -407,7 +406,7 @@ span.marked{
     padding: 0.5rem 0.8rem;
     outline: 0;
     background-color: #98d6e2;
-    /* border: 1px solid transparent; */
+    border: 1px solid red;
     border: 0.1vw solid #05c0e6;
     border-bottom: 0.3vw solid #575756;
     border-radius: 1rem;
