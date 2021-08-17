@@ -59,15 +59,17 @@ export default {
 
 #webName h1{
   font-size: 50px;
-  padding: 0px 20px;
+  padding: 1rem 1rem;
   display: inline-block;
+  margin:0rem;
 }
 
 #menu {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background: inherit;
+  /* background: inherit; */
+  background-color: #34495e;
   width:100vw;
 }
 #menu a {
@@ -75,6 +77,14 @@ export default {
   font-family: 'Nunito';
   font-size: 20px;
   color: #2c3e50;
+  /* display: inline-block;
+	position: relative;
+	z-index: 1;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+	color: white;
+	cursor: pointer; */
 }
 .nav-item{
   padding: 10px 10px 10px 10px;
