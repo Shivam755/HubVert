@@ -18,8 +18,8 @@ export default {
 <style >
 
 .forbid{
-    font-style:'Press Start 2P', cursive;
-    font-size: 5rem;
+    font-family:'Press Start 2P', cursive;
+    font-size: 3rem;
 }
 
 </style>

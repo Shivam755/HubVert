@@ -146,9 +146,14 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
   #profilePic
   {
-  border-radius: 50%;
+    width: 20vw;
+    height: 20vw;
+    padding:0.8vw;
+    background-color: white ;
+    border:0.3vw solid black;
+    border-radius: 50%;
   }
 </style>

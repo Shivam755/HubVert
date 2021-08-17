@@ -248,7 +248,7 @@ export default {
 }
 </script>
 
-<style  >
+<style scoped >
 
 body{
   padding:0;
@@ -267,8 +267,9 @@ template{
   padding:1rem;
   /* align-items:center; */
   /* justify-content:center; */
-  background:linear-gradient(to right, rgb(198, 255, 221), 
-  rgb(251, 215, 134), rgb(247, 121, 125));
+  /* background:linear-gradient(to right, rgb(198, 255, 221), 
+  rgb(251, 215, 134), rgb(247, 121, 125)); */
+  background:linear-gradient(to right, rgb(248, 210, 104), rgb(243, 142, 91))
 }
 
 .heading1{

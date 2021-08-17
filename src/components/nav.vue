@@ -37,18 +37,6 @@ export default {
   created:function(){
     this.email = JSON.parse(sessionStorage.getItem("User"));
   }
-  // updated:function(){
-  //   this.email = JSON.parse(sessionStorage.getItem("User"));
-  //   if (this.id){
-  //     for(let i=0; i<Users.users.length; i++) {
-  //       console.log(i);
-  //       if (SHA256(Users.users[i].email).toString() === this.id.toString()) {
-  //         this.avatar=require("../assets/"+Users.users[i].avatar);
-  //         console.log(this.avatar);
-  //       }
-  //     }
-  //   }
-  // }
 }
 </script>
 

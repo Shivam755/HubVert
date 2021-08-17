@@ -166,7 +166,7 @@ export default {
                     return;
                 }
                 // console.log(word, category);
-                $.get("https://pixabay.com/api/?key="+PXkey+"&q="+word+"&image_type=photo&category="+category+"&per_page=200",function(data){
+                $.get("https://pixabay.com/api/?key="+PXkey+"&q="+word+category+"&image_type=photo&per_page=200",function(data){
                     console.log(data);
                     $("#container").empty();
                     if(data.total != 0){
@@ -204,6 +204,7 @@ export default {
             DailyMoods.addMood(this.userId,today,mood.id);
             this.currentMood = mood;
             console.log(mood.mood);
+            this.Search();
         },
         askInterest:function(){
             let interestHtml = `<form name="InterestForm">`;
@@ -271,6 +272,9 @@ export default {
             }
         }
         return;
+    },
+    mounted:function(){
+        this.Search();
     }
 }
 
@@ -283,7 +287,6 @@ export default {
 
 img{
     border-radius: 1vw;
-
 }
 /* h1{
     text-shadow:2px 2px 5px red;
