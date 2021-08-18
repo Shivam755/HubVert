@@ -2,8 +2,9 @@
   <div id="top">
     <div id="webName">
       <h1>Hubvert</h1>
-      <div class="avatar" v-if="email != null"><router-link to="/profile" style="background: #28d0d6;"><img :src="avatar" alt="avatar" ></router-link></div>
-    </div>
+      <div class="avatar" v-if="email != null"><router-link to="/profile" style="background: #28d0d6;">
+      <img :src="avatar" alt="avatar" ></router-link></div>
+      </div>
     <div class="navcolor">
     <div v-if="email == null" >
      
@@ -58,10 +59,12 @@ export default {
 #top{
   overflow:visible;
   padding: 0;
-  background: #28d0d6;
+  background: #b9113b;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  width:100%;
+  color:black;
 }
 
 #webName{
@@ -112,13 +115,17 @@ a.router-link-exact-active{
 }
 
 img{
+  padding-top:0.5rem;
+  padding-right:0.5rem;
   width:5vw;
+  height:auto;
   border-radius: 50%;
 }
 
 
 .navcolor{
   background:#34495e;
+  /* background:#ffb97b; */
   display:flex;
   justify-content:center;
   z-index:0;
@@ -126,10 +133,8 @@ img{
 
 
 nav {
-	margin: 27px auto 0;
-
 	position: relative;
-	width: 590px;
+	/* width: 590px; */
 	height: 50px;
 	/* background-color: #34495e; */
 	background-color: transparent;
@@ -139,7 +144,7 @@ nav {
 nav a {
 	line-height: 50px;
 	height: 100%;
-  font-family:"Lobster",cursive;
+  font-family:"Merriweather",cursive;
 	font-size: 15px;
 	display: inline-block;
 	position: relative;
@@ -197,6 +202,11 @@ nav .start-contact, a:nth-child(5):hover~.animation {
 	width: 120px;
 	left: 470px;
 	background-color: #e67e22;
+}
+
+nav a.router-link-exact-active{
+	background: #e67e22;
+  border-radius: 8px;
 }
 
 
