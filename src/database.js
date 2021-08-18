@@ -24,16 +24,16 @@ for (let i = 1; i<=10; i++){
 }
 
 const interests = [
-    {id: 1, topic: "Reading"},
-    {id: 2, topic: "Gardening"},
-    {id: 3, topic: "Sports"},
-    {id: 4, topic: "Photography"},
-    {id: 5, topic: "Dancing"},
-    {id: 6, topic: "Travelling"},
-    {id: 7, topic: "Gaming"},
-    {id: 8, topic: "Cooking"},
-    {id: 9, topic: "Blogging"},
-    {id: 10, topic: "Music"}
+    {id: 1, topic: "Reading",icon:'📖'},
+    {id: 2, topic: "Gardening",icon:'🌱'},
+    {id: 3, topic: "Sports",icon:'🎾'},
+    {id: 4, topic: "Photography",icon:'📸'},
+    {id: 5, topic: "Dancing",icon:'💃'},
+    {id: 6, topic: "Travelling",icon:'✈'},
+    {id: 7, topic: "Gaming",icon:'🎮'},
+    {id: 8, topic: "Cooking",icon:'👨‍🍳'},
+    {id: 9, topic: "Blogging",icon:'📝'},
+    {id: 10, topic: "Music", icon:'🎵'}
 ]
 //User table
 class User{

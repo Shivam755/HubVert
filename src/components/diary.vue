@@ -8,12 +8,14 @@
       <div class="notebook">
    <header><h1>My Personal Journal</h1></header>
     <!-- Journal Entry Section -->
-    <section class="notebook">
+    <section class="page">
         <input
           type="text"
           name="entry-title"
           id="entry-title"
           class="entry-text-title"
+          @focus="highlight()"
+          @blur="unhighlight()"
           placeholder="Title ✏️"
           v-model="title"
           :disabled="disabled"
@@ -36,7 +38,7 @@
       <ul>
         <li v-for="entry in journalEntries" @click="loadPrevious(entry)" :key="entry.title">{{entry.title}}({{entry.date}})</li>
       </ul>
-      <button id="back" type="submit" @click.prevent="loadCurrent()" v-if="disabled"><i class='fa fa-arrow-left'>  Current Page</i></button>
+      <button id="back" type="submit" @click.prevent="loadCurrent()" ><i class='fa fa-arrow-left'>  New Page</i></button>
     </aside>
     </div>
   </div>
@@ -50,6 +52,7 @@ import SHA256 from 'crypto-js/sha256';
 import {Users, Diaries} from "../database";
 import Nav from "./nav.vue";
 import Forbidden from './forbidden.vue';
+
 export default {
   data:()=>{
     return {
@@ -98,6 +101,12 @@ export default {
     },
     loadCurrent:function(){
       router.go()
+    },
+    highlight:function(){
+      document.getElementById("entry-title").style = "font-family: 'Space Mono', monospace;font-size: 1rem; color: lightcoral;border: 0.15vw solid lightcoral;";
+    },
+    unhighlight:function(){
+      document.getElementById("entry-title").style = "font-family: 'Space Mono', monospace;font-size: 1rem; color: black;border: none;"
     }
   },
   components:{
@@ -122,11 +131,6 @@ export default {
 </script>
 
 <style scoped>
-/* *,
-*::before,
-*::after {
-  box-sizing: border-box;
-} */
 
 section{
   display: inline;
@@ -151,11 +155,14 @@ body {
 /* Global Typography */
 ul{
   list-style: none;
-  height: 10vw;
+  height: 30vw;
   overflow-y: scroll;
 }
 ul::-webkit-scrollbar {
   width: 0;
+}
+li{
+  font-size:1.8vw;
 }
 li:hover{
   text-decoration: underline;
@@ -167,7 +174,7 @@ h1 {
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 3vw;
 }
 
 textarea {
@@ -182,18 +189,20 @@ button {
   font-family: 'Space Mono', monospace;
 }
 
-/* Section Container Positions, Spacing, Utilities */
-
 header {
   text-align: center;
-  margin: 1em auto;
+  margin-top: 3vw;
 }
 
 .Container{
   display: flex;
+  width:100vw;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  background-image: url('../assets/db7.jpg');
+  background-size: contain;
+  background-position:center;
 }
 
 /* Button Standard */
@@ -206,14 +215,15 @@ header {
   border: none;
   border-radius: 2px;
   cursor: pointer;
-  color: lightgoldenrodyellow;
-  background-color: lightcoral;
+  border: 0.15vw solid lightcoral;
+  background-color: lightgoldenrodyellow;
+  color: lightcoral;
 }
 
 .btn-main:hover {
-  background-color: lightgoldenrodyellow;
-  color: lightcoral;
   font-weight: 700;
+  color: lightgoldenrodyellow;
+  background-color: lightcoral;
   transform: scale(1.08);
 }
 
@@ -244,47 +254,35 @@ header {
   align-items: center;
   justify-content: center;
   padding:1vw;
-  margin-top:2vh;
+  margin:5vh 0vh;
   border-radius:3vw;
   color:rgb(151, 90, 49);
   background-color:lightgoldenrodyellow;
 }
-
+.page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding:1vw;
+  border-radius:3vw;
+  background-color:lightgoldenrodyellow;
+}
 .entry-text-title {
   width: 20em;
   margin: 1em auto;
   padding: 1em;
-  color: lightcoral;
-  border: 0.15vw solid lightcoral;
   border-radius: 0.5vw;
   background-color: lightgoldenrodyellow;
   font-family: 'Space Mono', monospace;
 }
 
-.entry-text-title :hover{
-  font-family: 'Space Mono', monospace;
-  font-size: 1rem;
-}
-
 .entry-text-title::placeholder {
   color: lightcoral;
   font-family: 'Space Mono', monospace;
+  text-align:center;
   font-size: 1rem;
 }
-
-.entry-text-title::-ms-value {
-  color: lightcoral;
-  font-family: 'Space Mono', monospace;
-  font-size: 1rem;
-}
-
-.journal-label {
-  display: block;
-  line-height: 1.6;
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-
 .entry-text-box {
   width: 100%;
   height: 20em;
@@ -319,6 +317,7 @@ header {
   color: lightcoral;
   font-family: 'Space Mono', monospace;
   font-size: 1rem;
+  text-align:center;
 }
 
 </style>

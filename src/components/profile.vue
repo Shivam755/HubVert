@@ -4,30 +4,34 @@
     </div>
    <div v-else>
        <Nav :avatar="avatar"/>
-        <img :src="avatar" id='profilePic' alt="avatar" width="300" height="320">
-        <router-link to="/changeProfilePic"><button>✏️</button></router-link>
-        <fieldset>
-        <label for="userid"><b>User ID: {{userId}} </b></label>
-        <br>
-        <br>
-        <label for="name"><strong> Name: {{name}} </strong></label>
-        <br>
-        <br>
-        <label for="dob"> <strong> Date of Birth: {{dob}}</strong></label>
-        <br>
-        <br>
-        <label for="gender"><b> Gender: {{gender}} </b></label>
-        <br>	
-        <br>
-        <label for="email"><b>Email ID: {{email}} </b></label>
-        <br>
-        <br>
-        <label for="interest"><b>Interests: <span v-for ="interest in userInterests" :key="interest.id">{{interest.topic}}, </span> </b> <button @click="askInterest()">Edit Interest</button> </label>
-        </fieldset>
-        <br>
-        <br>
-        <router-link to='/changePassword'><button >Change Password</button></router-link>
-        <button @click.prevent = "logout()">Log-out</button>
+       <div class="container">
+           
+            <div class="main">
+                <div class="pic">
+                    <img :src="avatar" id='profilePic' alt="avatar" width="300" height="320">
+                    <router-link to="/changeProfilePic"><button class="edit">✏️</button></router-link>
+                </div>
+                <div class="details">
+                    <div class='content'>
+                        <label for="name"><strong> Name: {{name}} </strong></label>
+                        <label for="userid"><b>User ID: {{userId}} </b></label>
+                        <label for="dob"> <strong> Date of Birth: {{dob}}</strong></label>
+                        <label for="gender"><b> Gender: {{gender}} </b></label>
+                        <label for="email"><b>Email ID: {{email}} </b></label>
+                        <div>
+                            <label for="interest"><b>Interests: <span v-for ="interest in userInterests" :key="interest.id">{{interest.topic}}{{interest.icon}}, </span> </b> <button @click="askInterest()">Edit Interest</button> </label>
+                        </div>
+                    </div>
+                    
+                    <div class="bottom">
+                        <router-link to='/changePassword'><button >Change Password</button></router-link>
+                    </div>
+                </div>
+                <div class="top">
+                    <button id="logout" @click.prevent = "logout()"><i class="fa fa-power-off"></i></button>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -147,13 +151,99 @@ export default {
 
 
 <style scoped>
-  #profilePic
-  {
+label{
+    font-size: 2vw;
+    font-family: 'Merriweather', cursive;
+    color:rgb(71, 13, 25);
+    padding:1vw 0vw
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    background-image:url('../assets/profileBack3.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    justify-content: center;
+    align-items: center;
+}
+.top{
+    display: flex;
+    flex-direction:column-reverse;
+    justify-content: flex-end;
+    padding:2vw;
+}
+.main{
+    display: flex;
+    justify-content: space-between;
+    margin:2vw 0vw;
+    width:80vw;
+    padding:2vw 3vw;
+    border-radius: 1vw;
+    background: linear-gradient(
+        114deg,
+        rgba(255, 255, 255, 0.48) 1.41%,
+        rgba(255, 255, 255, 0.34) 99.96%
+    );
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(80, 80, 80, 0.445);
+    background-repeat: no-repeat;
+}
+.pic{
+    margin: 5vw 3vw;
+    align-items: center ;
+    justify-content: center;
+    align-self: flex-start;
+}
+.edit{
+    border-radius:50vw;
+    height:3vw;
+    width:3vw;
+    outline:0;
+    border:0;
+    z-index:5;
+    background:#29178bb6;;
+    color:white;
+    font-size: 1.5vw;
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+}
+.content{
+    display: flex;
+    margin: 5vw 0vw;
+    flex-direction: column;
+    height: 20vw;
+    padding:2vw;
+    justify-content: space-evenly;
+}
+.bottom{
+    display: flex;
+    justify-content: center;
+}
+#logout{
+    border-radius:50vw;
+    width: 5vw;
+    height: 5vw;
+    font-size: 3vw;
+    background-color:white;
+    color:red;
+}
+#logout:active{
+    background-color:red;
+    color: white;
+}
+#logout:hover{
+    cursor:pointer;
+}
+#profilePic
+{
     width: 20vw;
     height: 20vw;
     padding:0.8vw;
     background-color: white ;
     border:0.3vw solid black;
     border-radius: 50%;
-  }
+}
 </style>
