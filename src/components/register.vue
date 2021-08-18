@@ -2,6 +2,7 @@
   
   <Nav />
   <div class='form1'>
+    <img src="../assets/register.png" alt="" style="width: 23%; align-self:center">
     <div class='inputicon1' >
       <i class="fa fa-user" style= "font-size:25px"></i>
       <input type="text" placeholder="Enter Your Name" name="name" id="name" required v-model="name" style="border:none">
@@ -207,7 +208,8 @@ export default {
   background-color:white;
   padding: 3rem 0rem ;
   width:100%;
-  margin:auto
+  margin:auto;
+  color:black;
 }
 
 fieldset{

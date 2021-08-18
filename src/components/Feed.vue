@@ -9,7 +9,7 @@
             
         <div class="searchcont">
             <div class="srchbarcat">
-                <input type="text" name="word" v-model="word" class="search_in" placeholder="Search text">&emsp;
+                <input type="text" name="word" v-model="word" class="search_in" placeholder="Search...">&emsp;
                 <div class="categorybox">
                     <div>
                         <input label="Quote" type="radio" id="Quote" name="keyword" value="quotes" v-model="type" @change="Search()" >
@@ -272,7 +272,7 @@ img{
     justify-content:center;
     align-items:center;
     /* background: #dd7cfa; */
-    background:linear-gradient(to bottom, rgb(236, 44, 60), rgb(250, 103, 115));
+    background:linear-gradient(to bottom,rgb(185,17,59), rgb(218, 25, 73));
     height:5.3rem;
 
     /* width: 10%; */
@@ -297,7 +297,7 @@ span.marked{
     display:flex;
     flex-direction:row;
     /* background: #46c3db; */
-    background:linear-gradient(to bottom, rgb(98, 71, 129), rgb(157, 104, 187));
+    background:linear-gradient(to bottom,rgb(218, 25, 73), rgb(238, 49, 97), rgb(253, 89, 130));
     justify-content: space-around;
     align-items: center;
     padding-top:0.8rem;
@@ -331,14 +331,13 @@ span.marked{
     background-size: 18px 18px;
     background-position: 95% center;
     border-radius: 50px;
-    /* border: 1px solid #575756; */
+    border: 1px solid #575756;
     transition: all 250ms ease-in-out;
     backface-visibility: hidden;
     transform-style: preserve-3d;
 }
 
 .search_in:hover, .search_in:focus{
-    padding: 0.5rem 0.8rem;
     outline: 0;
     background-color: #98d6e2;
     border: 0.1vw solid #05c0e6;

@@ -2,7 +2,7 @@
   <div id="top">
     <div id="webName">
       <h1>Hubvert</h1>
-      <div class="avatar" v-if="email != null"><router-link to="/profile" style="background: #28d0d6;">
+      <div class="avatar" v-if="email != null"><router-link to="/profile" style="background:#b9113b;">
       <img :src="avatar" alt="avatar" ></router-link></div>
       </div>
     <div class="navcolor">
