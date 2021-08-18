@@ -4,19 +4,32 @@
       <h1>Hubvert</h1>
       <div class="avatar" v-if="email != null"><router-link to="/profile" style="background: #28d0d6;"><img :src="avatar" alt="avatar" ></router-link></div>
     </div>
-    <div id="menu">
-      <div v-if="email == null">
-        <router-link to="/"><div class='nav-item'>Login</div></router-link>
-        <router-link to="/sign-up"><div class='nav-item'>Register</div></router-link>
-        <router-link to="/about"><div class='nav-item'>About us</div></router-link>
-      </div>
-      <div v-else>
+    <div class="navcolor">
+    <div v-if="email == null" >
+     
+        <nav>
+        <router-link to="/">Login</router-link>
+        
+        <router-link to="/sign-up">Register</router-link>
+        <router-link to="/about">About us</router-link>
+   
+        <div class="animation start"></div>
+
+        </nav>
+    </div>
+    <div v-else>
+      
+        <nav>
         <router-link to="/feed"><div class='nav-item'>Feed</div></router-link>
         <router-link to="/diary"><div class='nav-item'>Diary</div></router-link>
         <router-link to="/profile"><div class='nav-item'>Profile</div></router-link>
         <router-link to="/about"><div class='nav-item'>About us</div></router-link>
-      </div>
+        <div class="animation start"></div>
+        </nav>
+   
     </div>
+    </div>
+
   </div>
 </template>
 
@@ -64,12 +77,11 @@ export default {
   margin:0rem;
 }
 
-#menu {
+/* #menu {
   display: flex;
   flex-direction: row;
   justify-content: center;
   background: #28d0d6;
-  /* background: inherit; */
   width:100vw;
 }
 #menu a {
@@ -77,14 +89,6 @@ export default {
   font-family: 'Nunito';
   font-size: 20px;
   color: #2c3e50;
-  /* display: inline-block;
-	position: relative;
-	z-index: 1;
-	text-decoration: none;
-	text-transform: uppercase;
-	text-align: center;
-	color: white;
-	cursor: pointer; */
 }
 .nav-item{
   padding: 10px 10px 10px 10px;
@@ -100,7 +104,7 @@ a{
 }
 a.router-link-exact-active{
   background: #55eff5;
-}
+} */
 .sticky{
   position:fixed;
   margin: 0;
@@ -111,4 +115,90 @@ img{
   width:5vw;
   border-radius: 50%;
 }
+
+
+.navcolor{
+  background:#34495e;
+  display:flex;
+  justify-content:center;
+  z-index:0;
+}
+
+
+nav {
+	margin: 27px auto 0;
+
+	position: relative;
+	width: 590px;
+	height: 50px;
+	/* background-color: #34495e; */
+	background-color: transparent;
+	border-radius: 8px;
+	font-size: 0;
+}
+nav a {
+	line-height: 50px;
+	height: 100%;
+  font-family:"Lobster",cursive;
+	font-size: 15px;
+	display: inline-block;
+	position: relative;
+	z-index: 2;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+}
+nav .animation {
+	position: absolute;
+	height: 100%;
+	top: 0;
+	z-index: 1;
+	transition: all .5s ease 0s;
+	border-radius: 8px;
+}
+a:nth-child(1) {
+	width: 100px;
+}
+a:nth-child(2) {
+	width: 110px;
+}
+a:nth-child(3) {
+	width: 100px;
+}
+a:nth-child(4) {
+	width: 160px;
+}
+a:nth-child(5) {
+	width: 120px;
+}
+nav .start-home, a:nth-child(1):hover~.animation {
+	width: 100px;
+	left: 0;
+	background-color: #1abc9c;
+}
+nav .start-about, a:nth-child(2):hover~.animation {
+	width: 110px;
+	left: 100px;
+	background-color: #e74c3c;
+}
+nav .start-blog, a:nth-child(3):hover~.animation {
+	width: 100px;
+	left: 210px;
+	background-color: #3498db;
+}
+nav .start-portefolio, a:nth-child(4):hover~.animation {
+	width: 160px;
+	left: 310px;
+	background-color: #9b59b6;
+}
+nav .start-contact, a:nth-child(5):hover~.animation {
+	width: 120px;
+	left: 470px;
+	background-color: #e67e22;
+}
+
+
+
 </style>

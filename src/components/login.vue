@@ -14,7 +14,7 @@
 
     <button class="button1" type="submit" @click.prevent="verify"> Login </button>
 
-    <span>Don't have an account? <router-link to='/Sign-up'>Sign-up</router-link></span>
+    <span style="color:black">Don't have an account? <router-link to='/Sign-up'>Sign-up</router-link></span>
   </div>
 
 </template>
@@ -100,7 +100,7 @@ export default {
 body{
   margin:0;
   padding:0;
-
+  
 }
 
 .img-container{
@@ -110,7 +110,8 @@ body{
   flex-direction: column;
   align-items: center;
   /* background: #80e9c0; */
-  width: 100%
+  width: 100%;
+  background:white;
 }
 
 
@@ -200,13 +201,13 @@ body{
 
 
 /* The "Forgot password" text */
-span.psw {
+/* span.psw {
   float: right;
   padding-top: 16px;
-}
+} */
 
 /* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
+/* @media screen and (max-width: 300px) {
   span.psw {
     display: block;
     float: none;
@@ -214,7 +215,7 @@ span.psw {
   .cancelbtn {
     width: 100%;
   }
-}
+} */
 
 </style>
 

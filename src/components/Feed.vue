@@ -22,10 +22,10 @@
                     
                     
 
-                    <input label="Quote" type="radio" id="Quote" name="keyword" value="Quote">
+                    <input label="Quote" type="radio" id="Quote" name="keyword" value="Quote" checked>
                         <!-- <label for="Quote" ><i class="fa fa-quote-left"></i>Quotes</label> -->
                     
-                    <input label="Pictures" type="radio" id="Images" name="keyword" value="Image" checked>
+                    <input label="Pictures" type="radio" id="Images" name="keyword" value="Image" >
                     <!-- <i class="fa fa-image"></i>	             -->
                     <input label="Videos" type="radio" id="Video" name="keyword" value="Video">
                     <!-- <i class="fa fa-video"></i> -->
@@ -51,7 +51,7 @@
                     <a href="" @click.prevent="videoSearch()">Videos</a>
                 </div> -->
                 <!-- <hr> -->
-            <div id="container" ></div>
+            <div class="container1" ></div>
 
         </div>
         
@@ -88,7 +88,7 @@ export default {
     data:()=> {
         return{
             word:'',
-            type:'images',
+            type:'quotes',
             avatar:'',
             moods: moodTypes,
             userId: '',
@@ -113,27 +113,27 @@ export default {
         quoteSearch: function () {
             // console.log(this.word);
             try{
-                $("#container").empty();
-                if(this.word.trim()!==''){
-                    fetch("https://quotable.io/quotes?limit=100")
-                        .then(response => response.json())
-                        .then(data => {
-                            console.log(data)
-                            // console.log(data);
-                            $("#container").empty();
+                $(".container1").empty();
+                
+                fetch("https://quotable.io/quotes?limit=100")
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data)
+                        // console.log(data);
+                        $(".container1").empty();
 
-                            data.results.forEach(item => {
-                                let quote = `
-                                <div>
-                                <p>${item.content}</p>
-                                <sub>${item.author}</sub>
-                                </dv>
-                                `
-                                $("#container").append(quote);
-                            });
-                        }
-                    )
-                }
+                        data.results.forEach(item => {
+                            let quote = `
+                            <div class="quotestyle">
+                            <p style="background:blue;font-size: 12pt ;font-family:'Fredoka One',cursive;">${item.content}</p>
+                            <small>${item.author}</small>
+                            </div>
+                            `
+                            $(".container1").append(quote);
+                        });
+                    }
+                )
+                
             }
             catch{
                 let error = `<h1>Oops... there's some problem with the api.Please Try again.</h1>`
@@ -476,8 +476,86 @@ span.marked{
 	width: 100%;
 }
 
-#container{
-    background:transparent;
+.container1{
+    background:orange;
 }
+
+
+.quotestyle{
+    color: pink;
+    background-color:blue;
+    margin: 0 auto;
+    padding: 1em;
+    border-left: 5px solid #999;
+}
+
+.quotestyle:before {
+    display: none;
+}
+
+.quotestyle :not(:first-of-type) {
+  margin-top: 0.5rem;
+}
+
+p{
+  color: #555;
+  font-size: 12pt;
+  line-height: 1.4;
+  font-family: 'Times New Roman';
+}
+small{
+  margin-top: .5em;
+  padding: 0;
+  color: #777;
+  font-size: 12pt;
+  text-align: left;
+  font-style: italic;
+}
+small:before{
+  content: '— ';
+}
+.quotestyle:nth-of-type(even){
+  text-align: right;
+  border-left: none;
+  border-right: 5px solid #999;
+}
+.quotestyle:nth-of-type(even) small {
+  text-align: right;
+}
+.quotestyle:nth-of-type(even) small:before {
+  content: '';
+}
+.quotestyle:nth-of-type(even) small:after {
+  content: ' —';
+}
+/* @media 'quotestyle' and (min-width: 300px) {
+  blockquote {
+    padding: 1em 20% 1em 1em;
+  }
+  blockquote p {
+    font-size: 14pt;
+  }
+  blockquote:nth-of-type(even) {
+    padding: 1em 1em 1em 20%;
+  }} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </style>

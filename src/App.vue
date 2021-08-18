@@ -1,6 +1,6 @@
 <template>
   <router-view/>
-  <button @click="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <button @click="topFunction()" id="myBtn" title="Go to top">Top   <i class="fa fa-arrow-up"></i></button>
   <p class="credits">
     <center>
     This website is developed and managed by Quality Debuggers. 
@@ -45,12 +45,13 @@ export default{
   z-index: 99; /* Make sure it does not overlap */
   border: none; /* Remove borders */
   outline: none; /* Remove outline */
-  background-color: red; /* Set a background color */
+  background-color: lightcoral; /* Set a background color */
   color: white; /* Text color */
   cursor: pointer; /* Add a mouse pointer on hover */
   padding: 15px; /* Some padding */
   border-radius: 10px; /* Rounded corners */
   font-size: 18px; /* Increase font size */
+  opacity:0.7;
 }
 
 #myBtn:hover {
