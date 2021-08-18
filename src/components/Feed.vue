@@ -1,74 +1,32 @@
 <template>
     <Nav :avatar="avatar"/>
 
-    <!-- starting the feed base t=11:14am(16-8-21) -->
-    <!-- <div class="mainbox"> -->
-        <div class="feedbox">
-            <div class="emojibox">
-                <span v-for="mood in moods" :class="mood === currentMood? 'marked':''" :key=mood.id 
-                @click="selectMood(mood)">{{mood.emoji}}</span>
-            
-            </div>
-                
-            <div class="searchcont">
-                    
-                <div class="srchbarcat">
-                    
-
-                    <!-- <h1><b><font color="orange">FEED</font></b></h1> -->
-                    <input type="text" name="word" v-model="word" class="search_in">&emsp;
-
-                    <div class="categorybox">
-                    
-                    
-
-                    <input label="Quote" type="radio" id="Quote" name="keyword" value="Quote" checked>
-                        <!-- <label for="Quote" ><i class="fa fa-quote-left"></i>Quotes</label> -->
-                    
-                    <input label="Pictures" type="radio" id="Images" name="keyword" value="Image" >
-                    <!-- <i class="fa fa-image"></i>	             -->
-                    <input label="Videos" type="radio" id="Video" name="keyword" value="Video">
-                    <!-- <i class="fa fa-video"></i> -->
-
-                    <br><br>
-
-                    <select name="Type" id="type" v-model="type" @change="Search()">
-                    <option value="quotes">Quotes</option>
-                    <option value="images">Images</option>
-                    <option value="videos">Videos</option>
-                    </select>
-                    </div>
-                </div>            
-            
-                <button class="srchbutton" type="submit" @click.prevent="Search()">
-                    <i class="fa fa-search" style="font-size:4vw"></i>
-                    <br>Search</button>
-            </div>
-            <br>
-                <!-- <div>
-                    <a href="" @click.prevent="quoteSearch()">Quotes</a> | 
-                    <a href="" @click.prevent="photoSearch()">Images</a> | 
-                    <a href="" @click.prevent="videoSearch()">Videos</a>
-                </div> -->
-                <!-- <hr> -->
-            <div class="container1" ></div>
-
+    <div class="feedbox">
+        <div class="emojibox">
+            <span v-for="mood in moods" :class="mood === currentMood? 'marked':''" :key=mood.id 
+            @click="selectMood(mood)">{{mood.emoji}}</span>
         </div>
+            
+        <div class="searchcont">
+            <div class="srchbarcat">
+                <input type="text" name="word" v-model="word" class="search_in" placeholder="Search text">&emsp;
+                <div class="categorybox">
+                    <div>
+                        <input label="Quote" type="radio" id="Quote" name="keyword" value="quotes" v-model="type" @change="Search()" >
+                        <input label="Pictures" type="radio" id="Images" name="keyword" value="images" v-model="type" @change="Search()" checked>
+                        <input label="Videos" type="radio" id="Video" name="keyword" value="videos" v-model="type" @change="Search()">
+                    </div>
+                </div>
+            </div>            
         
+            <button class="srchbutton" type="submit" @click.prevent="Search()">
+                <i class="fa fa-search" ></i>
+            </button>
+        </div>
+        <br>
+        <div class="container1" ></div>
 
-        <!-- <div>
-        <h1><b><font color="orange">MOOD</font></b></h1>
-        <span v-for="mood in moods" :class="mood === currentMood? 'marked':''" :key=mood.id 
-        @click="selectMood(mood)">{{mood.emoji}}</span>
-        </div>-->
-
-    <!-- </div>  -->
-
-    
-
-    
-    
-    
+    </div>
 </template>
 
 
@@ -83,12 +41,11 @@ const YTkey="AIzaSyCGGV6g7Uh_aFD9C-nC9o7S8bj5Kzj6g0M";
 const PXkey="22933344-7a49660678780afe61e61b1d4";
 var video='';
 var photo='';
-    // let i;
 export default {
     data:()=> {
         return{
             word:'',
-            type:'quotes',
+            type:'images',
             avatar:'',
             moods: moodTypes,
             userId: '',
@@ -118,8 +75,7 @@ export default {
                 fetch("https://quotable.io/quotes?limit=100")
                     .then(response => response.json())
                     .then(data => {
-                        console.log(data)
-                        // console.log(data);
+                        console.log(data);
                         $(".container1").empty();
 
                         data.results.forEach(item => {
@@ -137,7 +93,7 @@ export default {
             }
             catch{
                 let error = `<h1>Oops... there's some problem with the api.Please Try again.</h1>`
-                $("#container").append(error);
+                $(".container1").append(error);
 
             }
         },
@@ -145,18 +101,18 @@ export default {
             try{
             $.get("https://www.googleapis.com/youtube/v3/search?key="+YTkey+"&type=video&part=snippet&maxResults=50&q="+this.word,function(data){
                 console.log(data);
-                $("#container").empty();
+                $(".container1").empty();
 
                 data.items.forEach(item => {
                     video = `
                     <iframe width="420" height="315" src="http://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
                     `
-                    $("#container").append(video);
+                    $(".container1").append(video);
                 });
             });}
             catch{
                 let error = `<h1>Oops... there's some problem with the api.Please Try again.</h1>`
-                $("#container").append(error);
+                $(".container1").append(error);
 
             }
         },
@@ -168,17 +124,17 @@ export default {
                 // console.log(word, category);
                 $.get("https://pixabay.com/api/?key="+PXkey+"&q="+word+"+"+category+"&image_type=photo&per_page=200",function(data){
                     console.log(word, category, data);
-                    $("#container").empty();
+                    $(".container1").empty();
                     if(data.total != 0){
                         data.hits.forEach(hit => {
                         photo = `
                         <img width="420" height="315" src=${hit.webformatURL} frameborder="1" ></img>
                         `
-                        $("#container").append(photo)
+                        $(".container1").append(photo)
                         });
                     }else{
                         let notFound = `<h1>We searched high and low but we couldn't find any thing related to your search</h1>`
-                        $("#container").append(notFound);
+                        $(".container1").append(notFound);
                     }
                     
                 });
@@ -190,13 +146,13 @@ export default {
                 else{
                     let ind = Math.floor((Math.random() * 100));
                     let key = ind % this.userInterest.length;
-                    console.log(ind,key)
+                    console.log(this.currentMood.search,this.userInterest[key].topic);
                     getPhotos(this.type,this.currentMood.search,this.userInterest[key].topic);
                 }
             }catch(err){
                 let error = `<h1>Oops... there's some problem with the api.Please Try again.</h1>`
                 console.log(err);
-                $("#container").append(error);
+                $(".container1").append(error);
 
             }
         },
@@ -290,54 +246,18 @@ export default {
 img{
     border-radius: 10rem;
 }
-/* h1{
-    text-shadow:2px 2px 5px red;
-} */
-
-
-
-
-
-
-    /* body{margin:0; */
-    /* background:linear-gradient(90deg, rgb(55, 59, 68), rgb(66, 134, 244)); */
-    /* background:linear-gradient(to left, rgb(41, 128, 185), rgb(109, 213, 250), rgb(255, 255, 255)); */
-    /* background: linear-gradient(to left, rgb(255, 239, 186), rgb(255, 255, 255)); */
-    /* background:linear-gradient(to right , rgb(163, 134, 231), rgb(233, 228, 240)); */
-    /* background:linear-gradient(-45deg , rgb(163, 134, 231), rgb(233, 228, 240)); */
-    /* background:linear-gradient(-45deg, rgb(255, 175, 189), rgb(255, 195, 160));          nice*/
-    /* background:linear-gradient(-45deg, rgb(224, 234, 252), rgb(207, 222, 243));          nice */
-    /* background:linear-gradient(-45deg,  rgb(255, 78, 80), rgb(249, 212, 35));        nice */
-    /* background:linear-gradient(-45deg,  rgb(252, 74, 26), rgb(247, 183, 51)); */
-    /* background:linear-gradient(-45deg,  rgb(242, 153, 74), rgb(242, 201, 76)); */
-    /* background:linear-gradient(-45deg,  rgb(242, 112, 156), rgb(255, 148, 114)); */
-    /* background:linear-gradient(109.8deg, rgb(250, 111, 152) 5.6%, rgb(255, 189, 55) 91.5%); */
-    /* background:linear-gradient(179.5deg, rgb(255, 230, 69) 3.3%, rgb(255, 157, 73) 96%); }*/
-
-
-
-
 
 .heading1{
-  /* background: #f1efb9; */
   font-family: 'Lobster', cursive;
   display: flex;
   flex-direction:row;
-  /* align-items:center; */
   justify-content:space-between;
-  /* text-shadow:#ffffff; */
   font-size: 4vw;
   margin:0;
   padding-top:2rem;
   background : #80c9fa;
   
 }
-
-#profilePic
-  {
-    border-radius: 50%;
-  }
-
 
 .feedbox{
     display:flex;
@@ -373,7 +293,6 @@ span.marked{
     align-items: center;
     padding-top:0.8rem;
     padding-bottom:0.8rem;
-
 }
 
 .srchbarcat{
@@ -387,6 +306,7 @@ span.marked{
 /* searchbox itself */
 .search_in{
     /* width: 100%; */
+    width:80vw;
     padding: 0.5rem 0.8rem ;
 
     /* background-color: transparent; */
@@ -402,7 +322,7 @@ span.marked{
     background-size: 18px 18px;
     background-position: 95% center;
     border-radius: 50px;
-    border: 1px solid #575756;
+    /* border: 1px solid #575756; */
     transition: all 250ms ease-in-out;
     backface-visibility: hidden;
     transform-style: preserve-3d;
@@ -412,50 +332,44 @@ span.marked{
     padding: 0.5rem 0.8rem;
     outline: 0;
     background-color: #98d6e2;
-    border: 1px solid red;
     border: 0.1vw solid #05c0e6;
-    border-bottom: 0.3vw solid #575756;
+    /* border-bottom: 0.3vw solid #575756; */
     border-radius: 1rem;
     background-position: 100% center;
 }
 
 .srchbutton{
-    /* display:flex; */
-    /* flex-direction:column; */
-    width:7vw;
-    height:7vw;
+    border-radius:5vw;
+    width:3vw;
+    height:3vw;
+    font-size:1.8vw;
+    align-self:flex-start;
+    border:none;
 }
-
+.srchbutton:hover{
+    cursor:pointer;
+}
 
 
 .categorybox{
-    
     display:flex;
     flex-direction:row;
-    justify-content: space-around;
-    /* background: #454857; */
+    justify-content: center;
     background: inherit;
+    width:80vw;
 	padding: 4px;
-	border-radius: 10px solid black;
-	box-shadow: inset 0 0 0 3px rgba(35, 33, 45, 0.3),
-		0 0 0 3px rgba(185, 185, 185, 0.3);
-	position: relative;
 }
-
-/* .categorybox input : label{
-    content:'\f2b9' ;} */
 
 .categorybox input {
 	width: auto;
 	height: 100%;
+    padding:0.5vw 0.8vw;
+    margin:0vw 1vw;
 	appearance: none;
 	outline: none;
 	cursor: pointer;
 	border-radius: 2px;
-	padding: 4px 8px;
 	background: #454857;
-    /* background: inherit; */
-	/* color: #585858bd; */
     color:black;
 	font-size: 14px;
 	font-family: 'Fredoka One',cursive;

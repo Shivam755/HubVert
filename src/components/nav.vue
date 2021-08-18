@@ -62,6 +62,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  width:100%;
 }
 
 #webName{
@@ -77,34 +78,6 @@ export default {
   margin:0rem;
 }
 
-/* #menu {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  background: #28d0d6;
-  width:100vw;
-}
-#menu a {
-  font-weight: bold;
-  font-family: 'Nunito';
-  font-size: 20px;
-  color: #2c3e50;
-}
-.nav-item{
-  padding: 10px 10px 10px 10px;
-  display: inline-block;
-  text-decoration: none;
-}
-.nav-item:hover{
-  background: #55eff5;
-  text-decoration: underline;
-}
-a{
-  padding:10px;
-}
-a.router-link-exact-active{
-  background: #55eff5;
-} */
 .sticky{
   position:fixed;
   margin: 0;
@@ -114,6 +87,9 @@ a.router-link-exact-active{
 img{
   width:5vw;
   border-radius: 50%;
+  padding:0.5vw;
+  margin:0.5vw;
+  border: 1px solid black;
 }
 
 
@@ -149,6 +125,9 @@ nav a {
 	text-align: center;
 	color: white;
 	cursor: pointer;
+}
+nav a.router-link-exact-active{
+  background:#425e7a;
 }
 nav .animation {
 	position: absolute;
