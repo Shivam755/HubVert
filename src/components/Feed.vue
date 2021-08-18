@@ -81,8 +81,9 @@ export default {
                         data.results.forEach(item => {
                             let quote = `
                             <div class="quotestyle">
-                            <p style="background:blue;font-size: 12pt ;font-family:'Fredoka One',cursive;">${item.content}</p>
-                            <small>${item.author}</small>
+                            <p style="color:black;background:inherit;font-size: 12pt ;font-family:'Fredoka One',cursive;">
+                            ${item.content}</p>
+                            <small style="color:black;" >${item.author}</small>
                             </div>
                             `
                             $(".container1").append(quote);
@@ -262,18 +263,25 @@ img{
 .feedbox{
     display:flex;
     flex-direction: column;
+    background:#eaabfd;
 }
 
 .emojibox{
     display:flex;
     flex-direction: row;
-    background: #a7ff83;
+    justify-content:center;
+    align-items:center;
+    /* background: #dd7cfa; */
+    background:linear-gradient(to bottom, rgb(236, 44, 60), rgb(250, 103, 115));
+    height:5.3rem;
+
     /* width: 10%; */
     font-size:4vw;   
 }
 
 span{
     border-radius: 50%;
+    
 }
 span:hover{
     cursor: pointer;
@@ -288,7 +296,8 @@ span.marked{
 .searchcont{
     display:flex;
     flex-direction:row;
-    background: #46c3db;
+    /* background: #46c3db; */
+    background:linear-gradient(to bottom, rgb(98, 71, 129), rgb(157, 104, 187));
     justify-content: space-around;
     align-items: center;
     padding-top:0.8rem;
@@ -391,13 +400,13 @@ span.marked{
 }
 
 .container1{
-    background:orange;
+    background:#eaabfd;
 }
 
 
 .quotestyle{
     color: pink;
-    background-color:blue;
+    /* background-color:blue; */
     margin: 0 auto;
     padding: 1em;
     border-left: 5px solid #999;
