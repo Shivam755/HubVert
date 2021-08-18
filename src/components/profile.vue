@@ -5,30 +5,29 @@
    <div v-else>
        <Nav :avatar="avatar"/>
        <div class="container">
-           
             <div class="main">
-                <div class="pic">
-                    <img :src="avatar" id='profilePic' alt="avatar" width="300" height="320">
-                    <router-link to="/changeProfilePic"><button class="edit">✏️</button></router-link>
-                </div>
-                <div class="details">
-                    <div class='content'>
-                        <label for="name"><strong> Name: {{name}} </strong></label>
-                        <label for="userid"><b>User ID: {{userId}} </b></label>
-                        <label for="dob"> <strong> Date of Birth: {{dob}}</strong></label>
-                        <label for="gender"><b> Gender: {{gender}} </b></label>
-                        <label for="email"><b>Email ID: {{email}} </b></label>
-                        <div>
-                            <label for="interest"><b>Interests: <span v-for ="interest in userInterests" :key="interest.id">{{interest.topic}}{{interest.icon}}, </span> </b> <button @click="askInterest()">Edit Interest</button> </label>
+                <div class="align">
+                    <div class="pic">
+                        <img :src="avatar" id='profilePic' alt="avatar" width="300" height="320">
+                        <router-link to="/changeProfilePic"><button class="edit">✏️</button></router-link>
+                    </div>
+                    <div class="details">
+                        <div class='content'>
+                            <label for="name"><strong> Name: {{name}} </strong></label>
+                            <label for="userid"><b>User ID: {{userId}} </b></label>
+                            <label for="dob"> <strong> Date of Birth: {{dob}}</strong></label>
+                            <label for="gender"><b> Gender: {{gender}} </b></label>
+                            <label for="email"><b>Email ID: {{email}} </b></label>
                         </div>
                     </div>
-                    
-                    <div class="bottom">
-                        <router-link to='/changePassword'><button >Change Password</button></router-link>
+                    <div class="top">
+                        <button id="logout" @click.prevent = "logout()"><i class="fa fa-power-off"></i></button>
                     </div>
                 </div>
-                <div class="top">
-                    <button id="logout" @click.prevent = "logout()"><i class="fa fa-power-off"></i></button>
+                    <label id="interest" for="interest"><b class="label">Interests: </b><span v-for ="interest in userInterests" :key="interest.id">{{interest.topic}}{{interest.icon}}, </span></label>
+                <div class="bottom">
+                    <button class="editPass" @click="askInterest()">Edit Interest</button>
+                    <router-link to='/changePassword'><button class="editPass" >Change Password</button></router-link>
                 </div>
             </div>
         </div>
@@ -92,7 +91,7 @@ export default {
                     }
                 }
                 interestHtml += `<input type="checkbox" name="interest" id=${interests[i].topic} ${checked?"checked":""}  /> 
-                <label for=${interests[i].topic}>${interests[i].topic}</label> `;
+                <label for=${interests[i].topic}>${interests[i].topic}${interests[i].icon}</label> `;
             }
             interestHtml += `</form>`
             this.userInterests = [];
@@ -174,10 +173,11 @@ label{
 }
 .main{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin:2vw 0vw;
     width:80vw;
-    padding:2vw 3vw;
+    padding:2vw 1vw;
     border-radius: 1vw;
     background: linear-gradient(
         114deg,
@@ -188,31 +188,44 @@ label{
     border: 1px solid rgba(80, 80, 80, 0.445);
     background-repeat: no-repeat;
 }
+.align{
+    display: flex;
+    justify-content: space-between;
+
+}
 .pic{
-    margin: 5vw 3vw;
+    margin: 0vw 3vw;
     align-items: center ;
     justify-content: center;
     align-self: flex-start;
+    position:relative;
 }
 .edit{
+    position: absolute;
+    top:18vw;
+    right:3vw;
     border-radius:50vw;
-    height:3vw;
-    width:3vw;
+    height:3.5vw;
+    width:3.5vw;
     outline:0;
     border:0;
     z-index:5;
-    background:#29178bb6;;
+    background:#ffc9da;
+    border: 0.2vw solid black;
     color:white;
     font-size: 1.5vw;
+    box-shadow: 0.1vw 0.2vw 0.2vw grey;
 }
-
+.edit:hover{
+    cursor:pointer;
+}
 .details{
     display: flex;
     flex-direction: column;
 }
 .content{
     display: flex;
-    margin: 5vw 0vw;
+    /* margin: 5vw 0vw; */
     flex-direction: column;
     height: 20vw;
     padding:2vw;
@@ -221,6 +234,23 @@ label{
 .bottom{
     display: flex;
     justify-content: center;
+}
+.label{
+    font-size: 3vw;
+    font-family: 'Oleo Script', cursive;
+    font-weight:bolder;
+    background:linear-gradient(to right,rgb(74, 232, 253), rgb(60, 78, 243), rgb(159, 5, 230));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.editPass{
+    /* width: 15vw;
+    height: 7vh; */
+    margin: 2vw 2vw;
+    padding: 1.5vw 2vw;
+    font-size:1.5vw;
+    border-radius:0.6vw;
+    border:none;
 }
 #logout{
     border-radius:50vw;
@@ -236,6 +266,11 @@ label{
 }
 #logout:hover{
     cursor:pointer;
+}
+#interest{
+    padding:0;
+    margin:0vw 3vw;
+    text-align:center;
 }
 #profilePic
 {
