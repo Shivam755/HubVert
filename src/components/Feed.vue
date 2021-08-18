@@ -166,8 +166,8 @@ export default {
                     return;
                 }
                 // console.log(word, category);
-                $.get("https://pixabay.com/api/?key="+PXkey+"&q="+word+category+"&image_type=photo&per_page=200",function(data){
-                    console.log(data);
+                $.get("https://pixabay.com/api/?key="+PXkey+"&q="+word+"+"+category+"&image_type=photo&per_page=200",function(data){
+                    console.log(word, category, data);
                     $("#container").empty();
                     if(data.total != 0){
                         data.hits.forEach(hit => {
@@ -190,10 +190,12 @@ export default {
                 else{
                     let ind = Math.floor((Math.random() * 100));
                     let key = ind % this.userInterest.length;
+                    console.log(ind,key)
                     getPhotos(this.type,this.currentMood.search,this.userInterest[key].topic);
                 }
-            }catch{
+            }catch(err){
                 let error = `<h1>Oops... there's some problem with the api.Please Try again.</h1>`
+                console.log(err);
                 $("#container").append(error);
 
             }

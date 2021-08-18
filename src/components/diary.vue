@@ -2,23 +2,22 @@
   <div v-if="id === null">
       <Forbidden />
   </div>
-   <div v-else>
-     <Nav :avatar="avatar" />
-   <header><h1 class="title">My Personal Journal</h1></header>
+   <div class='outer' v-else>
+    <Nav :avatar="avatar" />
+    <div class="Container">
+      <div class="notebook">
+   <header><h1>My Personal Journal</h1></header>
     <!-- Journal Entry Section -->
-    <section class="section journal-section container container-row container-row-journal container-item container-item-journal">
-      <form id="entryForm" action="">
-        <label for="entry-title" class="journal-label">Entry Title</label>
+    <section class="notebook">
         <input
           type="text"
           name="entry-title"
           id="entry-title"
           class="entry-text-title"
-          placeholder="Name of entry ✏️"
+          placeholder="Title ✏️"
           v-model="title"
           :disabled="disabled"
         />
-        <label for="entry" class="journal-label">Today's Entry</label>
         <textarea
           name="daily-entry"
           id="entry"
@@ -27,18 +26,19 @@
           v-model="todayEntry"
           :disabled="disabled"
         ></textarea>
-        <button class="btn-main entry-submit-btn" type="submit" @click.prevent="loadCurrent()" v-if="disabled">Current entry</button>
-        <button class="btn-main entry-submit-btn" type="submit" @click.prevent="submit()" :disabled="disabled" v-else>Submit</button>
+        <button class="btn-main entry-submit-btn" type="submit" @click.prevent="submit()" :disabled="disabled" v-if="! disabled">Submit</button>
         
-      </form>
     </section>
-
+    </div>
     <!-- Journal Entry Results -->
-    <section class="section sectionEntryResults container container-row entryResultRow" id="entryResultsSection">
+    <aside id="index">
+      <h3>Entries</h3>
       <ul>
         <li v-for="entry in journalEntries" @click="loadPrevious(entry)" :key="entry.title">{{entry.title}}({{entry.date}})</li>
       </ul>
-    </section>
+      <button id="back" type="submit" @click.prevent="loadCurrent()" v-if="disabled"><i class='fa fa-arrow-left'>  Current Page</i></button>
+    </aside>
+    </div>
   </div>
 </template>
 
@@ -122,11 +122,11 @@ export default {
 </script>
 
 <style scoped>
-*,
+/* *,
 *::before,
 *::after {
   box-sizing: border-box;
-}
+} */
 
 section{
   display: inline;
@@ -149,7 +149,14 @@ body {
 }
 
 /* Global Typography */
-
+ul{
+  list-style: none;
+  height: 10vw;
+  overflow-y: scroll;
+}
+ul::-webkit-scrollbar {
+  width: 0;
+}
 li:hover{
   text-decoration: underline;
   cursor: pointer;
@@ -159,19 +166,10 @@ h1 {
   font-size: 3rem;
 }
 
-h2 {
-  font-size: 2rem;
-}
-
 h3 {
   font-size: 1.5rem;
 }
 
-p {
-  font-size: 1rem;
-}
-
-form,
 textarea {
   font-size: 1rem;
 }
@@ -181,8 +179,6 @@ button {
   font-size: 1.2rem;
   padding: 0.5em 1em;
   border: none;
-  background-color: aquamarine;
-  color: #0a2472;
   font-family: 'Space Mono', monospace;
 }
 
@@ -193,81 +189,80 @@ header {
   margin: 1em auto;
 }
 
-.section {
-  padding: 1em 1em;
-  width: 100%;
-  margin: 1em auto;
-}
-
-.container {
-  width: 100%;
-  margin: 0 auto;
-  padding: 1em 1em;
-}
-
-.container-row {
-  width: 90%;
-  margin: 0 auto;
+.Container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Button Standard */
 
-.btn-main,
-.btn-light,
-.btn-dark {
+.btn-main {
   display: block;
   padding: 0.6rem 2rem;
-  margin: 1rem;
+  margin: 0;
   transition: all 0.1s;
   border: none;
   border-radius: 2px;
   cursor: pointer;
-}
-
-.btn-main {
   color: lightgoldenrodyellow;
   background-color: lightcoral;
 }
 
-.btn-light {
-  color: #0a2472;
-  background-color: white;
-}
-
-.btn-dark {
-  color: white;
-  background-color: #0a2472;
-}
-
-button[class^='btn-']:hover,
-a[class^='btn-']:hover,
-input[class^='btn-']:hover {
+.btn-main:hover {
   background-color: lightgoldenrodyellow;
   color: lightcoral;
   font-weight: 700;
   transform: scale(1.08);
 }
 
-/* Project Starts Here */
+#index{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-start;
+}
+.outer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-/* Journal Entry Section */
-
-/* Title */
+#back{
+  border-radius: 0.5vw;
+  background-color: #f06faf;
+}
+#back:hover{
+  cursor: pointer;
+}
+.notebook{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding:1vw;
+  margin-top:2vh;
+  border-radius:3vw;
+  color:rgb(151, 90, 49);
+  background-color:lightgoldenrodyellow;
+}
 
 .entry-text-title {
   width: 20em;
   margin: 1em auto;
   padding: 1em;
-  border-radius: 2px;
-  border: unset;
+  color: lightcoral;
+  border: 0.15vw solid lightcoral;
+  border-radius: 0.5vw;
   background-color: lightgoldenrodyellow;
   font-family: 'Space Mono', monospace;
 }
 
-.entry-text-title:focus {
-  outline-color: lightcoral;
+.entry-text-title :hover{
   font-family: 'Space Mono', monospace;
-  color: lightcoral;
   font-size: 1rem;
 }
 
@@ -283,18 +278,6 @@ input[class^='btn-']:hover {
   font-size: 1rem;
 }
 
-/* Text Box */
-
-.container-row-journal {
-  display: flex;
-  justify-content: center;
-}
-
-.entry-form {
-  max-width: 100%;
-  margin: 0 auto;
-}
-
 .journal-label {
   display: block;
   line-height: 1.6;
@@ -307,7 +290,6 @@ input[class^='btn-']:hover {
   height: 20em;
   margin: 1em auto;
   padding: 1em;
-  border-radius: 2px;
   border: unset;
   background-color: lightgoldenrodyellow;
   font-family: 'Space Mono', monospace;
@@ -319,7 +301,6 @@ input[class^='btn-']:hover {
     height: 20em;
     margin: 1em auto;
     padding: 1em;
-    border-radius: 2px;
     border: unset;
     background-color: lightgoldenrodyellow;
     font-family: 'Space Mono', monospace;
@@ -330,6 +311,7 @@ input[class^='btn-']:hover {
   outline-color: lightcoral;
   font-family: 'Space Mono', monospace;
   color: lightcoral;
+  border-radius: 0.5vw;
   font-size: 1rem;
 }
 
@@ -338,46 +320,5 @@ input[class^='btn-']:hover {
   font-family: 'Space Mono', monospace;
   font-size: 1rem;
 }
-
-.entry-submit-btn {
-  margin: 0;
-}
-
-/* Journal Results Section */
-
-.sectionEntryResults {
-  width: 100%;
-  margin: 0 auto;
-}
-
-.entryResultRow {
-  /* display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  width: 100%;
-  margin: 1em auto; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.single-entry-div {
-  max-width: 100%;
-
-  margin: 1em auto;
-  padding: 1em 1em;
-}
-
-.single-entry-date {
-  background-color: lightgoldenrodyellow;
-  width: 100%;
-}
-
-.heading-results {
-  text-align: center;
-  text-decoration: underline;
-  text-decoration-color: lightgoldenrodyellow;
-}
-
 
 </style>

@@ -68,8 +68,8 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  background: #28d0d6;
   /* background: inherit; */
-  background-color: #34495e;
   width:100vw;
 }
 #menu a {

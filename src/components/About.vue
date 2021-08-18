@@ -204,12 +204,29 @@
         <p style="margin:0.7;">This guy can make statues out of code and walk through
            the dark dungeons to find the right module.</p>
       <div class='link'>
-        <i class="fa fa-linkedin" style="font-size:40px;color:red"></i>
-        <i class="fa fa-google" style="font-size:40px;color:red"></i>
-        <i class="fa fa-facebook" style="font-size:40px;color:red"></i>
-        <i class="fa fa-instagram" style="font-size:40px;color:red"></i>
-        <i class="fa fa-github" style="font-size:40px;color:red"></i>
-        <i class="fa fa-twitter" style="font-size:40px;color:red"></i>
+        <a href="mailto:www.shivam567@gmail.com?subject=HubVERT Review" target="_blank">
+        <i class="fa fa-envelope" style="font-size:5vw;color:#ea4335"></i>
+        </a>
+
+        <a href="https://www.instagram.com/superslayer_4/" target="_blank">
+        <i class="fa fa-instagram" style="font-size:5vw;color:#e1306c"></i>
+        </a>        
+
+        <a href="https://github.com/Shivam755" target="_blank">
+        <i class="fa fa-github" style="font-size:5vw;color:#333"></i>
+        </a>
+
+        <a href="https://www.linkedin.com/in/shivam-gupta-6900701b1" target="_blank">
+        <i class="fa fa-linkedin" style="font-size:5vw;color:#0077b5"></i>
+        </a>
+
+        <a href="https://twitter.com/ShivamG54944430?s=09" target="_blank">
+        <i class="fa fa-twitter" style="font-size:5vw;color:#1da1f2"></i>
+        </a>
+
+        <a href="https://www.facebook.com/profile.php?id=100008432947295" target="_blank">
+        <i class="fa fa-facebook" style="font-size:5vw;color:#1877f2"></i>
+        </a>
       </div>
     </div>
   </div>
@@ -265,6 +282,7 @@ template{
   display: flex;
   flex-direction: column;
   padding:1rem;
+  color:rgb(10, 0, 24);
   /* align-items:center; */
   /* justify-content:center; */
   /* background:linear-gradient(to right, rgb(198, 255, 221), 
