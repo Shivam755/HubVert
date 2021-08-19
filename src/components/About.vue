@@ -12,7 +12,7 @@
     <!-- <div class="shadow"> -->
     <div class="imagecont">
       <div class="circle">
-        <img src="../assets/img_avatar.png" alt="Avatar" >
+        <img src="../assets/shivam.jpeg" alt="Avatar" >
       </div>
       <center><p style="font-family:'Bangers',cursive; font-size: 4vw; margin: 0.5rem">Shivam Gupta</p></center>
     </div>
@@ -58,10 +58,9 @@
     <div class="carddet ">
       <div class='quote'>
         
-          "The best is yet to come."
+          "life has no ctrl+z option, take your every decision wisely.... alana falana........"
         </div>
-        <p style="margin:0.7;">This guy can make statues out of code and walk through
-           the dark dungeons to find the right module.</p>
+        <p style="margin:0.7;">I dont have any paragraph. I am a CEO of so and so company, which is located in la-la Dreamland.</p>
 
       
       
@@ -93,7 +92,7 @@
     </div>
     <div class="imagecont">
       <div class="circle">
-        <img src="../assets/img_avatar2.png" alt="Avatar" >
+        <img src="../assets/jyoti.jpeg" alt="Avatar" >
       </div>
       <center><p style="font-family:'Bangers',cursive; 
       font-size: 4vw; margin: 0.5rem">Jyoti Ghosh</p></center>
@@ -104,17 +103,15 @@
     <!-- <div class="shadow"> -->
     <div class="imagecont">
       <div class="circle">
-        <img src="../assets/img_avatar.png" alt="Avatar">
+        <img src="../assets/tejas.jpeg" alt="Avatar">
       </div>
       <center><p style="font-family:'Bangers',cursive; font-size: 4vw; margin: 0.5rem">Tejas Pophale</p></center>
     </div>
     <div class="carddet ">
       <div class='quote'>
-       
-          "I am Iron man."
+          "Design needs to be gentle, yet carved from the wild."
         </div>
-        <p style="margin:0.7;">This guy can make statues out of code and walk through
-         the dark dungeons to find the right module.</p>
+        <p style="margin:0.7;">A guy who paints statues with CSS and builds classes to adorn them for exibits.</p>
 
       <div class='link'>
         <a href="mailto:tejaspophale01@gmail.com?subject=HubVERTReview" target="_blank">
@@ -182,7 +179,7 @@
     </div>
     <div class="imagecont">
       <div class="circle">
-        <img src="../assets/img_avatar2.png" alt="Avatar" >
+        <img src="../assets/shrutika.jpeg" alt="Avatar" >
       </div>
       <center><p style="font-family:'Bangers',cursive; font-size: 4vw; margin: 0.5rem">Shrutika Gholap</p></center>
     </div>
@@ -192,7 +189,7 @@
     <!-- <div class="shadow"> -->
     <div class="imagecont">
       <div class="circle">
-        <img src="../assets/img_avatar.png" alt="Avatar">
+        <img src="../assets/harshal.jpg" alt="Avatar">
       </div>
       <center><p style="font-family:'Bangers',cursive; font-size: 4vw; margin: 0.5rem">Harshal Gondkar</p></center>
     </div>
