@@ -81,9 +81,9 @@ export default {
                         data.results.forEach(item => {
                             let quote = `
                             <div class="quotestyle">
-                            <p style="color:black;background:inherit;font-size: 12pt ;font-family:'Fredoka One',cursive;">
+                            <p style="color:white;background:inherit;font-size: 12pt ;font-family:'Fredoka One',cursive;">
                             ${item.content}</p>
-                            <small style="color:black;" >${item.author}</small>
+                            <small style="color:white;" >${item.author}</small>
                             </div>
                             `
                             $(".container1").append(quote);
@@ -263,7 +263,7 @@ img{
 .feedbox{
     display:flex;
     flex-direction: column;
-    background:#eaabfd;
+    /* background:#eaabfd; */
 }
 
 .emojibox{
@@ -399,7 +399,7 @@ span.marked{
 }
 
 .container1{
-    background:#eaabfd;
+    color:#ffffff;
 }
 
 
