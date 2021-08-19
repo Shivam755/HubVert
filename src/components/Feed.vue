@@ -347,7 +347,7 @@ span.marked{
 }
 
 .srchbutton{
-    border-radius:5vw;
+    border-radius:5vw solid black;
     width:3vw;
     height:3vw;
     font-size:1.8vw;

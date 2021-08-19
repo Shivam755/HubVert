@@ -24,10 +24,14 @@
                         <button id="logout" @click.prevent = "logout()"><i class="fa fa-power-off"></i></button>
                     </div>
                 </div>
-                    <label id="interest" for="interest"><b class="label">Interests: </b><span v-for ="interest in userInterests" :key="interest.id">{{interest.topic}}{{interest.icon}}, </span></label>
+                    <label id="interest" for="interest"><b class="label">Interests: </b>
+                    <span v-for ="interest in userInterests" :key="interest.id">{{interest.topic}}{{interest.icon}},</span></label>
                 <div class="bottom">
-                    <button class="editPass" @click="askInterest()">Edit Interest</button>
-                    <router-link to='/changePassword'><button class="editPass" >Change Password</button></router-link>
+                    <div class="interest_bldup">
+                    <button class="interest-hover color-3" @click="askInterest()">Edit Interest</button>
+                    </div>
+                    <router-link to='/changePassword'><button class="editpass" >Change Password</button></router-link>
+                    
                 </div>
             </div>
         </div>
@@ -243,15 +247,26 @@ label{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.editPass{
+.editpass{
     /* width: 15vw;
     height: 7vh; */
     margin: 2vw 2vw;
     padding: 1.5vw 2vw;
+    font-family:"Concert One", cursive;
     font-size:1.5vw;
     border-radius:0.6vw;
     border:none;
+    background:pink;
+    border-radius: 50px;
 }
+
+.editpass:hover{
+    background:linear-gradient(to right,rgb(81, 204, 253), rgb(108, 154, 252));
+    border-radius:50px;
+    border:black;
+}
+
+
 #logout{
     border-radius:50vw;
     width: 5vw;
@@ -267,11 +282,76 @@ label{
 #logout:hover{
     cursor:pointer;
 }
+
 #interest{
     padding:0;
     margin:0vw 3vw;
     text-align:center;
 }
+
+.interest_bldup{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.interest{
+    margin: 10%;
+    text-align: center;
+}
+
+.interest-hover {
+    margin: 2vw 2vw;
+    padding: 1.5vw 2vw;
+    font-family:"Concert One", cursive;
+    font-size:1.5vw;
+    /* border-radius:0.6vw; */
+    /* border:none; */
+    /* width: 200px; */
+    /* font-size: 16px; */
+    /* font-weight: 600; */
+    color: rgb(0, 0, 0);
+    font-family: "Concert One",cursive;
+    cursor: pointer;
+    /* margin: 20px; */
+    /* height: 55px; */
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+
+    
+    border-radius: 50px;
+    transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.interest-hover:hover {
+    /* -webkit-box-sizing: border-box; */
+    /* -moz-box-sizing: border-box; */
+    /* box-sizing: border-box; */
+    background-position: 100% 0;
+    transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.interest-hover:focus {
+    /* -webkit-box-sizing: border-box; */
+    /* -moz-box-sizing: border-box; */
+    /* box-sizing: border-box; */
+    /* box-sizing: border-box; */
+    outline: none;
+}
+
+.interest-hover.color-3 {
+    /* background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7); */
+    background-image: linear-gradient(to right, rgb(86, 48, 192), rgb(74, 187, 253));
+    box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+}
+
+
 #profilePic
 {
     width: 20vw;
