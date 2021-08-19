@@ -26,8 +26,9 @@
                 </div>
                     <label id="interest" for="interest"><b class="label">Interests: </b><span v-for ="interest in userInterests" :key="interest.id">{{interest.topic}}{{interest.icon}}, </span></label>
                 <div class="bottom">
-                    <button class="editPass" @click="askInterest()">Edit Interest</button>
+                    <button class="editPass" style="margin-left:20vw;" @click="askInterest()">Edit Interest</button>
                     <router-link to='/changePassword'><button class="editPass" >Change Password</button></router-link>
+                    <button id="delete" @click="deleteAccount()"> <i class="fa fa-trash"></i></button>
                 </div>
             </div>
         </div>
@@ -126,6 +127,41 @@ export default {
                     })
                 }
             })
+        },
+        deleteAccount:function(){
+            Swal.fire({
+                icon:'warning',
+                title:"Do you really want to delete this account?",
+                text:"You won't be able to recover any of the info once the account is deleted!!",
+                showDenyButton:true,
+                confirmButtonText:'Yes',
+                denyButtonText:'No'
+            }).then((result)=>{
+                if(result.isConfirmed){
+                    if(Users.DeleteUser(this.userId)){
+                        Swal.fire({
+                            icon:'success',
+                            title:'Account deletion successful',
+                            text:"We hope you had a great time here!"
+                        });
+                        sessionStorage.clear();
+                        router.push('/');
+                    }else{
+                        Swal.fire({
+                            icon:'error',
+                            title:"Couldn't find your account!!",
+                            text:"We're having some problems at the server. Please bare with us"
+                        });
+                    }
+                }else{
+                    Swal.fire({
+                        icon:'success',
+                        title:'Account deletion aborted',
+                        text:"Thank you for staying with us!!!"
+                    });
+                }
+            });
+            
         }
     },
     mounted: function () {
@@ -167,8 +203,8 @@ label{
 }
 .top{
     display: flex;
-    flex-direction:column-reverse;
-    justify-content: flex-end;
+    flex-direction:column;
+    /* justify-content: center; */
     padding:2vw;
 }
 .main{
@@ -233,7 +269,7 @@ label{
 }
 .bottom{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 .label{
     font-size: 3vw;
@@ -252,7 +288,28 @@ label{
     border-radius:0.6vw;
     border:none;
 }
+.editPass:hover{
+    cursor: pointer;
+}
+#delete{
+    border-radius:50vw;
+    width: 5vw;
+    height: 5vw;
+    margin: 2vw 2vw;
+    font-size: 3vw;
+    background-color:white;
+    color:red;
+    align-self: flex-end;
+}
+#delete:active{
+    background-color:red;
+    color: white;
+}
+#delete:hover{
+    cursor:pointer;
+}
 #logout{
+    align-self: flex-start;
     border-radius:50vw;
     width: 5vw;
     height: 5vw;

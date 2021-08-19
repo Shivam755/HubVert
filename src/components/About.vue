@@ -18,7 +18,7 @@
     </div>
     <div class="carddet ">
       <div class='quote'>
-        "I like to read."
+        "Everything has a Logical solution, if you have a working brain."
       </div>
       <p style="margin:0.7;">This guy can make statues out of code and walk through
           the dark dungeons to find the right module.</p>
@@ -196,7 +196,7 @@
     <div class="carddet ">
       <div class='quote'>
         
-          "I love One piece"
+          "People's dreams never end! One should not stop dreaming and chase them till their last breath!!!"
         </div>
         <p style="margin:0.7;">This guy can make statues out of code and walk through
            the dark dungeons to find the right module.</p>
@@ -216,10 +216,6 @@
         <a href="https://www.linkedin.com/in/harshal-gondkar-b980761b0" target="_blank">
         <i class="fa fa-linkedin" style="font-size:5vw;color:#0077b5"></i>
         </a>
-
-        <!-- <a href="https://twitter.com/" target="_blank">
-        <i class="fa fa-twitter" style="font-size:5vw;color:#1da1f2"></i>
-        </a> -->
 
         <a href="https://www.facebook.com/harshal.gondkar" target="_blank">
         <i class="fa fa-facebook" style="font-size:5vw;color:#1877f2"></i>
