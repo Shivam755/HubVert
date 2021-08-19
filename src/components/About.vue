@@ -198,8 +198,7 @@
         
           "People's dreams never end! One should not stop dreaming and chase them till their last breath!!!"
         </div>
-        <p style="margin:0.7;">This guy can make statues out of code and walk through
-           the dark dungeons to find the right module.</p>
+        <p style="margin:0.7;">He doesn't particularly like the coding process, but is in heaven when the code works fine in the end.</p>
       <div class='link'>
         <a href="mailto:harshal26092002@gmail.com?subject=HubVERT Review" target="_blank">
         <i class="fa fa-envelope" style="font-size:5vw;color:#ea4335"></i>
