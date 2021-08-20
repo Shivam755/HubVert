@@ -149,8 +149,7 @@
             and just do some truly great work.
             Few things will make you feel better than a job brilliantly done"
         </div>
-        <p style="margin:0.7;">This guy can make statues out of code and walk through
-           the dark dungeons to find the right module.</p>
+        <p style="margin:0.7;">She is mostly quite when it comes to disscussion but speaks a lot when its her favorite topic ^_^</p>
       
       <div class='link'>
         <a href="mailto:shrutikagholap1@gmail.com?subject=HubVERTReview" target="_blank">
