@@ -183,17 +183,28 @@ nav .start-portefolio, a:nth-child(4):hover~.animation {
 	left: 310px;
 	background-color: #9b59b6;
 }
-nav .start-contact, a:nth-child(5):hover~.animation {
+/* nav .start-contact, a:nth-child(5):hover~.animation {
 	width: 120px;
 	left: 470px;
 	background-color: #e67e22;
-}
+} */
 
-nav a.router-link-exact-active{
-	background: #e67e22;
+nav a:nth-child(1).router-link-exact-active{
+	background: #1abc9c;
   border-radius: 8px;
 }
-
+nav a:nth-child(2).router-link-exact-active{
+	background: #e74c3c;
+  border-radius: 8px;
+}
+nav a:nth-child(3).router-link-exact-active{
+	background: #3498db;
+  border-radius: 8px;
+}
+nav a:nth-child(4).router-link-exact-active{
+	background: #9b59b6;
+  border-radius: 8px;
+}
 
 
 </style>

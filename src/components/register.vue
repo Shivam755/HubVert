@@ -220,7 +220,7 @@ fieldset{
 .inputicon1{
   display:flex;
   font-family: 'Space Mono', monospace;
-  color: #f469a9;
+  color: lightcoral;
   border: 0.3rem solid #f469a9;
   border-radius: 0.3rem;
   outline: none;
@@ -262,7 +262,7 @@ input[type=date]{
 /* Add a hover effect for buttons */
 .button1:hover {
   opacity: 4;
-  border:  0.3rem solid #f4fa9c;
+  border:  0.3rem solid #f469a9;
 
 }
 

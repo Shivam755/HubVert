@@ -58,9 +58,9 @@
     <div class="carddet ">
       <div class='quote'>
         
-          "life has no ctrl+z option, take your every decision wisely.... alana falana........"
+          "Life has no ctrl+z option, take your every decision wisely.... alana falana........"
         </div>
-        <p style="margin:0.7;">I dont have any paragraph. I am a CEO of so and so company, which is located in la-la Dreamland.</p>
+        <p style="margin:0.7;">She doesn't have any paragraph. But she's a CEO of so and so company, which is located in la-la Dreamland.</p>
 
       
       
@@ -149,8 +149,7 @@
             and just do some truly great work.
             Few things will make you feel better than a job brilliantly done"
         </div>
-        <p style="margin:0.7;">This guy can make statues out of code and walk through
-           the dark dungeons to find the right module.</p>
+        <p style="margin:0.7;">She is quite when it comes to discussion but she speaks a lot when it's her favourite topic.</p>
       
       <div class='link'>
         <a href="mailto:shrutikagholap1@gmail.com?subject=HubVERTReview" target="_blank">
