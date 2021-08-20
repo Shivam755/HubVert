@@ -60,7 +60,7 @@
         
           "life has no ctrl+z option, take your every decision wisely.... alana falana........"
         </div>
-        <p style="margin:0.7;">I dont have any paragraph. I am a CEO of so and so company, which is located in la-la Dreamland.</p>
+        <p style="margin:0.7;">She doesn't have any paragraph. She is the CEO of so and so company, which is located in la-la Dreamland.</p>
 
       
       
