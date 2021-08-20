@@ -1,7 +1,7 @@
 <template>
   <div id="top">
     <div id="webName">
-      <h1>Hubvert</h1>
+      <h1 class="label">Hubvert</h1>
       <div class="avatar" v-if="email != null"><router-link to="/profile" style="background:#b9113b;">
       <img :src="avatar" alt="avatar" ></router-link></div>
       </div>
@@ -56,6 +56,13 @@ export default {
 
 
 <style scoped>
+.label{
+  font-family: 'Oleo Script', cursive;
+    font-weight:bolder;
+    background:linear-gradient(to right,rgb(74, 232, 253), rgb(60, 78, 243), rgb(159, 5, 230));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 #top{
   overflow:visible;
   padding: 0;

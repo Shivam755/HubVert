@@ -145,8 +145,9 @@
     <!-- <div class="shadow"> -->
     <div class="carddet ">
       <div class='quote'>
-        
-          "I like to code."
+          "Leave your ego at the door every morning ,
+            and just do some truly great work.
+            Few things will make you feel better than a job brilliantly done"
         </div>
         <p style="margin:0.7;">This guy can make statues out of code and walk through
            the dark dungeons to find the right module.</p>

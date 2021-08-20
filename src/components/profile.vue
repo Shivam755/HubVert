@@ -28,9 +28,10 @@
                     <span v-for ="interest in userInterests" :key="interest.id">{{interest.topic}}{{interest.icon}},</span></label>
                 <div class="bottom">
                     <div class="interest_bldup">
-                    <button class="interest-hover color-3" @click="askInterest()">Edit Interest</button>
+                    <button style="margin-left: 20vw;" class="interest-hover color-3" @click="askInterest()">Edit Interest</button>
                     </div>
-                    <router-link to='/changePassword'><button class="editpass" >Change Password</button></router-link>
+                    <router-link to='/changePassword'><button id="editpass" @mouseover="symbol()" @mouseout=text()>Change Password</button></router-link>
+                    <button id="delete" @click="deleteAccount()"><i class="fa fa-trash"></i></button>
                     
                 </div>
             </div>
@@ -83,6 +84,12 @@ export default {
                     Swal.fire("We're glad you decided to stay!", "", "info")
                 }
             })
+        },
+        symbol:()=>{
+            document.getElementById("editpass").innerHTML = `<i class="fa fa-key"><i>`
+        },
+        text:()=>{
+            document.getElementById("editpass").innerHTML = "Change password"
         },
         askInterest:function(){
             let interestHtml = `<form name="InterestForm">`;
@@ -282,7 +289,7 @@ label{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.editpass{
+#editpass{
     /* width: 15vw;
     height: 7vh; */
     margin: 2vw 2vw;
@@ -295,12 +302,12 @@ label{
     border-radius: 50px;
 }
 
-.editpass:hover{
+#editpass:hover{
     background:linear-gradient(to right,rgb(81, 204, 253), rgb(108, 154, 252));
     border-radius:50px;
     border:black;
 }
-.editPass:hover{
+#editPass:hover{
     cursor: pointer;
 }
 #delete{
