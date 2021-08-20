@@ -300,15 +300,17 @@ label{
     border:none;
     background:pink;
     border-radius: 50px;
+    box-shadow: 0 4px 15px 0 rgba(107, 107, 107, 0.75);
 }
 
 #editpass:hover{
     background:linear-gradient(to right,rgb(81, 204, 253), rgb(108, 154, 252));
     border-radius:50px;
     border:black;
-}
-#editPass:hover{
     cursor: pointer;
+}
+#editpass:hover{
+   
 }
 #delete{
     border-radius:50vw;

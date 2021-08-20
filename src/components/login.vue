@@ -141,16 +141,21 @@ body{
 
 /* Set a style for all buttons */
 .button1{
-  font-family: baskerville old face ; 
-  font-size: 100%;
-  background-color: #f3a736;
-  color: white;
-  padding: 0.5rem 0.5rem;
-  margin: 8px 0;
-  border: none;
+  font-family: Merriweather ; 
+  font-size: 2rem;
+  text-align:center;
+  /* align-self: center; */
+  background-color: #ba53de;
+  color: black;
+  /* padding: 0.5rem 0.5rem; */
+  /* margin-left: 10rem; */
+  /* margin-right: 10rem; */
+  border:  0.3rem solid #ba53de;
+  border-radius: 0.3rem;
+  
   cursor: pointer;
-  height: 50%;
-  width: 50%;
+  height: 3rem;
+  width: 20rem;
 }
 
 
@@ -176,7 +181,7 @@ body{
 }
 
 .button1:active {
-  border: 3px solid #888888;
+  border: 3px solid #e95bb2;
 }
 
 

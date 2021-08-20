@@ -81,9 +81,13 @@ export default {
                         data.results.forEach(item => {
                             let quote = `
                             <div class="quotestyle">
-                            <p style="color:white;background:inherit;font-size: 12pt ;font-family:'Fredoka One',cursive;">
-                            ${item.content}</p>
-                            <small style="color:white;" >${item.author}</small>
+                            <p style="color:white;background:inherit;font-size:2rem;
+                            font-family:'Merriweather',cursive;padding-left:2rem;">
+                            <i class="fa fa-quote-left" style="font-size:3rem; color:rgb(133, 133, 133);"></i>
+                            ${item.content}
+                            </p>
+                            <small style="font-family:'Times New Roman';color:white;padding-left:3rem;font-size:1rem" >
+                            -${item.author}</small>
                             </div>
                             `
                             $(".container1").append(quote);
@@ -353,6 +357,7 @@ span.marked{
     font-size:1.8vw;
     align-self:flex-start;
     border:none;
+    box-shadow: 0 4px 15px 0 rgba(107, 107, 107, 0.75);
 }
 .srchbutton:hover{
     cursor:pointer;
